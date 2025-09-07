@@ -1,0 +1,46 @@
+.body {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    margin: 2vh 1vw;
+    padding: 2vh 1vw;
+    width: 100%;
+    min-height: 85vh;
+}
+
+.letterStack {
+    display: flex;
+    flex-direction: column;
+}
+
+.letterBlock {
+    display: flex;
+    border-radius: 15px;
+    background-color: rgba(165, 42, 42, 0.15);
+    color: whitesmoke;
+    padding: 0vh 1vw;
+    margin: 1vh 1vw;
+    justify-content: center;
+    align-items: center;
+    font-size: clamp(36pt, 6vw + 2rem, 200pt);
+}
+
+.float {
+    position: absolute;
+}
+
+.teaser {
+    left: 10vw;
+    font-size: clamp(24pt, 2vw + 1.5rem, 48pt);
+}
+
+@media (max-width: 999px) {
+    .teaser {
+        bottom: 10vh;
+        left: 33%;
+    }
+
+    .letterBlock {
+        font-size: clamp(36pt, 8vw + 3rem, 200pt);
+    }
+}
