@@ -4,7 +4,8 @@ import {
     Geist_Mono,
     Noto_Serif_Hebrew,
     Noto_Sans_Hebrew,
-    Noto_Naskh_Arabic
+    Rubik_Doodle_Shadow,
+    Noto_Naskh_Arabic,
 } from "next/font/google";
 import "./css/globals.css";
 
@@ -21,6 +22,12 @@ const geistMono = Geist_Mono({
 const notoSerif = Noto_Serif_Hebrew({
     variable: "--font-noto-serif",
     subsets: ["hebrew"]
+});
+
+const rubikDoodleShadow = Rubik_Doodle_Shadow({
+    variable: "--font-rubik-doodle-shadow",
+    subsets: ["hebrew"],
+    weight: ["400"]
 });
 
 const notoSans = Noto_Sans_Hebrew({
@@ -45,7 +52,7 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
-            <body className={`${geistSans.variable} ${geistMono.variable} ${notoSerif.variable} ${notoSans.variable} ${notoNaskh.variable}`}>
+            <body className={`${rubikDoodleShadow.variable} ${geistSans.variable} ${geistMono.variable} ${notoSerif.variable} ${notoSans.variable} ${notoNaskh.variable}`}>
                 {children}
             </body>
         </html>

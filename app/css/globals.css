@@ -30,7 +30,8 @@ a {
 }
 
 .hebrew {
-    font-family: var(--font-noto-sans);
+    /* font-family: var(--font-noto-sans); */
+    font-family: var(--font-rubik-doodle-shadow);
     /* font-family: var(--font-noto-serif); */
 }
 
