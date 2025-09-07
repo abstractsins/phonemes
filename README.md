@@ -1,3 +1,21 @@
+# The Aleph Bet
+
+## Joining common phonemes and graphemes between alphabets
+
+v1 will include:
+- Latin (English)
+- Hebrew (Modern)
+- Arabic (MSA)
+
+Possible Future alphabets:
+- Greek
+- Cyrillic 
+- Korean
+- Devanagari
+- Georgian
+
+
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
