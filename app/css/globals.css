@@ -7,9 +7,9 @@ body {
 body {
     color: black;
     background: whitesmoke;
-    font-family: Arial, Helvetica, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
 }
 
 * {
@@ -21,4 +21,18 @@ body {
 a {
     color: inherit;
     text-decoration: none;
+}
+
+aside {
+    font-size: 8pt;
+    font-style: italic;
+    margin-top: 1vh;
+}
+
+input {
+    font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+}
+
+.flex {
+    display: flex;
 }
