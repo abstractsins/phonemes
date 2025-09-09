@@ -14,13 +14,29 @@ export default function Home() {
 
 
     const showFeedbackHandler = () => {
-        setHeaderExpanded(prev => !prev);
-        setTimeout(() => setFeedbackFormShowing(prev => !prev), 250)
+        if (isFeedbackFormShowing && isHeaderExpanded) {
+            setFeedbackFormShowing(false);
+            setHeaderExpanded(false);
+        } else if (isAboutShowing && isHeaderExpanded) {
+            setAboutShowing(false);
+            setFeedbackFormShowing(true);
+        } else if (!isHeaderExpanded) {
+            setTimeout(() => setFeedbackFormShowing(true), 500);
+            setHeaderExpanded(true);
+        }
     };
 
     const showAboutHandler = () => {
-        setHeaderExpanded(prev => !prev);
-        setAboutShowing(prev => !prev);
+        if (isFeedbackFormShowing && isHeaderExpanded) {
+            setFeedbackFormShowing(false);
+            setAboutShowing(true);
+        } else if (isAboutShowing && isHeaderExpanded) {
+            setAboutShowing(false);
+            setHeaderExpanded(false);
+        } else if (!isHeaderExpanded) {
+            setTimeout(() => setAboutShowing(true), 500);
+            setHeaderExpanded(true);
+        }
     };
 
 
@@ -28,15 +44,19 @@ export default function Home() {
         <header className={`${styles.header} ${isHeaderExpanded && styles.expand}`}>
             <div className={styles.headerTop}>
 
+                {/* TITLE */}
                 <div className={styles.titleWrapper}>
                     <h1 className={styles.titleText}>Aleph Bets</h1>
                 </div>
 
+                {/* LINKS */}
                 <div className={styles.headerLinksWrapper}>
+                    {/* ABOUT */}
                     <div className={styles.headerLink} onClick={showAboutHandler}>
                         <span className={styles.headerLink}>About</span>
                     </div>
 
+                    {/* FEEDBACK */}
                     <div className={styles.headerLink} onClick={showFeedbackHandler}>
                         <span className={styles.headerLink}>Feedback</span>
                     </div>
@@ -44,6 +64,7 @@ export default function Home() {
 
             </div>
 
+            {/* EXPANDED HEADER SECTION */}
             {isHeaderExpanded &&
                 <div className={styles.expandedWrapper}>
                     <About show={isAboutShowing} />
