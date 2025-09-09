@@ -1,0 +1,7 @@
+.body {
+    display: flex;
+    justify-content: center;
+    padding: 2vh 1vw;
+    gap: 5vw;
+    height: 15vh;
+}

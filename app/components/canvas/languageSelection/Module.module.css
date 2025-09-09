@@ -1,0 +1,47 @@
+:root {
+    --color-blue-pale: rgba(0, 89, 255, 0.25);
+    --color-green-pale: rgba(0, 255, 55, 0.25);
+}
+
+.body {
+    background-color: lightgray;
+    display: flex;
+    flex-direction: column;
+    padding: 1vh 1vw;
+    border-radius: 10px;
+    border: 1px solid black;
+    transition: all 250ms;
+    height: 75px;
+    min-width: 250px;
+    align-items: center;
+}
+
+.body ul {
+    margin: .5vh .5vw;
+}
+
+.body li {
+    list-style: none;
+}
+
+.body:hover {
+    background-color: var(--color-green-pale);
+    cursor: pointer;
+}
+
+.body.expanded {
+    height: 100px;
+}
+
+.language {
+    transition: all 250ms;
+}
+
+.language:hover {
+    text-decoration: underline;
+    letter-spacing: 0.5;
+}
+
+.language:active {
+    filter: invert();
+}
