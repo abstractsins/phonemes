@@ -1,6 +1,6 @@
-import { Language, LetterTuple } from "@/app/types/types";
+import { Language } from "@/app/types/types";
 
-const hebrewAlphabet: LetterTuple[] = [
+const hebrewAlphabet: string[][] = [
     ['א', ''],
     ['ב', ''],
     ['ג', ''],
