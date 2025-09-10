@@ -1,0 +1,40 @@
+import { Language, LetterTuple } from '@/app/types/types';
+
+
+const englishAlphabet: LetterTuple[] = [
+    ['A', 'a'],
+    ['B', 'b'],
+    ['C', 'c'],
+    ['D', 'd'],
+    ['E', 'e'],
+    ['F', 'f'],
+    ['G', 'g'],
+    ['H', 'h'],
+    ['I', 'i'],
+    ['J', 'j'],
+    ['K', 'k'],
+    ['L', 'l'],
+    ['M', 'm'],
+    ['N', 'n'],
+    ['O', 'o'],
+    ['P', 'p'],
+    ['Q', 'q'],
+    ['R', 'r'],
+    ['S', 's'],
+    ['T', 't'],
+    ['U', 'u'],
+    ['V', 'v'],
+    ['W', 'w'],
+    ['X', 'x'],
+    ['Y', 'y'],
+    ['Z', 'z']
+]
+
+export const English: Language = {
+    name: 'English',
+    nick: 'English',
+    abbr: 'EN',
+    alphabet: englishAlphabet,
+    script: 'Latin',
+    leftToRight: true
+}

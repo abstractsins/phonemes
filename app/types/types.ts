@@ -7,20 +7,21 @@ export type LanguageName =
     | "Modern Standard Arabic"
     | "Modern Hebrew";
 
-
+export type LetterTuple = [string, string];
 
 
 export interface Language {
     name: LanguageName;
     nick: string;
     abbr: string;
-    alphabet: string[];
+    alphabet: LetterTuple[];
+    script: string;
+    leftToRight: boolean;
 }
 
 export interface Script {
     name: ScriptName;
     upperCase: boolean;
-    leftToRight: boolean;
     firstThree: string;
     languages: Language[];
 }

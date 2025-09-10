@@ -4,6 +4,7 @@ import { Language } from '../types/types';
 import styles from './Canvas.module.css';
 import LanguageSelection from './canvas/LanguageSelection';
 import { useState } from 'react';
+import LetterSelection from './canvas/LetterSelection';
 
 export default function Canvas() {
 
@@ -17,7 +18,9 @@ export default function Canvas() {
     return (
         <div className={styles.body}>
             <LanguageSelection onSelect={selectionHandler} />
-            <h1>{selectedLanguage?.name}</h1>
+            {selectedLanguage &&
+                <LetterSelection leftToRight={selectedLanguage.leftToRight} language={selectedLanguage} />
+            }
         </div>
     );
 }

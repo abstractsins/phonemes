@@ -1,0 +1,13 @@
+.body {
+    display: flex;
+    padding: 1vh 1vw;
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+    margin: 1.5vh .5vw;
+}
+
+.letter {
+    display: flex;
+    font-size: clamp(18pt, 3vw, 80pt);
+}

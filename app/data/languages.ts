@@ -1,18 +1,7 @@
-import { Language } from "../types/types";
+import { ModernHebrew } from "./languages/ModernHebrew";
+import { English } from "./languages/English";
 
-
-
-export const English: Language = {
-    name: "English",
-    nick: "English",
-    abbr: "EN",
-    alphabet: "abcdefghijklmnopqrstuvwxyz".split(''),
+export {
+    English,
+    ModernHebrew
 }
-
-export const ModernHebrew: Language = {
-    name: "Modern Hebrew",
-    nick: "Hebrew",
-    abbr: "MH",
-    alphabet: "אבגדהוזחטיכלמנסעפש".split(''),
-}
-

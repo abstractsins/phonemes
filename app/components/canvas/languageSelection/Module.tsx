@@ -8,7 +8,7 @@ import { Language, Script } from "@/app/types/types";
 
 interface Props {
     data: Script;
-    onSelect: (language: Language) => void;
+    onSelect: (language: Language) => void; 
 }
 
 export default function LanguageSelectionModule({ data, onSelect }: Props) {
@@ -34,9 +34,6 @@ export default function LanguageSelectionModule({ data, onSelect }: Props) {
         setShowLanguages(false);
     };
 
-    const languageClickHandler = () => {
-
-    };
 
     return (
         <div
