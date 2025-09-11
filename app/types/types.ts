@@ -15,6 +15,26 @@ export interface Phoneme {
     example?: { word: string; gloss?: string };
 }
 
+type DialectName = "General American" | "Received Pronunciation" | "Canadian" | "Australian" | "Israeli Hebrew";
+type DialectId = "en-GA" | "en-RP" | "he-IL" | "ar-MSA" | (string & {});
+
+export type Dialect = {
+    id: DialectId;
+    name: DialectName;
+}
+
+export interface DialectPhonology {
+    dialect: Dialect;    
+    phonemes: Phoneme[];
+    note?: string;
+}
+
+export interface DialectInfo {
+  name: DialectName;   // "General American"
+  abbr: string;        // "GA"
+  note?: string;       // shown in tooltip
+}
+
 export interface Codepoint {
     char: string;               // the literal character
     unicode: string;            // "U+05DB"
@@ -27,9 +47,9 @@ export interface Codepoint {
 
 
 
-//* --------------------------------------------------
-//* ---------- Script-specific glyph forms -----------
-//* --------------------------------------------------
+//* --------------------------------------------------//
+//* ---------- Script-specific glyph forms -----------//
+//* --------------------------------------------------//
 
 export type LatinGlyphs = {
     script: "Latin";
@@ -42,8 +62,9 @@ export type LatinGlyphs = {
 export type HebrewGlyphs = {
     script: "Hebrew";
     forms: {
-        standard: string;          // "כ"
-        final?: string;            // "ך" (sofit) — present only for 5 letters
+        standard: string;           // "כ"
+        dagesh?: boolean;           
+        final?: string;             // "ך" (sofit) — present only for 5 letters
     };
 };
 
@@ -62,9 +83,9 @@ export type ArabicGlyphs = {
 
 export type Glyphs = LatinGlyphs | HebrewGlyphs | ArabicGlyphs;
 
-//* --------------------------------------------------
-//* ---------- Script-specific glyph forms -----------
-//* --------------------------------------------------
+//* --------------------------------------------------//
+//* ---------- Script-specific glyph forms -----------//
+//* --------------------------------------------------//
 
 
 
@@ -73,7 +94,7 @@ export interface Letter {
     names: string[];            // "A", "Alef", "Bet", "Bā’"
     codepoints: Codepoint[];    // list if multiple forms matter
     glyphs: Glyphs;             // script-aware forms above
-    phonemes: Phoneme[];        // one letter may be multiple phonemes contextually
+    phonology: DialectPhonology[];        // one letter may be multiple phonemes contextually
     category?: "consonant" | "vowel" | "matres" | "diacritic" | "ligature" | "other";
     translit?: TransliterationMap;
     notes?: string;

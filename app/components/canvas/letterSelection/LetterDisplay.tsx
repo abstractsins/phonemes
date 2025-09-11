@@ -1,4 +1,4 @@
-import { Language, LetterTuple } from '@/app/types/types';
+import { Language, Letter } from '@/app/types/types';
 import styles from './LetterDisplay.module.css';
 import LetterTile from './LetterTile';
 import { motion } from "motion/react"
@@ -11,10 +11,10 @@ interface Props {
 
 export default function LetterDisplay({ language, leftToRight }: Props) {
 
-    const [hoverLetter, setHoverLetter] = useState<LetterTuple | null>(null);
+    const [hoverLetter, setHoverLetter] = useState<Letter | null>(null);
 
-    const selectionHandler = (letter: LetterTuple) => {
-        console.log('letter selected ==> ' + letter);
+    const selectionHandler = (letter: Letter) => {
+        console.log('letter selected ==> ' + letter.names);
     };
 
     useEffect(() => {
