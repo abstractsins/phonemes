@@ -4,6 +4,13 @@ export type LanguageName = "English" | "Modern Hebrew" | "Modern Standard Arabic
 
 export type IPA = string;
 
+export interface Script {
+    name: ScriptName;
+    upperCase: boolean;
+    languages: Language[];
+    firstThree: string;
+}
+
 export type TransliterationMap = {
     // default translit into target languages/scripts; multiple options allowed
     [target in LanguageName | ScriptName]?: string[];

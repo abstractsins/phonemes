@@ -1,6 +1,6 @@
 import styles from './LanguageSelection.module.css';
 
-import { Script, Language } from '@/app/types/types';
+import { Language } from '@/app/types/types';
 import { scripts } from '@/app/data/scripts';
 import LanguageSelectionModule from './languageSelection/Module';
 
