@@ -11,3 +11,11 @@
     display: flex;
     font-size: clamp(18pt, 3vw, 80pt);
 }
+
+.letter.Latin {
+    font-family: var(--font-roboto-slab);
+}
+
+.letter.Hebrew {
+    font-family: var(--font-noto-sans-hebrew);
+}

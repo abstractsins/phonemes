@@ -6,14 +6,18 @@ interface Props {
 }
 
 export default function LetterTile({ letter }: Props) {
+
+    const script = letter.glyphs.script;
+
     return (
         <div className={styles.body}>
-            <span className={styles.letter}>
-                {letter.glyphs.script === "Latin" &&
+            <span className={`${styles.letter} ${styles[script]}`}>
+                {
+                    script === "Latin" &&
                     (`${letter.glyphs.forms.upper} ${letter.glyphs.forms.lower}`)
                 }
                 {
-                    letter.glyphs.script === "Hebrew" &&
+                    script === "Hebrew" &&
                     (`${letter.glyphs.forms.standard} ${letter.glyphs.forms.final || ''}`)
                 }
             </span>

@@ -1,16 +1,16 @@
-import { Script } from "../types/types"
+import { ScriptMeta } from "../types/types"
 
 import { English, ModernHebrew } from "./languages"
 
 
-export const Latin: Script = {
+export const Latin: ScriptMeta = {
     name: "Latin",
     upperCase: true,
     languages: [English],
     firstThree: 'abc'
 }
 
-export const Hebrew: Script = {
+export const Hebrew: ScriptMeta = {
     name: "Hebrew",
     upperCase: false,
     languages: [ModernHebrew],

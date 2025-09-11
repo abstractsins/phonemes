@@ -1,14 +1,16 @@
 export type ScriptName = "Arabic" | "Hebrew" | "Latin";
-
-export type LanguageName = "English" | "Modern Hebrew" | "Modern Standard Arabic";
+export type LanguageName = "English" | "Modern Hebrew" | "Modern Standard Arabic" | (string & {});
+export type Dir = "ltr" | "rtl";
 
 export type IPA = string;
 
-export interface Script {
+export interface ScriptMeta {
     name: ScriptName;
+    label: string;
     upperCase: boolean;
     languages: Language[];
     firstThree: string;
+    dir: Dir;
 }
 
 export type TransliterationMap = {
@@ -31,15 +33,15 @@ export type Dialect = {
 }
 
 export interface DialectPhonology {
-    dialect: Dialect;    
+    dialect: Dialect;
     phonemes: Phoneme[];
     note?: string;
 }
 
 export interface DialectInfo {
-  name: DialectName;   // "General American"
-  abbr: string;        // "GA"
-  note?: string;       // shown in tooltip
+    name: DialectName;   // "General American"
+    abbr: string;        // "GA"
+    note?: string;       // shown in tooltip
 }
 
 export interface Codepoint {
@@ -70,7 +72,7 @@ export type HebrewGlyphs = {
     script: "Hebrew";
     forms: {
         standard: string;           // "כ"
-        dagesh?: boolean;           
+        dagesh?: boolean;
         final?: string;             // "ך" (sofit) — present only for 5 letters
     };
 };

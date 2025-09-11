@@ -7,14 +7,17 @@ import { useEffect, useState } from 'react';
 interface Props {
     language: Language | undefined;
     leftToRight: boolean;
+    setSelectedLetter
 }
 
 export default function LetterDisplay({ language, leftToRight }: Props) {
 
     const [hoverLetter, setHoverLetter] = useState<Letter | null>(null);
+    const [selectedLetter, setSelectedLetter] = useState<Letter | null>(null);
 
     const selectionHandler = (letter: Letter) => {
         console.log('letter selected ==> ' + letter.names);
+        setSelectedLetter(letter);
     };
 
     useEffect(() => {

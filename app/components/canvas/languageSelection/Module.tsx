@@ -4,10 +4,10 @@ import styles from "./Module.module.css";
 
 import { useState, useRef } from "react";
 
-import { Language, Script } from "@/app/types/types";
+import { Language, ScriptMeta } from "@/app/types/types";
 
 interface Props {
-    data: Script;
+    data: ScriptMeta;
     onSelect: (language: Language) => void; 
 }
 
