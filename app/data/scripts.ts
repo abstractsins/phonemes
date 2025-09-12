@@ -1,20 +1,29 @@
-import { ScriptMeta } from "../types/types"
+import { ScriptMeta } from '../types/types'
 
-import { English, ModernHebrew } from "./languages"
+import { English, ModernHebrew } from './languages'
 
 
-export const Latin: ScriptMeta = {
-    name: "Latin",
+export const LatinScript: ScriptMeta = {
+    name: 'Latin',
+    label: 'Latin',
+    dir: 'ltr',
     upperCase: true,
-    languages: [English],
+    languages: {English},
     firstThree: 'abc'
 }
 
-export const Hebrew: ScriptMeta = {
-    name: "Hebrew",
+export const HebrewScript: ScriptMeta = {
+    name: 'Hebrew',
+    label: 'Hebrew',
+    dir: 'rtl',
     upperCase: false,
-    languages: [ModernHebrew],
+    languages: {'Modern Hebrew': ModernHebrew},
     firstThree: 'אבג'
 }
 
-export const scripts = [Latin, Hebrew];
+export const SCRIPTS = { 
+    'Latin': LatinScript, 
+    'Hebrew': HebrewScript
+};
+
+console.log(SCRIPTS);

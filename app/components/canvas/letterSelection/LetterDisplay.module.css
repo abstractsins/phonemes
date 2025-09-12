@@ -6,11 +6,11 @@
     padding: 1vh .5vw;
 }
 
-.body.leftToRight {
+.body.ltr {
     flex-direction: row;
 }
 
-.body.rightToLeft {
+.body.rtl {
     flex-direction: row-reverse;
 }
 

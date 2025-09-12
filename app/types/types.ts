@@ -1,6 +1,12 @@
-export type ScriptName = "Arabic" | "Hebrew" | "Latin";
-export type LanguageName = "English" | "Modern Hebrew" | "Modern Standard Arabic" | (string & {});
-export type Dir = "ltr" | "rtl";
+export type ScriptName = 'Hebrew' | 'Latin';
+
+export type LanguageName = 'English' | 'Modern Hebrew' | 'Modern Standard Arabic' | (string & {});
+
+export type DialectName = 'General American' | 'Received Pronunciation' | 'Canadian' | 'Australian' | 'Israeli Hebrew';
+
+export type DialectId = 'en-GA' | 'en-RP' | 'he-IL' | 'ar-MSA' | (string & {});
+
+export type Dir = 'ltr' | 'rtl';
 
 export type IPA = string;
 
@@ -8,7 +14,7 @@ export interface ScriptMeta {
     name: ScriptName;
     label: string;
     upperCase: boolean;
-    languages: Language[];
+    languages: Partial<Record<LanguageName, Language>>;
     firstThree: string;
     dir: Dir;
 }
@@ -19,13 +25,10 @@ export type TransliterationMap = {
 };
 
 export interface Phoneme {
-    ipa: IPA;                   // e.g., "b", "s", "ʃ"
-    envNote?: string;           // context note: "before front vowels", etc.
+    ipa: IPA;                   // e.g., 'b', 's', 'ʃ'
+    envNote?: string;           // context note: 'before front vowels', etc.
     example?: { word: string; gloss?: string };
 }
-
-type DialectName = "General American" | "Received Pronunciation" | "Canadian" | "Australian" | "Israeli Hebrew";
-type DialectId = "en-GA" | "en-RP" | "he-IL" | "ar-MSA" | (string & {});
 
 export type Dialect = {
     id: DialectId;
@@ -39,19 +42,19 @@ export interface DialectPhonology {
 }
 
 export interface DialectInfo {
-    name: DialectName;   // "General American"
-    abbr: string;        // "GA"
+    name: DialectName;   // 'General American'
+    abbr: string;        // 'GA'
     note?: string;       // shown in tooltip
 }
 
 export interface Codepoint {
     char: string;               // the literal character
-    unicode: string;            // "U+05DB"
-    ascii: number;              // "63"
-    oct: string;                // "040"
-    hex: string;                // "2E"
-    bin: string;                // "00100111"
-    name?: string;              // "HEBREW LETTER KAF"
+    unicode: string;            // 'U+05DB'
+    ascii: number;              // '63'
+    oct: string;                // '040'
+    hex: string;                // '2E'
+    bin: string;                // '00100111'
+    name?: string;              // 'HEBREW LETTER KAF'
 }
 
 
@@ -61,32 +64,32 @@ export interface Codepoint {
 //* --------------------------------------------------//
 
 export type LatinGlyphs = {
-    script: "Latin";
+    script: 'Latin';
     forms: {
-        upper: string;           // "A"
-        lower: string;           // "a"
+        upper: string;           // 'A'
+        lower: string;           // 'a'
     };
 };
 
 export type HebrewGlyphs = {
-    script: "Hebrew";
+    script: 'Hebrew';
     forms: {
-        standard: string;           // "כ"
+        standard: string;           // 'כ'
         dagesh?: boolean;
-        final?: string;             // "ך" (sofit) — present only for 5 letters
+        final?: string;             // 'ך' (sofit) — present only for 5 letters
     };
 };
 
-export type ArabicJoining = "dual" | "right" | "none";
+export type ArabicJoining = 'dual' | 'right' | 'none';
 
 export type ArabicGlyphs = {
-    script: "Arabic";
-    joining: ArabicJoining;      // e.g., "dual" for most letters, "right" for د/ذ/ر/ز/و, "none" for standalone marks
+    script: 'Arabic';
+    joining: ArabicJoining;      // e.g., 'dual' for most letters, 'right' for د/ذ/ر/ز/و, 'none' for standalone marks
     forms: {
-        isolated: string;          // "ب"
-        initial?: string;          // "بـ"
-        medial?: string;           // "ـبـ"
-        final?: string;            // "ـب"
+        isolated: string;          // 'ب'
+        initial?: string;          // 'بـ'
+        medial?: string;           // 'ـبـ'
+        final?: string;            // 'ـب'
     };
 };
 
@@ -100,11 +103,11 @@ export type Glyphs = LatinGlyphs | HebrewGlyphs | ArabicGlyphs;
 
 export interface Letter {
     order: number;              // alphabetical order inside the language
-    names: string[];            // "A", "Alef", "Bet", "Bā’"
+    names: string[];            // 'A', 'Alef', 'Bet', 'Bā’'
     codepoints: Codepoint[];    // list if multiple forms matter
     glyphs: Glyphs;             // script-aware forms above
     phonology: DialectPhonology[];        // one letter may be multiple phonemes contextually
-    category?: "consonant" | "vowel" | "matres" | "diacritic" | "ligature" | "other";
+    category?: 'consonant' | 'vowel' | 'matres' | 'diacritic' | 'ligature' | 'other';
     translit?: TransliterationMap;
     notes?: string;
 }
@@ -116,24 +119,23 @@ export interface Language {
     abbr: string;
     alphabet: Letter[];
     script: ScriptName;
-    leftToRight: boolean;
 }
 
 // Optional helper: pick the display form by context
 export type DisplayContext =
-    | { script: "Latin"; case: "upper" | "lower" }
-    | { script: "Hebrew"; position?: "standard" | "final" }
-    | { script: "Arabic"; position: "isolated" | "initial" | "medial" | "final" };
+    | { script: 'Latin'; case: 'upper' | 'lower' }
+    | { script: 'Hebrew'; position?: 'standard' | 'final' }
+    | { script: 'Arabic'; position: 'isolated' | 'initial' | 'medial' | 'final' };
 
 export function pickForm(letter: Letter, ctx: DisplayContext): string {
     const g = letter.glyphs;
-    if (g.script === "Latin" && ctx.script === "Latin") {
-        return ctx.case === "upper" ? g.forms.upper : g.forms.lower;
+    if (g.script === 'Latin' && ctx.script === 'Latin') {
+        return ctx.case === 'upper' ? g.forms.upper : g.forms.lower;
     }
-    if (g.script === "Hebrew" && ctx.script === "Hebrew") {
-        return (ctx.position === "final" && g.forms.final) ? g.forms.final : g.forms.standard;
+    if (g.script === 'Hebrew' && ctx.script === 'Hebrew') {
+        return (ctx.position === 'final' && g.forms.final) ? g.forms.final : g.forms.standard;
     }
-    if (g.script === "Arabic" && ctx.script === "Arabic") {
+    if (g.script === 'Arabic' && ctx.script === 'Arabic') {
         return g.forms[ctx.position] ?? g.forms.isolated;
     }
     // fallback

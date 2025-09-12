@@ -509,6 +509,5 @@ export const ModernHebrew: Language = {
     abbr: "MH",
     alphabet: hebrewAlphabet,
     script: 'Hebrew',
-    leftToRight: false
 }
 

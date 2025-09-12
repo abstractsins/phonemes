@@ -1,21 +1,17 @@
 import styles from './LanguageSelection.module.css';
 
-import { Language } from '@/app/types/types';
-import { scripts } from '@/app/data/scripts';
+import { ScriptMeta } from '@/app/types/types';
+import { SCRIPTS } from '@/app/data/scripts';
 import LanguageSelectionModule from './languageSelection/Module';
 
-interface Props {
-    onSelect: (language: Language) => void;
-}
+export default function LanguageSelection() {
 
-export default function LanguageSelection({ onSelect }: Props) {
     return (
         <div className={styles.body}>
-            {scripts.map(script =>
+            {Object.values(SCRIPTS).map(( script : ScriptMeta) =>
                 <LanguageSelectionModule
                     key={script.name}
                     data={script}
-                    onSelect={onSelect}
                 />
             )}
         </div>

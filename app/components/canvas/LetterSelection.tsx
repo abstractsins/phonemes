@@ -2,25 +2,26 @@ import { Language } from '@/app/types/types';
 import styles from './LetterSelection.module.css';
 import LetterDisplay from './letterSelection/LetterDisplay';
 
-interface Props {
-    language: Language | undefined;
-    leftToRight: boolean;
-}
 
-export default function LetterSelection({ language, leftToRight }: Props) {
+import { useSoundMap } from '@/app/contexts/SoundMapContext';
+
+export default function LetterSelection() {
+
+    const { selectedLanguage } = useSoundMap();
+
     return (
         <div className={styles.body}>
 
             {/* HEADER */}
-            {language && <>
+            {selectedLanguage && <>
                 <div className={styles.header}>
-                    <h1>{language?.name}</h1>
-                    <span className={styles.direction}>Direction: {language.leftToRight ? 'Left to Right ->' : '<- Right to Left'}</span>
+                    <h1>{selectedLanguage}</h1>
+                    <span className={styles.direction}>Direction: </span>
                 </div>
 
                 <div className={styles.main}>
                     {/* LETTERS */}
-                    <LetterDisplay leftToRight={leftToRight} language={language} />
+                    <LetterDisplay />
                 </div>
             </>
             }

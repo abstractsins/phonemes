@@ -657,5 +657,4 @@ export const English: Language = {
     abbr: 'EN',
     alphabet: englishAlphabet,
     script: 'Latin',
-    leftToRight: true
 }

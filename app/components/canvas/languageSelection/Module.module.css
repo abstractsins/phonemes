@@ -17,17 +17,16 @@
     z-index: 1;
 }
 
+.body:hover {
+    background-color: var(--color-green-pale);
+}
+
 .body ul {
     margin: .5vh .5vw;
 }
 
 .body li {
     list-style: none;
-}
-
-.body:hover {
-    background-color: var(--color-green-pale);
-    cursor: pointer;
 }
 
 .body.expanded {
@@ -39,6 +38,7 @@
 }
 
 .language:hover {
+    cursor: pointer;
     text-decoration: underline;
     letter-spacing: 0.5;
 }

@@ -4,14 +4,16 @@ import styles from "./Module.module.css";
 
 import { useState, useRef } from "react";
 
-import { Language, ScriptMeta } from "@/app/types/types";
+import { ScriptMeta } from "@/app/types/types";
+import { useSoundMap } from "@/app/contexts/SoundMapContext";
 
 interface Props {
     data: ScriptMeta;
-    onSelect: (language: Language) => void; 
 }
 
-export default function LanguageSelectionModule({ data, onSelect }: Props) {
+export default function LanguageSelectionModule({ data }: Props) {
+
+    const { setLanguage } = useSoundMap();
 
     const [isExpanded, setExpanded] = useState(false);
     const [showLanguages, setShowLanguages] = useState(false);
@@ -46,14 +48,15 @@ export default function LanguageSelectionModule({ data, onSelect }: Props) {
 
             {showLanguages &&
                 <ul>
-                    {data.languages.map(lang =>
-                        <li
-                            key={lang.abbr}
-                            className={`${styles.language}`}
-                            onClick={() => onSelect(lang)}
-                        >
-                            {lang.name}
-                        </li>
+                    {Object.values(data.languages).map(lang =>
+                        lang && (
+                            <li
+                                key={lang.nick}
+                                className={`${styles.language}`}
+                                onClick={() => setLanguage(lang.name)}
+                            >
+                                {lang.name}
+                            </li>)
                     )}
                 </ul>
             }

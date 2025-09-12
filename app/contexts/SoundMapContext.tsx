@@ -2,32 +2,16 @@ import type {
     Dir,
     ScriptName,
     LanguageName,
-    ScriptMeta as FullScriptMeta,
-    Letter,
+    Letter
 } from "@types";
 
+import { SCRIPTS } from "../data/scripts";
+
 import React, { createContext, useContext, useEffect, useMemo, useReducer } from "react";
-
-type ScriptMetaLite = Pick<FullScriptMeta, "dir" | "name"> & { label: string };
-
-export type LetterRef = {
-    id: string;         // your stable key (e.g., "EN_A" or `${lang}:${order}`)
-    char?: string;
-    codepoint?: string;
-    label?: string;
-};
-
-
-export const SCRIPTS: Record<ScriptName, ScriptMetaLite> = {
-    Latin: { name: "Latin", label: "Latin", dir: "ltr" },
-    Hebrew: { name: "Hebrew", label: "Hebrew", dir: "rtl" },
-    Arabic: { name: "Arabic", label: "Arabic", dir: "rtl" },
-};
 
 export const LANGUAGE_TO_SCRIPT: Partial<Record<LanguageName, ScriptName>> = {
     "English": "Latin",
     "Modern Hebrew": "Hebrew",
-    "Modern Standard Arabic": "Arabic",
 };
 
 //* ============================================================
@@ -37,14 +21,14 @@ export const LANGUAGE_TO_SCRIPT: Partial<Record<LanguageName, ScriptName>> = {
 export interface SoundMapState {
     selectedLanguage: LanguageName;
     selectedScript: ScriptName; // derived from language by default, but user‑overridable
-    selectedLetter: LetterRef | null; // null = none
+    selectedLetter: Letter | null; // null = none
     direction: Dir; // defaults from script, but user‑overridable
 }
 
 export type SoundMapAction =
     | { type: "SET_LANGUAGE"; language: LanguageName }
     | { type: "SET_SCRIPT"; script: ScriptName }
-    | { type: "SET_LETTER"; letter: LetterRef | null }
+    | { type: "SET_LETTER"; letter: Letter | null }
     | { type: "SET_DIRECTION"; direction: Dir }
     | { type: "CLEAR_SELECTION" };
 
@@ -83,8 +67,6 @@ function reducer(state: SoundMapState, action: SoundMapAction): SoundMapState {
                 selectedLanguage: action.language,
                 selectedScript: nextScript,
                 direction: nextDir,
-                // Keep the currently selectedLetter if it still makes sense in your app,
-                // or clear it. Here we clear for simplicity.
                 selectedLetter: null,
             };
         }
@@ -110,7 +92,7 @@ interface CtxValue extends SoundMapState {
     // dispatchers
     setLanguage: (language: LanguageName) => void;
     setScript: (script: ScriptName) => void;
-    setLetter: (letter: LetterRef | null) => void;
+    setLetter: (letter: Letter | null) => void;
     setDirection: (dir: Dir) => void;
     clearSelection: () => void;
 }
@@ -140,7 +122,7 @@ export function SoundMapProvider({ children, initial, persist = true, storageKey
             }
         } catch { }
         return createInitialState(initial);
-    }, []); // eslint-disable-line react-hooks/exhaustive-deps
+    }, []); 
 
 
     const [state, dispatch] = useReducer(reducer, hydratedInitial);
@@ -151,7 +133,9 @@ export function SoundMapProvider({ children, initial, persist = true, storageKey
         if (!persist || typeof window === "undefined") return;
         try {
             window.localStorage.setItem(storageKey, JSON.stringify(state));
-        } catch { }
+        } catch (err) {
+            console.log(err)
+        }
     }, [state, persist, storageKey]);
 
 
@@ -163,7 +147,6 @@ export function SoundMapProvider({ children, initial, persist = true, storageKey
             setLetter: (letter) => dispatch({ type: "SET_LETTER", letter }),
             setDirection: (direction) => dispatch({ type: "SET_DIRECTION", direction }),
             clearSelection: () => dispatch({ type: "CLEAR_SELECTION" }),
-            toggle: (key) => dispatch({ type: "TOGGLE_FLAG", key }),
         }),
         [state]
     );

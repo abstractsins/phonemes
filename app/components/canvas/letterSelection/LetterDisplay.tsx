@@ -1,32 +1,30 @@
-import { Language, Letter } from '@/app/types/types';
 import styles from './LetterDisplay.module.css';
+
+import { Letter } from '@/app/types/types';
 import LetterTile from './LetterTile';
 import { motion } from "motion/react"
 import { useEffect, useState } from 'react';
+import { useSoundMap } from '@/app/contexts/SoundMapContext';
+import { SCRIPTS } from '@/app/data/scripts';
 
-interface Props {
-    language: Language | undefined;
-    leftToRight: boolean;
-    setSelectedLetter
-}
 
-export default function LetterDisplay({ language, leftToRight }: Props) {
+export default function LetterDisplay() {
+
+    const {
+        selectedScript, 
+        selectedLanguage,
+        direction, 
+    } = useSoundMap();
 
     const [hoverLetter, setHoverLetter] = useState<Letter | null>(null);
-    const [selectedLetter, setSelectedLetter] = useState<Letter | null>(null);
-
-    const selectionHandler = (letter: Letter) => {
-        console.log('letter selected ==> ' + letter.names);
-        setSelectedLetter(letter);
-    };
 
     useEffect(() => {
         if (hoverLetter) console.log('Hovering on ====> ' + hoverLetter);
     }, [hoverLetter])
 
     return (
-        <div className={`${styles.body} ${leftToRight ? styles.leftToRight : styles.rightToLeft}`}>
-            {language?.alphabet.map((letter, i) =>
+        <div className={`${styles.body} ${styles[direction]}`}>
+            {SCRIPTS[selectedScript].languages[selectedLanguage]?.alphabet.map((letter, i) =>
                 <motion.button
                     key={i}
                     whileHover={{ scale: 1.1 }}
@@ -34,7 +32,7 @@ export default function LetterDisplay({ language, leftToRight }: Props) {
                     className={styles.tileWrapper}
                     onHoverStart={() => setHoverLetter(letter)}
                     onHoverEnd={() => setHoverLetter(null)}
-                    onClick={() => selectionHandler(letter)}
+                    onClick={() => {}}
                 >
                     <LetterTile key={i} letter={letter} />
                 </motion.button>
