@@ -122,7 +122,7 @@ export function SoundMapProvider({ children, initial, persist = true, storageKey
             }
         } catch { }
         return createInitialState(initial);
-    }, []); 
+    }, [initial, persist, storageKey]);
 
 
     const [state, dispatch] = useReducer(reducer, hydratedInitial);

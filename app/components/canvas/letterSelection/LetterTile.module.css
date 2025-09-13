@@ -9,7 +9,7 @@
 
 .letter {
     display: flex;
-    font-size: clamp(18pt, 3vw, 80pt);
+    font-size: clamp(18pt, 2.5vw, 80pt);
 }
 
 .letter.Latin {

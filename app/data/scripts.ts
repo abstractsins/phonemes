@@ -8,7 +8,7 @@ export const LatinScript: ScriptMeta = {
     label: 'Latin',
     dir: 'ltr',
     upperCase: true,
-    languages: {English},
+    languages: { 'English': English },
     firstThree: 'abc'
 }
 
@@ -17,12 +17,12 @@ export const HebrewScript: ScriptMeta = {
     label: 'Hebrew',
     dir: 'rtl',
     upperCase: false,
-    languages: {'Modern Hebrew': ModernHebrew},
+    languages: { 'Modern Hebrew': ModernHebrew },
     firstThree: 'אבג'
 }
 
-export const SCRIPTS = { 
-    'Latin': LatinScript, 
+export const SCRIPTS = {
+    'Latin': LatinScript,
     'Hebrew': HebrewScript
 };
 

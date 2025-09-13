@@ -11,16 +11,19 @@ import { SCRIPTS } from '@/app/data/scripts';
 export default function LetterDisplay() {
 
     const {
-        selectedScript, 
         selectedLanguage,
-        direction, 
+        selectedScript,
+        direction,
+        setLetter
     } = useSoundMap();
+
 
     const [hoverLetter, setHoverLetter] = useState<Letter | null>(null);
 
+
     useEffect(() => {
-        if (hoverLetter) console.log('Hovering on ====> ' + hoverLetter);
-    }, [hoverLetter])
+        if (hoverLetter) console.log('Hovering on ====> ' + hoverLetter.names);
+    }, [hoverLetter]);
 
     return (
         <div className={`${styles.body} ${styles[direction]}`}>
@@ -32,7 +35,7 @@ export default function LetterDisplay() {
                     className={styles.tileWrapper}
                     onHoverStart={() => setHoverLetter(letter)}
                     onHoverEnd={() => setHoverLetter(null)}
-                    onClick={() => {}}
+                    onClick={() => setLetter(letter)}
                 >
                     <LetterTile key={i} letter={letter} />
                 </motion.button>
