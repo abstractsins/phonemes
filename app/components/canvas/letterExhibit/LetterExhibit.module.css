@@ -1,5 +1,6 @@
 .body {
-    background-color: lightblue;
+    background-color: lightgreen;
+    position: absolute;
     border-radius: 25px;
     display: flex;
     flex-direction: column;
@@ -10,26 +11,11 @@
     opacity: 1;
     z-index: 0;
     transition: all 250ms;
+    height: 65vh;
 }
 
 .body.hide {
     opacity: 0;
     z-index: -1;
     transform: scale(1.5);
-}
-
-.header {
-    display: flex;
-    flex-direction: column;
-    padding: 2vh 1vw;
-    align-items: center;
-}
-
-.direction {
-    font-family: var(--font-geist-mono);
-}
-
-.main {
-    display: flex;
-    justify-content: center;
 }

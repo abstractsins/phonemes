@@ -12,7 +12,7 @@ export default function LetterSelection() {
     const { selectedLanguage, direction } = useSoundMap();
 
     return (
-        <div className={styles.body}>
+        <div className={`${styles.body} ${selectedLetter && styles.hide}`}>
 
             {/* HEADER */}
             {selectedLanguage &&
@@ -30,13 +30,13 @@ export default function LetterSelection() {
                     </div>
                 </>
             }
-            {selectedLetter &&
+            {/* {selectedLetter &&
                 <div>
                     <pre>
                         {JSON.stringify(selectedLetter, null, 2)}
                     </pre>
                 </div>
-            }
+            } */}
 
         </div>
     );

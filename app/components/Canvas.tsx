@@ -1,20 +1,25 @@
 'use client';
 
 import styles from './Canvas.module.css';
+
+import { useSoundMap } from '../contexts/SoundMapContext';
 import LanguageSelection from './canvas/LanguageSelection';
+import LetterExhibit from './canvas/letterExhibit/LetterExhibit';
 import LetterSelection from './canvas/LetterSelection';
-
-import { createInitialState, SoundMapProvider } from '../contexts/SoundMapContext';
-
 
 export default function Canvas() {
 
+    const {
+        selectedLetter
+    } = useSoundMap();
+
     return (
-        <SoundMapProvider initial={createInitialState()} persist={false}>
-            <div className={styles.body}>
-                <LanguageSelection />
+        <div className={styles.body}>
+            <LanguageSelection />
+            <div className={styles.canvasExhibitSpace}>
                 <LetterSelection />
+                <LetterExhibit letter={selectedLetter}/>
             </div>
-        </SoundMapProvider>
+        </div>
     );
 }
