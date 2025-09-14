@@ -5,9 +5,9 @@ import type {
     Letter
 } from "@types";
 
-import { SCRIPTS } from "../data/scripts";
+import { SCRIPTS } from "@data/scripts";
 
-import React, { createContext, useContext, useEffect, useMemo, useReducer } from "react";
+import { createContext, useContext, useEffect, useMemo, useReducer } from "react";
 
 export const LANGUAGE_TO_SCRIPT: Partial<Record<LanguageName, ScriptName>> = {
     "English": "Latin",
@@ -41,11 +41,11 @@ function deriveDirFromScript(script: ScriptName): Dir {
     return SCRIPTS[script]?.dir ?? "ltr";
 }
 
+
 export function createInitialState(partial?: Partial<SoundMapState>): SoundMapState {
     const language = partial?.selectedLanguage ?? ("English" as LanguageName);
     const script = partial?.selectedScript ?? deriveScriptFromLanguage(language, "Latin");
     const direction = partial?.direction ?? deriveDirFromScript(script);
-
 
     return {
         selectedLanguage: language,
@@ -72,14 +72,27 @@ function reducer(state: SoundMapState, action: SoundMapAction): SoundMapState {
         }
         case "SET_SCRIPT": {
             const dir = deriveDirFromScript(action.script);
-            return { ...state, selectedScript: action.script, direction: dir };
+            return {
+                ...state,
+                selectedScript: action.script,
+                direction: dir
+            };
         }
         case "SET_LETTER":
-            return { ...state, selectedLetter: action.letter };
+            return {
+                ...state,
+                selectedLetter: action.letter
+            };
         case "SET_DIRECTION":
-            return { ...state, direction: action.direction };
+            return {
+                ...state,
+                direction: action.direction
+            };
         case "CLEAR_SELECTION":
-            return { ...state, selectedLetter: null };
+            return {
+                ...state,
+                selectedLetter: null
+            };
         default:
             return state;
     }
@@ -120,13 +133,13 @@ export function SoundMapProvider({ children, initial, persist = true, storageKey
                 const parsed = JSON.parse(raw) as Partial<SoundMapState>;
                 return createInitialState({ ...initial, ...parsed });
             }
-        } catch { }
+        } catch (err) {
+            console.log(err);
+        }
         return createInitialState(initial);
     }, [initial, persist, storageKey]);
 
-
     const [state, dispatch] = useReducer(reducer, hydratedInitial);
-
 
     // Persist on change
     useEffect(() => {
@@ -137,7 +150,6 @@ export function SoundMapProvider({ children, initial, persist = true, storageKey
             console.log(err)
         }
     }, [state, persist, storageKey]);
-
 
     const value: CtxValue = useMemo(
         () => ({
@@ -151,8 +163,11 @@ export function SoundMapProvider({ children, initial, persist = true, storageKey
         [state]
     );
 
-
-    return <SoundMapContext.Provider value={value}>{children}</SoundMapContext.Provider>;
+    return (
+        <SoundMapContext.Provider value={value}>
+            {children}
+        </SoundMapContext.Provider>
+    );
 }
 
 

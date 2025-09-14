@@ -1,10 +1,10 @@
 export type ScriptName = 'Hebrew' | 'Latin';
 
-export type LanguageName = 'English' | 'Modern Hebrew' | 'Modern Standard Arabic' | (string & {});
+export type LanguageName = 'English' | 'Modern Hebrew' | 'Modern Standard Arabic';
 
 export type DialectName = 'General American' | 'Received Pronunciation' | 'Canadian' | 'Australian' | 'Israeli Hebrew';
 
-export type DialectId = 'en-GA' | 'en-RP' | 'he-IL' | 'ar-MSA' | (string & {});
+export type DialectId = 'en-GA' | 'en-RP' | 'he-IL' | 'ar-MSA';
 
 export type Dir = 'ltr' | 'rtl';
 
