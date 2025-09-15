@@ -9,7 +9,10 @@ import {
     sansista,
     geistMono, geistSans,
     notoSans, notoNaskh, notoSerif,
-    rubikDoodleShadow, robotoSlab    
+    rubikDoodleShadow, 
+    robotoSlab, robotoSerif, roboto,
+    playwrite, 
+    playpen
 } from "@/fonts/fonts";
 
 import "./css/globals.css";
@@ -31,7 +34,7 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
-            <body className={`${robotoSlab.variable} ${sansista.variable} ${kellySlab.variable} ${rubikDoodleShadow.variable} ${geistSans.variable} ${geistMono.variable} ${notoSerif.variable} ${notoSans.variable} ${notoNaskh.variable}`}>
+            <body className={`${playpen.variable} ${playwrite.variable} ${roboto.variable} ${robotoSerif.variable} ${robotoSlab.variable} ${sansista.variable} ${kellySlab.variable} ${rubikDoodleShadow.variable} ${geistSans.variable} ${geistMono.variable} ${notoSerif.variable} ${notoSans.variable} ${notoNaskh.variable}`}>
                 {children}
             </body>
         </html>

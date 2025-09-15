@@ -1,6 +1,6 @@
 import { ScriptMeta } from '../types/types'
 
-import { English, ModernHebrew } from './languages'
+import { LANGUAGES } from './languages'
 
 
 export const LatinScript: ScriptMeta = {
@@ -8,7 +8,7 @@ export const LatinScript: ScriptMeta = {
     label: 'Latin',
     dir: 'ltr',
     upperCase: true,
-    languages: { 'English': English },
+    languages: { 'English': LANGUAGES['English'] },
     firstThree: 'abc'
 }
 
@@ -17,7 +17,7 @@ export const HebrewScript: ScriptMeta = {
     label: 'Hebrew',
     dir: 'rtl',
     upperCase: false,
-    languages: { 'Modern Hebrew': ModernHebrew },
+    languages: { 'Modern Hebrew': LANGUAGES['Modern Hebrew'] },
     firstThree: 'אבג'
 }
 

@@ -1,6 +1,6 @@
 export type ScriptName = 'Hebrew' | 'Latin';
 
-export type LanguageName = 'English' | 'Modern Hebrew' | 'Modern Standard Arabic';
+export type LanguageName = 'English' | 'Modern Hebrew' ;
 
 export type DialectName = 'General American' | 'Received Pronunciation' | 'Canadian' | 'Australian' | 'Israeli Hebrew';
 
@@ -10,6 +10,10 @@ export type Dir = 'ltr' | 'rtl';
 
 export type IPA = string;
 
+
+//* --------------------------------------------------//
+//* -------------------- Metadata --------------------//
+//* --------------------------------------------------//
 export interface ScriptMeta {
     name: ScriptName;
     label: string;
@@ -99,8 +103,6 @@ export type Glyphs = LatinGlyphs | HebrewGlyphs | ArabicGlyphs;
 //* ---------- Script-specific glyph forms -----------//
 //* --------------------------------------------------//
 
-
-
 export interface Letter {
     order: number;              // alphabetical order inside the language
     names: string[];            // 'A', 'Alef', 'Bet', 'Bā’'
@@ -112,7 +114,6 @@ export interface Letter {
     notes?: string;
 }
 
-
 export interface Language {
     name: LanguageName;
     nick: string;
@@ -121,11 +122,21 @@ export interface Language {
     script: ScriptName;
 }
 
+
+
 // Optional helper: pick the display form by context
 export type DisplayContext =
     | { script: 'Latin'; case: 'upper' | 'lower' }
     | { script: 'Hebrew'; position?: 'standard' | 'final' }
     | { script: 'Arabic'; position: 'isolated' | 'initial' | 'medial' | 'final' };
+
+// Type guard to help JSX: narrows `Glyphs` to the exact arm by script
+export function isGlyphs<S extends Glyphs['script']>(
+    g: Glyphs,
+    script: S
+): g is Extract<Glyphs, { script: S }> {
+    return g.script === script;
+}
 
 export function pickForm(letter: Letter, ctx: DisplayContext): string {
     const g = letter.glyphs;

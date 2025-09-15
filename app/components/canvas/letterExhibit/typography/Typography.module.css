@@ -1,0 +1,63 @@
+.mainWrapper {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    width: 7vw;
+    margin: 0vh 0vw;
+    gap: 2vh;
+    height: 100%;
+}
+
+.moduleBody {
+    display: flex;
+    flex-direction: column;
+    align-items: centerd;
+    background-color: whitesmoke;
+    border-radius: 25px;
+    width: 100%;
+    height: 100%;
+}
+
+.moduleHeader {
+    display: flex;
+    justify-content: center;
+    font-size: clamp(10pt, .75vw + .25rem, 36pt);
+    padding: 1vh 1vw;
+}
+
+.letterWrapper {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    padding: 1vh 1vw;
+    justify-content: center;
+    align-items: center;
+}
+
+span.letter {
+    font-size: clamp(16pt, 2.5vw, 72pt);
+}
+
+
+/** FONTS */
+.EN.Sans {
+    font-family: var(--font-roboto-sans);
+}
+.EN.Serif {
+    font-family: var(--font-roboto-serif);
+}
+.EN.Cursive {
+    font-family: var(--font-playwrite);
+    font-size: clamp(16pt, 2.25vw, 72pt);
+}
+
+.MH.Sans {
+    font-family: var(--font-geist-sans);
+}
+.MH.Serif {
+    font-family: var(--font-noto-serif-hebrew);
+}
+.MH.Cursive {
+    font-family: var(--font-playpen);
+    font-weight: 500;
+}

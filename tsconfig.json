@@ -36,7 +36,7 @@
       "@contexts/*": [
         "app/contexts/*"
       ],
-      "@components/*": [
+      "@comp/*": [
         "app/components/*"
       ],
       "@utils/*": [

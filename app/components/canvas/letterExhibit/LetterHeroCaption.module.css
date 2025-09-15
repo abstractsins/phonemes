@@ -1,0 +1,16 @@
+.wrapper {
+    display: flex;
+    height: 100%;
+    margin: 5vh 0 0 0;
+    width: 100%;
+    gap: 1vw;
+}
+
+.body {
+    background-color: whitesmoke;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 25px;
+    width: 100%;    
+}

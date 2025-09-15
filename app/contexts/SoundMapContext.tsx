@@ -1,10 +1,12 @@
-import type {
-    Dir,
-    ScriptName,
-    LanguageName,
-    Letter
+import {
+    type Dir,
+    type ScriptName,
+    type LanguageName,
+    type Letter,
+    isGlyphs
 } from "@types";
 
+import { LANGUAGES } from "@data/languages";
 import { SCRIPTS } from "@data/scripts";
 
 import { createContext, useContext, useEffect, useMemo, useReducer } from "react";
@@ -23,6 +25,7 @@ export interface SoundMapState {
     selectedScript: ScriptName; // derived from language by default, but user‑overridable
     selectedLetter: Letter | null; // null = none
     direction: Dir; // defaults from script, but user‑overridable
+    selectedLanguageAbbr: string;
 }
 
 export type SoundMapAction =
@@ -41,16 +44,22 @@ function deriveDirFromScript(script: ScriptName): Dir {
     return SCRIPTS[script]?.dir ?? "ltr";
 }
 
+function deriveAbbrFromLanguage(lang: LanguageName, fallback: string = "EN"): string {
+    return LANGUAGES[lang]?.abbr ?? fallback;
+}
+
 
 export function createInitialState(partial?: Partial<SoundMapState>): SoundMapState {
     const language = partial?.selectedLanguage ?? ("English" as LanguageName);
     const script = partial?.selectedScript ?? deriveScriptFromLanguage(language, "Latin");
+    const abbr = partial?.selectedLanguageAbbr ?? deriveAbbrFromLanguage(language);
     const direction = partial?.direction ?? deriveDirFromScript(script);
 
     return {
         selectedLanguage: language,
         selectedScript: script,
         selectedLetter: partial?.selectedLetter ?? null,
+        selectedLanguageAbbr: abbr,
         direction
     };
 }
@@ -62,9 +71,12 @@ function reducer(state: SoundMapState, action: SoundMapAction): SoundMapState {
         case "SET_LANGUAGE": {
             const nextScript = deriveScriptFromLanguage(action.language, state.selectedScript);
             const nextDir = deriveDirFromScript(nextScript);
+            const nextAbbr = deriveAbbrFromLanguage(action.language);
+
             return {
                 ...state,
                 selectedLanguage: action.language,
+                selectedLanguageAbbr: nextAbbr,
                 selectedScript: nextScript,
                 direction: nextDir,
                 selectedLetter: null,
@@ -98,9 +110,9 @@ function reducer(state: SoundMapState, action: SoundMapAction): SoundMapState {
     }
 }
 
-// ————————————————————————————————————————————————————————————
-// Context & Provider
-// ————————————————————————————————————————————————————————————
+// * ————————————————————————————————————————————————————————————
+// * Context & Provider
+// * ————————————————————————————————————————————————————————————
 interface CtxValue extends SoundMapState {
     // dispatchers
     setLanguage: (language: LanguageName) => void;
@@ -175,4 +187,29 @@ export function useSoundMap(): CtxValue {
     const ctx = useContext(SoundMapContext);
     if (!ctx) throw new Error("useSoundMap must be used within <SoundMapProvider>");
     return ctx;
+}
+
+// * ————————————————————————————————————————————————————————————
+// * Helper Functions
+// * ————————————————————————————————————————————————————————————
+
+export function getGlyphs(letter: Letter | null): string {
+
+    if (letter) {
+        const script = letter.glyphs.script;
+
+        if (script === 'Latin'
+            && letter
+            && isGlyphs(letter.glyphs, 'Latin')
+        ) {
+            return `${letter.glyphs.forms.upper} ${letter.glyphs.forms.lower}`;
+        } else if (script === 'Hebrew'
+            && letter
+            && isGlyphs(letter.glyphs, 'Hebrew')
+        ) {
+            return `${letter.glyphs.forms.standard} ${letter.glyphs.forms.final || ''}`;
+        }
+    } 
+    
+    return '';
 }
