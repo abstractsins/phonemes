@@ -1,5 +1,6 @@
-import { useSoundMap } from '@/app/contexts/SoundMapContext';
 import styles from './LetterHeroCaption.module.css';
+
+import { useSoundMap } from '@/app/contexts/SoundMapContext';
 
 export default function LetterHeroCaption() {
 
@@ -7,6 +8,7 @@ export default function LetterHeroCaption() {
 
     return (
         <div className={styles.wrapper}>
+
             <div className={styles.body}>
                 <span>{selectedLetter?.names}</span>
             </div>

@@ -11,7 +11,6 @@
 .moduleBody {
     display: flex;
     flex-direction: column;
-    align-items: centerd;
     background-color: whitesmoke;
     border-radius: 25px;
     width: 100%;
@@ -22,24 +21,24 @@
     display: flex;
     justify-content: center;
     font-size: clamp(10pt, .75vw + .25rem, 36pt);
-    padding: 1vh 1vw;
+    padding: 1vh 0vw;
 }
 
 .letterWrapper {
     display: flex;
     width: 100%;
     height: 100%;
-    padding: 1vh 1vw;
+    padding: 1vh 0vw;
     justify-content: center;
     align-items: center;
 }
 
 span.letter {
-    font-size: clamp(16pt, 2.5vw, 72pt);
+    font-size: clamp(16pt, 2.25vw, 72pt);
 }
 
 
-/** FONTS */
+/** FONTS PER LANGUAGE */
 .EN.Sans {
     font-family: var(--font-roboto-sans);
 }
@@ -48,7 +47,7 @@ span.letter {
 }
 .EN.Cursive {
     font-family: var(--font-playwrite);
-    font-size: clamp(16pt, 2.25vw, 72pt);
+    font-size: clamp(16pt, 2vw, 72pt);
 }
 
 .MH.Sans {
@@ -59,5 +58,4 @@ span.letter {
 }
 .MH.Cursive {
     font-family: var(--font-playpen);
-    font-weight: 500;
 }
