@@ -7,7 +7,12 @@ import type {
 
 import { SCRIPTS } from "@data/scripts";
 
-import { createContext, useContext, useEffect, useMemo, useReducer } from "react";
+import { 
+    useEffect, 
+    useMemo, 
+    useReducer,
+    createContext, useContext 
+} from "react";
 
 export const LANGUAGE_TO_SCRIPT: Partial<Record<LanguageName, ScriptName>> = {
     "English": "Latin",
