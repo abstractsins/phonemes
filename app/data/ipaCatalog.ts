@@ -51,7 +51,8 @@ export const IPA_CATALOG: IpaInfo[] = [
     // =======================
     // APPROXIMANTS & LATERALS
     // =======================
-    { symbol: "l", name: "alveolar lateral approximant", category: "lateral" },
+    { symbol: "l", name: "alveolar lateral approximant (light l)", category: "lateral" },
+    { symbol: "ɫ", name: "velarized alveolar lateral approximant (dark l)", category: "approximant" },
     { symbol: "ɹ", name: "alveolar approximant", category: "approximant" }, // AmEng r
     { symbol: "j", name: "palatal approximant", category: "approximant" },  // “y”
     { symbol: "w", name: "labio-velar approximant", category: "approximant" },
