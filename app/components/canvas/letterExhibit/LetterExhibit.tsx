@@ -7,6 +7,7 @@ import { useSoundMap } from '@/app/contexts/SoundMapContext';
 import { Letter } from '@/app/types/types';
 import TypographyWrapper from './typography/TypographyWrapper';
 import LetterHeroWrapper from './letterHero/LetterHeroWrapper';
+import DialectCard from './dialect/DialectCard';
 
 interface Props {
     letter: Letter | null;
@@ -29,6 +30,10 @@ export default function LetterExhibit({ letter }: Props) {
                     <LetterHeroWrapper />
 
                     <TypographyWrapper />
+
+                    {selectedLetter.phonology.map(d =>
+                        <DialectCard key={d.dialect.id} data={d} />
+                    )}
 
                 </div>
             </>}

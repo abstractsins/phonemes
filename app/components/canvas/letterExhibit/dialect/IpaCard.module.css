@@ -1,0 +1,21 @@
+.body {
+    background-color: whitesmoke;
+    border-radius: var(--master-border-radius);
+    /* height: 100%; */
+    width: 100%;
+    padding: 2vh 1vw;
+    margin: 2vh 1vw;
+}
+
+.ipaWrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.ipaText {
+    font-size: clamp(18pt, 3vw + .5rem, 62pt);
+}
+
+.example {}
+
+.translation {}

@@ -3,7 +3,7 @@
     display: flex;
     flex-direction: column;
     position: absolute;
-    border-radius: 25px;
+    border-radius: var(--master-border-radius);
     align-items: center;
     width: 95%;
     padding: 5vh 0;
@@ -26,7 +26,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 25px;
+    border-radius: var(--master-border-radius);
     font-size: clamp(36pt, 10vw + 5rem, 400pt);
     margin: 0vh 0vw;
     padding: 0vh 2vw;

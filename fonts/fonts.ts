@@ -78,7 +78,6 @@ export const roboto = Roboto({
     subsets: ['latin'],
 })
 
-
 export const sansista = Sansita({
     variable: '--font-sansista',
     subsets: ['latin'],

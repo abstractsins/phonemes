@@ -1,6 +1,6 @@
 .body {
     background-color: lightblue;
-    border-radius: 25px;
+    border-radius: var(--master-border-radius);
     display: flex;
     flex-direction: column;
     align-items: center;
