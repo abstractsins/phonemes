@@ -31,7 +31,7 @@ export type TransliterationMap = {
 export interface Phoneme {
     ipa: IPA;                   // e.g., 'b', 's', 'ʃ'
     envNote?: string;           // context note: 'before front vowels', etc.
-    example: { word: string; gloss?: string };
+    example?: { word: string; gloss?: string };
 }
 
 export type Dialect = {

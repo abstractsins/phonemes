@@ -43,9 +43,11 @@ export default function IpaCard({ data, dialect }: Props) {
             ))}
 
             <div className={styles.inputWrapper}>
-                <div className={`${styles.exampleWrapper} ${isBusy ? styles.disabled : ''}`} onClick={() => play(example.word, selectedLanguage)}>
-                    <span className={styles.exampleText}>{example?.word} <HiSpeakerWave className={styles.audioIcon} /></span>
-                </div>
+                {example &&
+                    <div className={`${styles.exampleWrapper} ${isBusy ? styles.disabled : ''}`} onClick={() => play(example?.word, selectedLanguage)}>
+                        <span className={styles.exampleText}>{example?.word} <HiSpeakerWave className={styles.audioIcon} /></span>
+                    </div>
+                }
                 {status === 'loading' &&
                     <InputSpinner />
                 }
