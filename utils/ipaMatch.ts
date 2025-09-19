@@ -34,7 +34,5 @@ export function lookupIpaInfo(symbol: string): IpaInfo | undefined {
 
 /** Get info for each symbol in an IPA string. */
 export function enrichIpa(raw: string): (IpaInfo | { symbol: string; name?: undefined; category?: undefined })[] {
-    console.log(raw);
-    console.log(tokenizeIpa(raw).map(sym => lookupIpaInfo(sym) ?? { symbol: sym }));
     return tokenizeIpa(raw).map(sym => lookupIpaInfo(sym) ?? { symbol: sym });
 }

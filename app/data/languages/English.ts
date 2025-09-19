@@ -122,7 +122,7 @@ export const EN_E: Letter = {
             phonemes: [
                 { ipa: 'iː', example: { word: 'me' } },
                 { ipa: 'ɛ', example: { word: 'bed' } },
-                { ipa: 'ə', example: { word: 'the' } }
+                { ipa: 'ə', example: { word: 'travel' } }
             ],
         },
     ],
@@ -334,7 +334,7 @@ export const EN_N: Letter = {
         {
             dialect: enGA,
             phonemes: [
-                { ipa: 'n', example: { word: 'no' } }
+                { ipa: 'n', example: { word: 'lemon' } }
             ],
         },
     ],
@@ -430,7 +430,7 @@ export const EN_R: Letter = {
         {
             dialect: enGA,
             phonemes: [
-                { ipa: 'ɹ', example: { word: 'red' } }
+                { ipa: 'ɹ', example: { word: 'run' } }
             ],
         },
     ],
@@ -479,7 +479,7 @@ export const EN_T: Letter = {
         {
             dialect: enGA,
             phonemes: [
-                { ipa: 't', example: { word: 'top' } },
+                { ipa: 't', example: { word: 'tower' } },
                 { ipa: 'ɾ', example: { word: 'water' } },
                 { ipa: 'tʃ', example: { word: 'nature' } }
             ],
@@ -553,7 +553,7 @@ export const EN_W: Letter = {
         {
             dialect: enGA,
             phonemes: [
-                { ipa: 'w', example: { word: 'wet' } }
+                { ipa: 'w', example: { word: 'water' } }
             ],
         },
     ],

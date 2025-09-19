@@ -19,7 +19,7 @@ export default function DialectCard({ data }: Props) {
 
             <div className={styles.body}>
                 {data.phonemes.map((p, i) =>
-                    <IpaCard key={i} data={p} />
+                    <IpaCard key={i} data={p} dialect={data.dialect} />
                 )}
             </div>
 

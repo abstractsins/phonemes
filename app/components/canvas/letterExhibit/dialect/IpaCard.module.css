@@ -1,8 +1,8 @@
 .body {
     background-color: whitesmoke;
     border-radius: var(--master-border-radius);
-    /* height: 100%; */
     width: fit-content;
+    min-width: 225px;
     padding: 2vh 1vw;
     margin: 1vh .5vw;
 }
@@ -21,17 +21,35 @@
     font-size: clamp(10pt, .25vw + .5rem, 16pt);
 }
 
-.example {
+.exampleWrapper {
     background-color: rgb(220, 220, 220);
     padding: .75vh .5vw;
     margin: .5vh .25vw;
     width: fit-content;
     border-radius: 5px;
-    
     display: flex;
-    gap: 5px;
     align-items: center;
-    font-size: clamp(12pt, .5vw + .75rem, 20pt);
+    border: 1px solid transparent;
+    transition: border 250ms, filter 150ms;
+}
+
+.exampleWrapper:hover {
+    border: 1px solid black;
+    cursor: pointer;
+    /* filter: drop-shadow(3px 3px 3px gray); */
+}
+
+.exampleWrapper:active {
+    /* filter: invert(); */
+    filter: drop-shadow(0 0 0) invert();
+}
+
+
+.exampleText {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: clamp(12pt, .5vw + .5rem, 20pt);
     font-family: var(--font-sansista);
     font-weight: 600;
 }
@@ -41,3 +59,18 @@
 }
 
 .translation {}
+
+.disabled {
+    color: gray;
+}
+
+.disabled:hover {
+    border: 1px solid transparent;
+    filter: none;
+    cursor: default;
+}
+
+.inputWrapper {
+    display: flex;
+    align-items: baseline;
+}

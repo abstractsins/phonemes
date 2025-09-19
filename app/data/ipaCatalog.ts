@@ -80,7 +80,13 @@ export const IPA_CATALOG: IpaInfo[] = [
     { symbol: "eɪ", name: "diphthong (as in 'face')", category: "vowel" },
     { symbol: "oʊ", name: "diphthong (as in 'goat')", category: "vowel" },
     { symbol: "aʊ", name: "diphthong (as in 'mouth')", category: "vowel" },
-    { symbol: "ɔɪ", name: "diphthong (as in 'choice')", category: "vowel" }
+    { symbol: "ɔɪ", name: "diphthong (as in 'choice')", category: "vowel" },
+
+    // =======================
+    // TAPS & TRILLS
+    // =======================
+    { symbol: "ɾ", name: "voiced alveolar tap (flap)", category: "tap/flap" },   // "water" (AmE)
+    { symbol: "r", name: "alveolar trill", category: "trill" }, // Spanish "perro"
 ];
 
 export const IPA_MAP: Record<string, IpaInfo> =

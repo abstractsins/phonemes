@@ -31,7 +31,7 @@ export type TransliterationMap = {
 export interface Phoneme {
     ipa: IPA;                   // e.g., 'b', 's', 'ʃ'
     envNote?: string;           // context note: 'before front vowels', etc.
-    example?: { word: string; gloss?: string };
+    example: { word: string; gloss?: string };
 }
 
 export type Dialect = {
@@ -151,4 +151,36 @@ export function pickForm(letter: Letter, ctx: DisplayContext): string {
     }
     // fallback
     return 'error, bad input';
+}
+
+
+//* --------------------------------------------------//
+//* ----------------- API Responses ------------------//
+//* --------------------------------------------------//
+
+interface ForvoAttributes {
+    attributes: number;
+}
+
+export interface ForvoItem {
+    addtime: string;
+    code: string;
+    country: string;
+    hits: number;
+    id: number;
+    langname: string;
+    num_positive_votes: number;
+    num_votes: number;
+    original: string;
+    pathmp3: string;
+    pathogg: string;
+    rate: number;
+    sex: string;
+    username: string;
+    word: string;
+}
+
+export interface ForvoResponse {
+    attributes: ForvoAttributes;
+    items: ForvoItem[];
 }
