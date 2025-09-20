@@ -360,7 +360,7 @@ export const EN_O: Letter = {
                 { ipa: 'oʊ', example: { word: 'go' } },
                 { ipa: 'ɑ', example: { word: 'not' } },
                 { ipa: 'ʌ', example: { word: 'love' } },
-                { ipa: 'uː', example: { word: 'do' } }
+                { ipa: 'uː', example: { word: 'undo' } }
             ],
         },
     ],
