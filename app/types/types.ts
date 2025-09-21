@@ -38,7 +38,7 @@ export type IPA =
 //* --------------------------------------------------//
 //* -------------------- Metadata --------------------//
 //* --------------------------------------------------//
-export interface ScriptMeta<L extends Record<string, Language>> {
+export interface ScriptMeta<L extends Record<string, Language> = Record<string, Language>> {
     name: ScriptName;
     label: string;
     dir: Dir;
@@ -46,14 +46,6 @@ export interface ScriptMeta<L extends Record<string, Language>> {
     languages: L;
     defaultLanguage: keyof L;
     firstThree: string;
-}
-
-export function makeScriptMeta<L extends Record<string, Language>>(
-    meta: Omit<ScriptMeta<L>, "defaultLanguage">
-): ScriptMeta<L> {
-    const [first] = Object.keys(meta.languages) as (keyof L)[];
-    if (!first) throw new Error("languages must not be empty");
-    return { ...meta, defaultLanguage: first };
 }
 
 export type TransliterationMap = {
