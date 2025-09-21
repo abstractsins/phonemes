@@ -1,13 +1,18 @@
 import styles from './IpaCard.module.css';
 
 import { HiSpeakerWave } from "react-icons/hi2";
-import { Dialect, Phoneme } from '@/app/types/types';
+import { Dialect, IpaToLetterMatch, Phoneme } from '@/app/types/types';
 
 import { enrichIpa } from "@utils/ipaMatch";
 
-import { useSoundMap } from '@/app/contexts/SoundMapContext';
+import { getGlyphs, useSoundMap } from '@/app/contexts/SoundMapContext';
 import { useForvoAudio } from '@/hooks/useForvoAudio';
+
+import { matchLettersFromIPA } from '@utils/ipaMatch';
+import { motion } from 'motion/react';
 import InputSpinner from '@/app/components/ui/InputSpinner';
+import LetterTile from '../../letterSelection/LetterTile';
+import { useEffect, useState } from 'react';
 
 
 interface Props {
@@ -18,7 +23,8 @@ interface Props {
 export default function IpaCard({ data, dialect }: Props) {
 
     const { play, status, isBusy } = useForvoAudio(dialect);
-    const { selectedLanguage } = useSoundMap();
+    const { selectedLanguage, setLetter, selectedScript } = useSoundMap();
+    const [matchingLettersArr, setMatchingLetters] = useState<IpaToLetterMatch[] | undefined>();
 
     const {
         ipa,
@@ -27,6 +33,12 @@ export default function IpaCard({ data, dialect }: Props) {
     } = data;
 
     const parts = enrichIpa(ipa);
+
+    useEffect(() => {
+        console.log(selectedLanguage);
+        const matchingLetters = matchLettersFromIPA(ipa, selectedLanguage);
+        setMatchingLetters(matchingLetters);
+    }, [selectedLanguage]);
 
 
     return (
@@ -37,22 +49,45 @@ export default function IpaCard({ data, dialect }: Props) {
             </div>
 
             {parts.map((p, i) => (
-                <div key={i} className="">
+                <div key={i} className={styles.ipaCaption}>
                     <span className={styles.ipaName}>{("name" in p && p.name) || ""}</span>
+                    {envNote && <span className={styles.envNote}>-{envNote}-</span>}
                 </div>
             ))}
 
             <div className={styles.inputWrapper}>
+
                 {example &&
                     <div className={`${styles.exampleWrapper} ${isBusy ? styles.disabled : ''}`} onClick={() => play(example?.word, selectedLanguage)}>
                         <span className={styles.exampleText}>{example?.word} <HiSpeakerWave className={styles.audioIcon} /></span>
                     </div>
                 }
-                {status === 'loading' &&
-                    <InputSpinner />
-                }
+
+                {status === 'loading' && <InputSpinner />}
+
             </div>
-            <span>{envNote}</span>
+
+            <div className={styles.tilesWrapper}>
+
+                {matchingLettersArr?.map((letter, i) =>
+                    <motion.button key={i}
+                        className={styles.tileWrapper}
+                        whileHover={{ scale: 1.06 }}
+                        whileTap={{ scale: 0.97 }}
+                        variants={{ hidden: { opacity: 0, scale: 0.97 }, show: { opacity: 1, scale: 1 } }}
+                        initial="hidden"
+                        animate="show"
+                        exit="hidden"
+                        layout
+                        onClick={() => setLetter(letter[0], letter[1])}
+                    // onHoverStart={() => setHoverLetter(letter)}
+                    // onHoverEnd={() => setHoverLetter(null)}
+                    >
+                        <LetterTile key={i} letter={letter[0]} title={letter[1]} size='small' />
+                    </motion.button>
+                )}
+
+            </div>
 
         </div>
     );

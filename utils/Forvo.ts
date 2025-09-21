@@ -3,12 +3,13 @@ import type {
     Dialect,
     ForvoItem,
     ForvoResponse
-} from "@/app/types/types";
+} from '@/app/types/types';
 
 /** Map a dialect to a preferred country filter (optional). */
 export function dialectToCountry(dialect: Dialect): string | undefined {
     const map: Partial<Record<string, string>> = {
-        "en-GA": "United States",
+        'en-GA': 'United States',
+        'he-IL': 'Israel'
     };
     return map[dialect.id];
 }
@@ -34,9 +35,9 @@ export function pickForvoItem(items: ForvoItem[], dialect: Dialect): ForvoItem |
 /** Normalize api response → best audio URL string (https) or null. */
 export function bestAudioUrl(items: ForvoItem[], dialect: Dialect): string | null {
     const item = pickForvoItem(items, dialect);
-    const raw = item?.pathogg || item?.pathmp3 || "";
+    const raw = item?.pathogg || item?.pathmp3 || '';
     if (!raw) return null;
-    return raw.startsWith("http") ? raw : `https:${raw}`;
+    return raw.startsWith('http') ? raw : `https:${raw}`;
 }
 
 /** Call your Next API route. Keep keys server-side. */

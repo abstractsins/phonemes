@@ -31,9 +31,10 @@ export interface SoundMapState {
 export type SoundMapAction =
     | { type: "SET_LANGUAGE"; language: LanguageName }
     | { type: "SET_SCRIPT"; script: ScriptName }
-    | { type: "SET_LETTER"; letter: Letter | null }
+    | { type: "SET_LETTER"; letter: Letter | null; script?: ScriptName } // ← script override
     | { type: "SET_DIRECTION"; direction: Dir }
     | { type: "CLEAR_SELECTION" };
+
 
 
 function deriveScriptFromLanguage(lang: LanguageName, fallback: ScriptName = "Latin"): ScriptName {
@@ -79,7 +80,7 @@ function reducer(state: SoundMapState, action: SoundMapAction): SoundMapState {
                 selectedLanguageAbbr: nextAbbr,
                 selectedScript: nextScript,
                 direction: nextDir,
-                selectedLetter: null,
+                selectedLetter: null
             };
         }
         case "SET_SCRIPT": {
@@ -90,11 +91,28 @@ function reducer(state: SoundMapState, action: SoundMapAction): SoundMapState {
                 direction: dir
             };
         }
-        case "SET_LETTER":
+        case "SET_LETTER": {
+            if (!action.letter) return { ...state, selectedLetter: null };
+
+            // prefer explicit script passed in; else take it from the letter; else keep current
+            const nextScript: ScriptName =
+                action.script ?? action.letter.glyphs.script ?? state.selectedScript;
+
+            const nextDir = deriveDirFromScript(nextScript);
+
+            //! only when selecting a cross reference
+            const nextLanguage = SCRIPTS[nextScript].defaultLanguage;
+            const nextAbbr = deriveAbbrFromLanguage(nextLanguage);
+
             return {
                 ...state,
-                selectedLetter: action.letter
+                selectedLetter: action.letter,
+                selectedScript: nextScript,
+                selectedLanguage: nextLanguage,
+                selectedLanguageAbbr: nextAbbr,
+                direction: nextDir
             };
+        }
         case "SET_DIRECTION":
             return {
                 ...state,
@@ -114,14 +132,12 @@ function reducer(state: SoundMapState, action: SoundMapAction): SoundMapState {
 // * Context & Provider
 // * ————————————————————————————————————————————————————————————
 interface CtxValue extends SoundMapState {
-    // dispatchers
     setLanguage: (language: LanguageName) => void;
     setScript: (script: ScriptName) => void;
-    setLetter: (letter: Letter | null) => void;
+    setLetter: (letter: Letter | null, scriptOverride?: ScriptName) => void; // ←
     setDirection: (dir: Dir) => void;
     clearSelection: () => void;
 }
-
 
 const SoundMapContext = createContext<CtxValue | null>(null);
 
@@ -163,17 +179,14 @@ export function SoundMapProvider({ children, initial, persist = true, storageKey
         }
     }, [state, persist, storageKey]);
 
-    const value: CtxValue = useMemo(
-        () => ({
-            ...state,
-            setLanguage: (language) => dispatch({ type: "SET_LANGUAGE", language }),
-            setScript: (script) => dispatch({ type: "SET_SCRIPT", script }),
-            setLetter: (letter) => dispatch({ type: "SET_LETTER", letter }),
-            setDirection: (direction) => dispatch({ type: "SET_DIRECTION", direction }),
-            clearSelection: () => dispatch({ type: "CLEAR_SELECTION" }),
-        }),
-        [state]
-    );
+    const value: CtxValue = useMemo(() => ({
+        ...state,
+        setLanguage: (language) => dispatch({ type: "SET_LANGUAGE", language }),
+        setScript: (script) => dispatch({ type: "SET_SCRIPT", script }),
+        setLetter: (letter, script) => dispatch({ type: "SET_LETTER", letter, script }),
+        setDirection: (direction) => dispatch({ type: "SET_DIRECTION", direction }),
+        clearSelection: () => dispatch({ type: "CLEAR_SELECTION" }),
+    }), [state]);
 
     return (
         <SoundMapContext.Provider value={value}>
@@ -209,7 +222,7 @@ export function getGlyphs(letter: Letter | null): string {
         ) {
             return `${letter.glyphs.forms.standard} ${letter.glyphs.forms.final || ''}`;
         }
-    } 
-    
+    }
+
     return '';
 }

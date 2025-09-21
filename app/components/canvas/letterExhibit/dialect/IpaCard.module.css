@@ -1,9 +1,13 @@
 .body {
+    display: flex;
+    flex-direction: column;
     background-color: whitesmoke;
     border-radius: var(--master-border-radius);
     width: fit-content;
-    min-width: 225px;
+    min-width: 275px;
+    max-width: 380px;
     padding: 2vh 1vw;
+    padding: 1vh .5vw;
     margin: 1vh .5vw;
 }
 
@@ -13,10 +17,11 @@
 }
 
 .ipaText {
-    font-size: clamp(18pt, 3vw + .5rem, 62pt);
+    font-size: clamp(18pt, 3vw, 62pt);
 }
 
-.ipaName {
+.ipaName,
+.envNote {
     font-style: italic;
     font-size: clamp(10pt, .25vw + .5rem, 16pt);
 }
@@ -58,6 +63,10 @@
     color: tomato;
 }
 
+.disabled .audioIcon {
+    color: whitesmoke;
+}
+
 .translation {}
 
 .disabled {
@@ -73,4 +82,39 @@
 .inputWrapper {
     display: flex;
     align-items: baseline;
+}
+
+.ipaCaption {
+    display: flex;
+    flex-direction: column;
+    /* gap: 5px; */
+    align-items: center;
+}
+
+.tilesWrapper {
+    flex-wrap: wrap;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    background-color: rgba(222, 184, 135, 0.65);
+    border-radius: 25px;
+    height: 100%;
+    padding: .75vh .5vw;
+    /* margin: 1vh 0.5vw; */
+    margin-top: 1vh;
+}
+
+.tileWrapper {
+    display: flex;
+    flex-direction: column;
+    margin: 1vh .5vw;
+    border-radius: 10px;
+    filter: drop-shadow(3px 3px 4px gray);
+    transition: color 150ms;
+    height: fit-content;
+}
+
+.tileWrapper:hover {
+    cursor: pointer;
+    color: goldenrod
 }

@@ -1,6 +1,6 @@
 export type ScriptName = 'Hebrew' | 'Latin';
 
-export type LanguageName = 'English' | 'Modern Hebrew' ;
+export type LanguageName = 'English' | 'Modern Hebrew';
 
 export type DialectName = 'General American' | 'Received Pronunciation' | 'Canadian' | 'Australian' | 'Israeli Hebrew';
 
@@ -8,19 +8,52 @@ export type DialectId = 'en-GA' | 'en-RP' | 'he-IL' | 'ar-MSA';
 
 export type Dir = 'ltr' | 'rtl';
 
-export type IPA = string;
+export type IpaToLetterMatch = [Letter, ScriptName];
+
+export type IPA =
+    // Plosives
+    | 'p' | 'b' | 't' | 'd' | 'k' | 'g' | 'ʔ'
+    // Affricates
+    | 't͡ʃ' | 'd͡ʒ' | 't͡s' | 'd͡z'
+    // Fricatives
+    | 'f' | 'v' | 'θ' | 'ð' | 's' | 'z' | 'ʃ' | 'ʒ' | 'h' | 'ç' | 'ʝ' | 'x' | 'ɣ'
+    // Nasals
+    | 'm' | 'n' | 'ŋ' | 'ɲ'
+    // Approximants
+    | 'l' | 'ɹ' | 'j' | 'w'
+    // Trills / Taps
+    | 'r' | 'ɾ'
+    // Monophthongs (common vowels)
+    | 'i' | 'ɪ' | 'e' | 'ɛ' | 'æ'
+    | 'ɑ' | 'ɒ' | 'ʌ' | 'ɔ' | 'o' | 'ʊ' | 'u'
+    | 'ə' | 'ɜ' | 'ɞ'
+    // Diphthongs (English/common)
+    | 'aɪ' | 'eɪ' | 'oʊ' | 'aʊ' | 'ɔɪ'
+    | 'ɪə' | 'eə' | 'ʊə'
+    // Other
+    | 'ks' | 'gz' | 'tʃ' | 'kw' | 'uː' | 'ɫ' | 'ɡ' | 'a' | 'χ'
+
 
 
 //* --------------------------------------------------//
 //* -------------------- Metadata --------------------//
 //* --------------------------------------------------//
-export interface ScriptMeta {
+export interface ScriptMeta<L extends Record<string, Language>> {
     name: ScriptName;
     label: string;
-    upperCase: boolean;
-    languages: Partial<Record<LanguageName, Language>>;
-    firstThree: string;
     dir: Dir;
+    upperCase: boolean;
+    languages: L;
+    defaultLanguage: keyof L;
+    firstThree: string;
+}
+
+export function makeScriptMeta<L extends Record<string, Language>>(
+    meta: Omit<ScriptMeta<L>, "defaultLanguage">
+): ScriptMeta<L> {
+    const [first] = Object.keys(meta.languages) as (keyof L)[];
+    if (!first) throw new Error("languages must not be empty");
+    return { ...meta, defaultLanguage: first };
 }
 
 export type TransliterationMap = {
@@ -97,7 +130,7 @@ export type ArabicGlyphs = {
     };
 };
 
-export type Glyphs = LatinGlyphs | HebrewGlyphs | ArabicGlyphs;
+export type Glyphs = LatinGlyphs | HebrewGlyphs;
 
 //* --------------------------------------------------//
 //* ---------- Script-specific glyph forms -----------//
@@ -128,7 +161,7 @@ export interface Language {
 export type DisplayContext =
     | { script: 'Latin'; case: 'upper' | 'lower' }
     | { script: 'Hebrew'; position?: 'standard' | 'final' }
-    | { script: 'Arabic'; position: 'isolated' | 'initial' | 'medial' | 'final' };
+// | { script: 'Arabic'; position: 'isolated' | 'initial' | 'medial' | 'final' };
 
 // Type guard to help JSX: narrows `Glyphs` to the exact arm by script
 export function isGlyphs<S extends Glyphs['script']>(
@@ -146,9 +179,9 @@ export function pickForm(letter: Letter, ctx: DisplayContext): string {
     if (g.script === 'Hebrew' && ctx.script === 'Hebrew') {
         return (ctx.position === 'final' && g.forms.final) ? g.forms.final : g.forms.standard;
     }
-    if (g.script === 'Arabic' && ctx.script === 'Arabic') {
-        return g.forms[ctx.position] ?? g.forms.isolated;
-    }
+    // if (g.script === 'Arabic' && ctx.script === 'Arabic') {
+    //     return g.forms[ctx.position] ?? g.forms.isolated;
+    // }
     // fallback
     return 'error, bad input';
 }

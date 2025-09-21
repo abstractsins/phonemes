@@ -3,19 +3,21 @@
 //************************************************* */
 
 import {
-    Geist,
-    Geist_Mono,
-    Noto_Serif_Hebrew,
+    // ----- ARABIC ----- //
+    Noto_Naskh_Arabic,
+    
+    // ----- HEBREW ----- //
+    Noto_Serif_Hebrew, 
     Noto_Sans_Hebrew,
     Rubik_Doodle_Shadow,
-    Roboto_Slab,
-    Roboto_Serif,
-    Roboto,
-    Noto_Naskh_Arabic,
+    Playpen_Sans_Hebrew,
+    
+    // ----- LATIN ----- //
+    Geist, Geist_Mono,
+    Roboto_Slab, Roboto_Serif, Roboto,
     Kelly_Slab,
     Sansita,
-    Playwrite_US_Trad,
-    Playpen_Sans_Hebrew
+    Playwrite_US_Trad    
 } from 'next/font/google';
 
 

@@ -1,4 +1,9 @@
 // ipaMatch.ts
+
+import {SCRIPTS, ScriptKeys} from '@data/scripts';
+import { LanguageKeys, LANGUAGES } from '@/app/data/languages';
+
+import { IPA, IpaToLetterMatch, Language, LanguageName, Letter, ScriptMeta } from "@/app/types/types";
 import { IPA_MAP, IpaInfo } from "@data/ipaCatalog";
 
 // known multi-char symbols you support (longest-first for greedy matching)
@@ -35,4 +40,30 @@ export function lookupIpaInfo(symbol: string): IpaInfo | undefined {
 /** Get info for each symbol in an IPA string. */
 export function enrichIpa(raw: string): (IpaInfo | { symbol: string; name?: undefined; category?: undefined })[] {
     return tokenizeIpa(raw).map(sym => lookupIpaInfo(sym) ?? { symbol: sym });
+}
+
+export function matchLettersFromIPA(ipa: IPA, currentLanguage: LanguageName): IpaToLetterMatch[] | undefined {
+    
+    console.log('finding letters excluding: ' + currentLanguage);
+
+    if (!ipa || !currentLanguage) return;
+
+    const letters: IpaToLetterMatch[] = [];
+
+    for (const language in LANGUAGES) {
+        const langObj = LANGUAGES[language];
+        if (langObj && language !== currentLanguage)
+        langObj.alphabet.forEach(letter => {
+            letter.phonology.forEach(dialect => {
+                dialect.phonemes.forEach(phono => {
+                    if (phono.ipa === ipa) {
+                        letters.push([letter, langObj.script]);
+                    }
+                })
+            })
+        })
+    }
+
+    return letters;
+    
 }
