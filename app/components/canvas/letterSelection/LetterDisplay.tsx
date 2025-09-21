@@ -11,8 +11,15 @@ import LetterTile from './LetterTile';
 import { useSoundMap } from '@/app/contexts/SoundMapContext';
 
 export default function LetterDisplay() {
-    const { selectedLanguage, setLetter, selectedScript, direction } = useSoundMap();
-    const letters = SCRIPTS[selectedScript].languages[selectedLanguage]?.alphabet ?? [];
+
+    const {
+        selectedLanguage,
+        setLetter,
+        selectedScript,
+        direction
+    } = useSoundMap();
+
+    const letters: Letter[] = SCRIPTS[selectedScript].languages[selectedLanguage]?.alphabet ?? [];
 
     const [hoverLetter, setHoverLetter] = useState<Letter | null>(null);
 

@@ -65,7 +65,7 @@ export const HE_GIMEL: Letter = {
         {
             dialect: heIL,
             phonemes: [
-                { ipa: 'ɡ', example: { word: 'גמל', gloss: 'camel' }, envNote: 'standard Israeli' }
+                { ipa: 'g', example: { word: 'גמל', gloss: 'camel' }, envNote: 'standard Israeli' }
             ],
         },
     ],
@@ -261,7 +261,7 @@ export const HE_LAMED: Letter = {
         {
             dialect: heIL,
             phonemes: [
-                { ipa: 'l', example: {word: 'ללכת', gloss: 'to go'}, envNote: 'standard' }
+                { ipa: 'l', example: { word: 'ללכת', gloss: 'to go' }, envNote: 'standard' }
             ],
         },
     ],
@@ -435,7 +435,7 @@ export const HE_RESH: Letter = {
             dialect: heIL,
             phonemes: [
                 { ipa: 'ʁ', envNote: 'uvular common' },
-                { ipa: 'r', envNote: 'alveolar variant' }
+                { ipa: 'r', envNote: 'alveolar variant' },
             ],
         },
     ],
@@ -456,7 +456,7 @@ export const HE_SHIN: Letter = {
         {
             dialect: heIL,
             phonemes: [
-                { ipa: 'ʃ', example: {word: 'שחור', gloss: 'black'}, envNote: 'shin — dot right (שׁ)' },
+                { ipa: 'ʃ', example: { word: 'שחור', gloss: 'black' }, envNote: 'shin — dot right (שׁ)' },
                 { ipa: 's', example: { word: 'שמח', gloss: 'happy' }, envNote: 'sin — dot left (שׂ)' }
             ],
         },
@@ -477,7 +477,7 @@ export const HE_TAV: Letter = {
     phonology: [
         {
             dialect: heIL,
-            phonemes: [{ ipa: 't', example: {word: 'לתת', gloss: 'to give'}, envNote: 'standard Israeli' }],
+            phonemes: [{ ipa: 't', example: { word: 'לתת', gloss: 'to give' }, envNote: 'standard Israeli' }],
         },
     ],
 };

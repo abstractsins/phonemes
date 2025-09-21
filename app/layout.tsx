@@ -5,14 +5,18 @@
 import type { Metadata } from "next";
 
 import {
+    // * ------------- ARABIC ------------- //
+    notoNaskh,
+    // * ------------- HEBREW ------------- //
+    notoSans, notoSerif,
+    playpen,
+    rubikDoodleShadow,
+    // * ------------- LATIN ------------- //
+    geistSans, geistMono,
     kellySlab,
+    playwrite,
+    roboto, robotoSerif, robotoSlab,
     sansista,
-    geistMono, geistSans,
-    notoSans, notoNaskh, notoSerif,
-    rubikDoodleShadow, 
-    robotoSlab, robotoSerif, roboto,
-    playwrite, 
-    playpen
 } from "@/fonts/fonts";
 
 import "./css/globals.css";
@@ -21,6 +25,24 @@ import "./css/globals.css";
 //************************************************* */
 //*------------------- EXPORTS -------------------- */
 //************************************************* */
+
+let fontString = '';
+// * ------------- ARABIC ------------- //
+fontString += `${notoNaskh.variable} `;
+// * ------------- HEBREW ------------- //
+fontString += `${notoSans.variable} `;
+fontString += `${notoSerif.variable} `;
+fontString += `${playpen.variable} `;
+fontString += `${rubikDoodleShadow.variable} `;
+// * ------------- LATIN ------------- //
+fontString += `${geistMono.variable} `;
+fontString += `${geistSans.variable} `;
+fontString += `${kellySlab.variable} `;
+fontString += `${playwrite.variable} `;
+fontString += `${roboto.variable} `;
+fontString += `${robotoSerif.variable} `;
+fontString += `${robotoSlab.variable} `;
+fontString += `${sansista.variable} `;
 
 export const metadata: Metadata = {
     title: "Aleph Bets",
@@ -34,7 +56,7 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
-            <body className={`${playpen.variable} ${playwrite.variable} ${roboto.variable} ${robotoSerif.variable} ${robotoSlab.variable} ${sansista.variable} ${kellySlab.variable} ${rubikDoodleShadow.variable} ${geistSans.variable} ${geistMono.variable} ${notoSerif.variable} ${notoSans.variable} ${notoNaskh.variable}`}>
+            <body className={fontString}>
                 {children}
             </body>
         </html>

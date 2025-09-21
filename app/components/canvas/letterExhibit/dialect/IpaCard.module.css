@@ -55,8 +55,14 @@
     align-items: center;
     gap: 5px;
     font-size: clamp(12pt, .5vw + .5rem, 20pt);
-    font-family: var(--font-sansista);
     font-weight: 600;
+}
+
+.exampleText.EN {
+    font-family: var(--font-sansista);
+}
+.exampleText.MH {
+    font-family: var(--font-noto-sans-hebrew);
 }
 
 .audioIcon {

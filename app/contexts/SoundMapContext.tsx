@@ -26,6 +26,7 @@ export interface SoundMapState {
     selectedLetter: Letter | null; // null = none
     direction: Dir; // defaults from script, but user‑overridable
     selectedLanguageAbbr: string;
+    canvasVisible: boolean;
 }
 
 export type SoundMapAction =
@@ -33,6 +34,7 @@ export type SoundMapAction =
     | { type: "SET_SCRIPT"; script: ScriptName }
     | { type: "SET_LETTER"; letter: Letter | null; script?: ScriptName } // ← script override
     | { type: "SET_DIRECTION"; direction: Dir }
+    | { type: "SET_CANVAS"; canvasVisible: boolean }
     | { type: "CLEAR_SELECTION" };
 
 
@@ -61,7 +63,8 @@ export function createInitialState(partial?: Partial<SoundMapState>): SoundMapSt
         selectedScript: script,
         selectedLetter: partial?.selectedLetter ?? null,
         selectedLanguageAbbr: abbr,
-        direction
+        direction,
+        canvasVisible: false
     };
 }
 
@@ -80,6 +83,7 @@ function reducer(state: SoundMapState, action: SoundMapAction): SoundMapState {
                 selectedLanguageAbbr: nextAbbr,
                 selectedScript: nextScript,
                 direction: nextDir,
+                canvasVisible: false,
                 selectedLetter: null
             };
         }
@@ -92,7 +96,7 @@ function reducer(state: SoundMapState, action: SoundMapAction): SoundMapState {
             };
         }
         case "SET_LETTER": {
-            if (!action.letter) return { ...state, selectedLetter: null };
+            if (!action.letter) return { ...state, selectedLetter: null, canvasVisible: false };
 
             // prefer explicit script passed in; else take it from the letter; else keep current
             const nextScript: ScriptName =
@@ -101,7 +105,7 @@ function reducer(state: SoundMapState, action: SoundMapAction): SoundMapState {
             const nextDir = deriveDirFromScript(nextScript);
 
             //! only when selecting a cross reference
-            const nextLanguage = SCRIPTS[nextScript].defaultLanguage;
+            const nextLanguage: LanguageName = SCRIPTS[nextScript].defaultLanguage;
             const nextAbbr = deriveAbbrFromLanguage(nextLanguage);
 
             return {
@@ -110,7 +114,8 @@ function reducer(state: SoundMapState, action: SoundMapAction): SoundMapState {
                 selectedScript: nextScript,
                 selectedLanguage: nextLanguage,
                 selectedLanguageAbbr: nextAbbr,
-                direction: nextDir
+                direction: nextDir,
+                canvasVisible: true
             };
         }
         case "SET_DIRECTION":
@@ -118,10 +123,16 @@ function reducer(state: SoundMapState, action: SoundMapAction): SoundMapState {
                 ...state,
                 direction: action.direction
             };
+        case "SET_CANVAS":
+            return {
+                ...state,
+                canvasVisible: action.canvasVisible
+            };
         case "CLEAR_SELECTION":
             return {
                 ...state,
-                selectedLetter: null
+                selectedLetter: null,
+                canvasVisible: false
             };
         default:
             return state;
@@ -136,6 +147,7 @@ interface CtxValue extends SoundMapState {
     setScript: (script: ScriptName) => void;
     setLetter: (letter: Letter | null, scriptOverride?: ScriptName) => void; // ←
     setDirection: (dir: Dir) => void;
+    setCanvas: (canvasVisible: boolean) => void;
     clearSelection: () => void;
 }
 
@@ -185,6 +197,7 @@ export function SoundMapProvider({ children, initial, persist = true, storageKey
         setScript: (script) => dispatch({ type: "SET_SCRIPT", script }),
         setLetter: (letter, script) => dispatch({ type: "SET_LETTER", letter, script }),
         setDirection: (direction) => dispatch({ type: "SET_DIRECTION", direction }),
+        setCanvas: (canvasVisible) => dispatch({ type: "SET_CANVAS", canvasVisible }),
         clearSelection: () => dispatch({ type: "CLEAR_SELECTION" }),
     }), [state]);
 

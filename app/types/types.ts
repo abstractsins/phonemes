@@ -1,3 +1,5 @@
+import { IPA } from './ipa'
+
 export type ScriptName = 'Hebrew' | 'Latin';
 
 export type LanguageName = 'English' | 'Modern Hebrew';
@@ -10,35 +12,12 @@ export type Dir = 'ltr' | 'rtl';
 
 export type IpaToLetterMatch = [Letter, ScriptName];
 
-export type IPA =
-    // Plosives
-    | 'p' | 'b' | 't' | 'd' | 'k' | 'g' | 'ʔ'
-    // Affricates
-    | 't͡ʃ' | 'd͡ʒ' | 't͡s' | 'd͡z'
-    // Fricatives
-    | 'f' | 'v' | 'θ' | 'ð' | 's' | 'z' | 'ʃ' | 'ʒ' | 'h' | 'ç' | 'ʝ' | 'x' | 'ɣ'
-    // Nasals
-    | 'm' | 'n' | 'ŋ' | 'ɲ'
-    // Approximants
-    | 'l' | 'ɹ' | 'j' | 'w'
-    // Trills / Taps
-    | 'r' | 'ɾ'
-    // Monophthongs (common vowels)
-    | 'i' | 'ɪ' | 'e' | 'ɛ' | 'æ'
-    | 'ɑ' | 'ɒ' | 'ʌ' | 'ɔ' | 'o' | 'ʊ' | 'u'
-    | 'ə' | 'ɜ' | 'ɞ'
-    // Diphthongs (English/common)
-    | 'aɪ' | 'eɪ' | 'oʊ' | 'aʊ' | 'ɔɪ'
-    | 'ɪə' | 'eə' | 'ʊə'
-    // Other
-    | 'ks' | 'gz' | 'tʃ' | 'kw' | 'uː' | 'ɫ' | 'ɡ' | 'a' | 'χ'
-
 
 
 //* --------------------------------------------------//
 //* -------------------- Metadata --------------------//
 //* --------------------------------------------------//
-export interface ScriptMeta<L extends Record<string, Language> = Record<string, Language>> {
+export interface ScriptMeta<L extends Record<LanguageName, Language> = Record<LanguageName, Language>> {
     name: ScriptName;
     label: string;
     dir: Dir;

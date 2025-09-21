@@ -87,6 +87,9 @@ export function useForvoAudio(dialect: Dialect, opts: Options = {}) {
 
       try {
         const data = await fetchForvo(word, language, { signal: controller.signal });
+        console.group('Forvo Fetched Data')
+        console.log(data);
+        console.groupEnd();
         const url = bestAudioUrl(data.items, dialect);
         if (!url) throw new Error('No audio found');
 

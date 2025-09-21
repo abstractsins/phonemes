@@ -25,6 +25,9 @@ export async function GET(req: NextRequest) {
         const API_KEY = process.env.FORVO_KEY || 'fake-key';
         const apiUrl = 'https://apifree.forvo.com';
         const url = `${apiUrl}/key/${API_KEY}/format/json/action/word-pronunciations/word/${word}/language/${lang}`;
+        
+        console.log('fetching word: ' + word);
+        console.log('in language: ' + lang);
 
         const res = await fetch(url);
 

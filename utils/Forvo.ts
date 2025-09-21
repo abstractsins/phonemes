@@ -17,7 +17,8 @@ export function dialectToCountry(dialect: Dialect): string | undefined {
 /** Keep original array untouched. */
 export function filterByCountry(items: ForvoItem[], country?: string): ForvoItem[] {
     if (!country) return items;
-    return items.filter(i => i.country === country);
+    const filtered = items.filter(i => i.country === country);
+    return filtered.length ? filtered : items; // fallback if no filtered countries (ie "momentum" is Canada)
 }
 
 /** Highest positive votes first. */

@@ -1,7 +1,7 @@
 import styles from './IpaCard.module.css';
 
 import { HiSpeakerWave } from "react-icons/hi2";
-import { Dialect, IpaToLetterMatch, Phoneme } from '@/app/types/types';
+import { Dialect, IpaToLetterMatch, Letter, Phoneme, ScriptName } from '@/app/types/types';
 
 import { enrichIpa } from "@utils/ipaMatch";
 
@@ -23,7 +23,15 @@ interface Props {
 export default function IpaCard({ data, dialect }: Props) {
 
     const { play, status, isBusy } = useForvoAudio(dialect);
-    const { selectedLanguage, setLetter, selectedScript } = useSoundMap();
+
+    const {
+        selectedLanguage,
+        setLetter,
+        selectedScript,
+        selectedLanguageAbbr,
+        setCanvas
+    } = useSoundMap();
+
     const [matchingLettersArr, setMatchingLetters] = useState<IpaToLetterMatch[] | undefined>();
 
     const {
@@ -34,11 +42,18 @@ export default function IpaCard({ data, dialect }: Props) {
 
     const parts = enrichIpa(ipa);
 
+    const handleCrossLetterSet = (letterTuple: IpaToLetterMatch) => {
+        const letter: Letter = letterTuple[0];
+        const script: ScriptName = letterTuple[1];
+        setCanvas(false)
+        setTimeout(() => setLetter(letter, script), 150);
+    }
+
     useEffect(() => {
         console.log(selectedLanguage);
         const matchingLetters = matchLettersFromIPA(ipa, selectedLanguage);
         setMatchingLetters(matchingLetters);
-    }, [selectedLanguage]);
+    }, [selectedLanguage, ipa]);
 
 
     return (
@@ -59,7 +74,7 @@ export default function IpaCard({ data, dialect }: Props) {
 
                 {example &&
                     <div className={`${styles.exampleWrapper} ${isBusy ? styles.disabled : ''}`} onClick={() => play(example?.word, selectedLanguage)}>
-                        <span className={styles.exampleText}>{example?.word} <HiSpeakerWave className={styles.audioIcon} /></span>
+                        <span className={`${styles.exampleText} ${styles[selectedLanguageAbbr]}`}>{example?.word} <HiSpeakerWave className={styles.audioIcon} /></span>
                     </div>
                 }
 
@@ -79,7 +94,7 @@ export default function IpaCard({ data, dialect }: Props) {
                         animate="show"
                         exit="hidden"
                         layout
-                        onClick={() => setLetter(letter[0], letter[1])}
+                        onClick={() => handleCrossLetterSet(letter)}
                     // onHoverStart={() => setHoverLetter(letter)}
                     // onHoverEnd={() => setHoverLetter(null)}
                     >

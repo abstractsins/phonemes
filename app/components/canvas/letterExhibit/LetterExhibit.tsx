@@ -4,24 +4,23 @@ import CloseButton from '@comp/ui/CloseButton';
 
 import { useSoundMap } from '@/app/contexts/SoundMapContext';
 
-import { Letter } from '@/app/types/types';
 import TypographyWrapper from './typography/TypographyWrapper';
 import LetterHeroWrapper from './letterHero/LetterHeroWrapper';
 import DialectCard from './dialect/DialectCard';
 
-interface Props {
-    letter: Letter | null;
-}
 
 export default function LetterExhibit({ letter }: Props) {
 
     const {
         setLetter,
         selectedLetter,
+        selectedScript,
+        canvasVisible
     } = useSoundMap();
 
     return (
-        <div className={`${styles.body} ${!letter && styles.hide}`}>
+        <div className={`${styles.body} ${!canvasVisible ? styles.hide : ''} ${styles[selectedScript]}`}>
+
             <CloseButton onClick={() => setLetter(null)} />
 
             {selectedLetter && <>

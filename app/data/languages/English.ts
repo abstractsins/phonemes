@@ -49,7 +49,7 @@ export const EN_B: Letter = {
         {
             dialect: enGA,
             phonemes: [
-                { ipa: 'b', example: { word: 'bat' } }
+                { ipa: 'b', example: { word: 'baseball' } }
             ],
         }
     ],
@@ -97,7 +97,7 @@ export const EN_D: Letter = {
         {
             dialect: enGA,
             phonemes: [
-                { ipa: 'd', example: { word: 'dog' } }
+                { ipa: 'd', example: { word: 'delivered' } }
             ],
         }
     ],
@@ -287,7 +287,7 @@ export const EN_L: Letter = {
         {
             dialect: enGA,
             phonemes: [
-                { ipa: 'l', example: { word: 'look' } },
+                { ipa: 'l', example: { word: 'listless' } },
                 { ipa: 'ɫ', example: { word: 'full' } }
             ],
         }
@@ -311,7 +311,7 @@ export const EN_M: Letter = {
         {
             dialect: enGA,
             phonemes: [
-                { ipa: 'm', example: { word: 'man' } }
+                { ipa: 'm', example: { word: 'momentum' } }
             ],
         }
     ],
@@ -453,7 +453,7 @@ export const EN_S: Letter = {
         {
             dialect: enGA,
             phonemes: [
-                { ipa: 's', example: { word: 'see' } },
+                { ipa: 's', example: { word: 'statistics' } },
                 { ipa: 'z', example: { word: 'arisen' } },
                 { ipa: 'ʃ', example: { word: 'sure' } },
                 { ipa: 'ʒ', example: { word: 'measure' } }
@@ -553,7 +553,7 @@ export const EN_W: Letter = {
         {
             dialect: enGA,
             phonemes: [
-                { ipa: 'w', example: { word: 'water' } }
+                { ipa: 'w', example: { word: 'wastewater' } }
             ],
         }
     ],
