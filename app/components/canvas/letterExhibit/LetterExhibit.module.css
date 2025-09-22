@@ -17,11 +17,15 @@
 .body.Latin {
     background-color: lightgreen;
 }
+
 .body.Hebrew {
     background-color: rgb(220, 144, 255);
 }
+
 .body.Arabic {}
+
 .body.Greek {}
+
 .body.Cyrillic {}
 
 .body.hide {
@@ -42,6 +46,7 @@
     padding: 0vh 2vw;
     min-width: 15%;
     height: 80%;
+    filter: drop-shadow(2px 4px 6px black);
 }
 
 .letterCanvas {
@@ -52,13 +57,13 @@
 }
 
 .letterHero.EN {
-    color: darkred;
+    color: maroon;
     font-family: var(--font-rubik-doodle-shadow);
-    
+
 }
 
 .letterHero.MH {
-    color: darkblue;
+    color: limegreen;
     font-family: var(--font-rubik-doodle-shadow);
 }
 

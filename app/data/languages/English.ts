@@ -334,7 +334,7 @@ export const EN_N: Letter = {
         {
             dialect: enGA,
             phonemes: [
-                { ipa: 'n', example: { word: 'lemon' } }
+                { ipa: 'n', example: { word: 'nonsense' } }
             ],
         }
     ],
@@ -506,8 +506,8 @@ export const EN_U: Letter = {
             phonemes: [
                 { ipa: 'uː', example: { word: 'flute' } },
                 { ipa: 'ʊ', example: { word: 'put' } },
-                { ipa: 'ʌ', example: { word: 'cut' } },
-                { ipa: 'juː', example: { word: 'use' } }
+                { ipa: 'ʌ', example: { word: 'abrupt' } },
+                { ipa: 'juː', example: { word: 'amuse' } }
             ],
         }
     ],

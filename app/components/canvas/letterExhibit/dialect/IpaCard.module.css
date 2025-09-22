@@ -1,3 +1,7 @@
+:root {
+    --color-letter-match-bg: rgba(184, 184, 226, 0.55);
+}
+
 .body {
     display: flex;
     flex-direction: column;
@@ -14,7 +18,7 @@
 .ipaWrapper {
     display: flex;
     justify-content: center;
-}
+} 
 
 .ipaText {
     font-size: clamp(18pt, 3vw, 62pt);
@@ -102,7 +106,8 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
-    background-color: rgba(222, 184, 135, 0.65);
+    /* background-color: rgba(222, 184, 135, 0.65); */
+    background-color: var(--color-letter-match-bg);
     border-radius: 25px;
     height: 100%;
     padding: .75vh .5vw;

@@ -22,7 +22,7 @@ export const HE_ALEF: Letter = {
         {
             dialect: heIL,
             phonemes: [
-                { ipa: 'ʔ', envNote: 'often silent / glottal stop' }
+                { ipa: 'ʔ', example: { word: 'אמא', gloss: 'mother' }, envNote: 'often silent / glottal stop' }
             ],
         },
     ],
@@ -43,8 +43,8 @@ export const HE_BET: Letter = {
         {
             dialect: heIL,
             phonemes: [
-                { ipa: 'b', envNote: 'with dagesh (בּ)' },
-                { ipa: 'v', envNote: 'without dagesh (ב)' }
+                { ipa: 'b', example: { word: 'בבקשה', gloss: 'please' }, envNote: 'with dagesh (בּ)' },
+                { ipa: 'v', example: { word: 'בבקשה', gloss: 'please' }, envNote: 'without dagesh (ב)' }
             ],
         },
     ],
@@ -65,7 +65,7 @@ export const HE_GIMEL: Letter = {
         {
             dialect: heIL,
             phonemes: [
-                { ipa: 'g', example: { word: 'גמל', gloss: 'camel' }, envNote: 'standard Israeli' }
+                { ipa: 'g', example: { word: 'גגון', gloss: 'awning' }, envNote: 'standard Israeli' }
             ],
         },
     ],
@@ -129,9 +129,9 @@ export const HE_VAV: Letter = {
         {
             dialect: heIL,
             phonemes: [
-                { ipa: 'v', envNote: 'consonant' },
-                { ipa: 'o', envNote: 'mater (ḥolam male)' },
-                { ipa: 'u', envNote: 'mater (shuruk)' }
+                { ipa: 'v', example: { word: 'לויתן', gloss: 'whale' }, envNote: 'consonant' },
+                { ipa: 'o', example: { word: 'הולכות', gloss: 'going' }, envNote: 'mater (holam male)' },
+                { ipa: 'u', example: { word: 'סוף סוף', gloss: 'finally' }, envNote: 'mater (shuruk)' }
             ],
         },
     ],
@@ -173,8 +173,8 @@ export const HE_HET: Letter = {
         {
             dialect: heIL,
             phonemes: [
-                { ipa: 'χ', envNote: 'standard Israeli' },
-                { ipa: 'x', envNote: 'velar realization' }
+                { ipa: 'χ', example: { word: 'לחם', gloss: 'bread' }, envNote: 'standard Israeli' },
+                // { ipa: 'x', example: { word: '', gloss: '' }, envNote: 'velar realization' }
             ],
         },
     ],
@@ -195,7 +195,7 @@ export const HE_TET: Letter = {
         {
             dialect: heIL,
             phonemes: [
-                { ipa: 't', envNote: 'standard' }
+                { ipa: 't', example: { word: 'טפטוף', gloss: 'dripping' }, envNote: 'standard' }
             ],
         },
     ],
@@ -216,8 +216,8 @@ export const HE_YOD: Letter = {
         {
             dialect: heIL,
             phonemes: [
-                { ipa: 'j', envNote: 'consonant' },
-                { ipa: 'i', envNote: 'mater (hiriq male)' }
+                { ipa: 'j', example: { word: 'ירוק', gloss: 'green' }, envNote: 'consonant' },
+                { ipa: 'i', example: { word: 'הביתי', gloss: 'domestic' }, envNote: 'mater (hiriq male)' }
             ],
         },
     ],
@@ -239,8 +239,8 @@ export const HE_KAF: Letter = {
         {
             dialect: heIL,
             phonemes: [
-                { ipa: 'k', envNote: 'with dagesh (כּ)' },
-                { ipa: 'χ', envNote: 'without dagesh (כ)' }
+                { ipa: 'k', example: { word: 'כלב', gloss: 'dog', }, envNote: 'with dagesh (כּ)' },
+                { ipa: 'χ', example: { word: 'נוסף לכך', gloss: 'in addition to this' }, envNote: 'without dagesh (כ ך)' }
             ],
         },
     ],
@@ -283,7 +283,7 @@ export const HE_MEM: Letter = {
         {
             dialect: heIL,
             phonemes: [
-                { ipa: 'm', envNote: 'standard' }
+                { ipa: 'm', example: { word: 'ממתקים', gloss: 'confectionery' }, envNote: 'standard' }
             ],
         },
     ],
@@ -305,7 +305,7 @@ export const HE_NUN: Letter = {
         {
             dialect: heIL,
             phonemes: [
-                { ipa: 'n', envNote: 'standard' }
+                { ipa: 'n', example: { word: 'נכון', gloss: 'correct' }, envNote: 'standard' }
             ],
         },
     ],
@@ -326,7 +326,7 @@ export const HE_SAMEKH: Letter = {
         {
             dialect: heIL,
             phonemes: [
-                { ipa: 's', envNote: 'standard' }
+                { ipa: 's', example: { word: 'סיסמה', gloss: 'password' }, envNote: 'standard' }
             ],
         },
     ],
@@ -347,7 +347,7 @@ export const HE_AYIN: Letter = {
         {
             dialect: heIL,
             phonemes: [
-                { ipa: 'ʔ', envNote: 'often silent in Israeli' }
+                { ipa: 'ʔ', example: { word: 'ארבע עשרה', gloss: 'fourteen' }, envNote: 'often silent in Israeli' }
             ],
         },
     ],
@@ -369,8 +369,8 @@ export const HE_PE: Letter = {
         {
             dialect: heIL,
             phonemes: [
-                { ipa: 'p', envNote: 'with dagesh (פּ)' },
-                { ipa: 'f', envNote: 'without dagesh (פ)' }
+                { ipa: 'p', example: { word: 'פלפל', gloss: 'pepper' }, envNote: 'with dagesh (פּ)' },
+                { ipa: 'f', example: { word: 'כפף', gloss: 'he bent' }, envNote: 'without dagesh (פ ף)' }
             ],
         },
     ],
@@ -392,7 +392,7 @@ export const HE_TSADI: Letter = {
         {
             dialect: heIL,
             phonemes: [
-                { ipa: 'ts', envNote: 'standard' }
+                { ipa: 'ts', example: { word: 'לצוץ', gloss: 'to pop up' }, envNote: 'standard' }
             ],
         },
     ],
@@ -413,7 +413,7 @@ export const HE_QOF: Letter = {
         {
             dialect: heIL,
             phonemes: [
-                { ipa: 'k', envNote: 'standard Israeli realization' }
+                { ipa: 'k', example: { word: 'קורא', gloss: 'reads' }, envNote: 'standard Israeli realization' }
             ],
         },
     ],
@@ -434,8 +434,8 @@ export const HE_RESH: Letter = {
         {
             dialect: heIL,
             phonemes: [
-                { ipa: 'ʁ', envNote: 'uvular common' },
-                { ipa: 'r', envNote: 'alveolar variant' },
+                { ipa: 'ʁ', example: { word: 'רוצה', gloss: 'wants' }, envNote: 'uvular common' },
+                // { ipa: 'r', example: { word: 'רוח', gloss: 'wind' }, envNote: 'alveolar variant' },
             ],
         },
     ],
@@ -477,7 +477,9 @@ export const HE_TAV: Letter = {
     phonology: [
         {
             dialect: heIL,
-            phonemes: [{ ipa: 't', example: { word: 'לתת', gloss: 'to give' }, envNote: 'standard Israeli' }],
+            phonemes: [
+                { ipa: 't', example: { word: 'לתת', gloss: 'to give' }, envNote: 'standard Israeli' }
+            ],
         },
     ],
 };

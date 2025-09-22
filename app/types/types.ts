@@ -32,10 +32,12 @@ export type TransliterationMap = {
     [target in LanguageName | ScriptName]?: string[];
 };
 
+export type phonemeExample = { word: string; gloss?: string };
+
 export interface Phoneme {
     ipa: IPA;                   // e.g., 'b', 's', 'ʃ'
     envNote?: string;           // context note: 'before front vowels', etc.
-    example?: { word: string; gloss?: string };
+    example?: phonemeExample | phonemeExample[];
 }
 
 export type Dialect = {
