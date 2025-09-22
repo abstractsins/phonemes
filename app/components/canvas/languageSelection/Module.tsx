@@ -4,11 +4,11 @@ import styles from "./Module.module.css";
 
 import { useState, useRef } from "react";
 
-import { ScriptMeta } from "@/app/types/types";
+import { Language, ScriptMeta } from "@/app/types/types";
 import { useSoundMap } from "@/app/contexts/SoundMapContext";
 
 interface Props {
-    data: ScriptMeta;
+    data: ScriptMeta<Record<string, Language>>;
 }
 
 export default function LanguageSelectionModule({ data }: Props) {

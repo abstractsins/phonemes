@@ -17,7 +17,7 @@ export type IpaToLetterMatch = [Letter, ScriptName];
 //* --------------------------------------------------//
 //* -------------------- Metadata --------------------//
 //* --------------------------------------------------//
-export interface ScriptMeta<L extends Record<LanguageName, Language> = Record<LanguageName, Language>> {
+export interface ScriptMeta<L extends Partial<Record<LanguageName, Language>>> {
     name: ScriptName;
     label: string;
     dir: Dir;
@@ -37,7 +37,7 @@ export type phonemeExample = { word: string; gloss?: string };
 export interface Phoneme {
     ipa: IPA;                   // e.g., 'b', 's', 'ʃ'
     envNote?: string;           // context note: 'before front vowels', etc.
-    example?: phonemeExample | phonemeExample[];
+    example?: phonemeExample;
 }
 
 export type Dialect = {

@@ -1,9 +1,9 @@
-import { ScriptMeta, Language } from '../types/types'
+import { ScriptMeta, Language, LanguageName } from '../types/types'
 
 import { LANGUAGES } from './languages'
 
 
-export const LatinScript: ScriptMeta = {
+export const LatinScript: ScriptMeta<Partial<Record<LanguageName, Language>>> = {
     name: 'Latin',
     label: 'Latin',
     dir: 'ltr',
@@ -13,7 +13,7 @@ export const LatinScript: ScriptMeta = {
     firstThree: 'abc'
 };
 
-export const HebrewScript: ScriptMeta<{ "Modern Hebrew": Language}> = {
+export const HebrewScript: ScriptMeta<Partial<Record<LanguageName, Language>>> = {
     name: 'Hebrew',
     label: 'Hebrew',
     dir: 'rtl',
