@@ -2,7 +2,7 @@ import { IPA } from './ipa'
 
 export type ScriptName = 'Arabic' | 'Hebrew' | 'Latin';
 
-export type LanguageName = 'English' | 'Modern Hebrew' | 'Modern Arabic';
+export type LanguageName = string;
 
 export type DialectName = 'General American' | 'Received Pronunciation' | 'Canadian' | 'Australian' | 'Israeli Hebrew' | 'Modern Standard Arabic';
 
@@ -79,7 +79,7 @@ export type ArabicGlyphs = {
         medial?: string;         // 'ب'
         final?: string;          // 'ب'
     };
-    presentation: {                 
+    presentation: {
         isolated: string;       // 'ﺏ',    U+FE8F
         initial?: string;       // 'ﺐ',    U+FE90
         medial?: string;        // 'ﺑ',    U+FE91
@@ -146,7 +146,7 @@ export interface Codepoint {
 export type DisplayContext =
     | { script: 'Latin'; case: 'upper' | 'lower' }
     | { script: 'Hebrew'; position?: 'standard' | 'final' }
-// | { script: 'Arabic'; position: 'isolated' | 'initial' | 'medial' | 'final' };
+    | { script: 'Arabic'; position: 'isolated' | 'initial' | 'medial' | 'final' };
 
 // Type guard to help JSX: narrows `Glyphs` to the exact arm by script
 export function isGlyphs<S extends Glyphs['script']>(
@@ -167,7 +167,6 @@ export function pickForm(letter: Letter, ctx: DisplayContext): string {
     if (g.script === 'Arabic' && ctx.script === 'Arabic') {
         return g.forms[ctx.position] ?? g.forms.isolated;
     }
-    fallback
     return 'error, bad input';
 }
 

@@ -8,7 +8,7 @@ import { Language, ScriptMeta } from "@/app/types/types";
 import { useSoundMap } from "@/app/contexts/SoundMapContext";
 
 interface Props {
-    data: ScriptMeta<Record<string, Language>>;
+    data: ScriptMeta;
 }
 
 export default function LanguageSelectionModule({ data }: Props) {

@@ -1,13 +1,9 @@
-<<<<<<< HEAD
-import { ScriptMeta } from '../types/types'
-=======
 import { ScriptMeta, Language, LanguageName } from '../types/types'
->>>>>>> 48c418ea53521f84376e8637586d20f7f59aeb36
 
 import { LANGUAGES } from './languages'
 
 
-export const LatinScript: ScriptMeta<Partial<Record<LanguageName, Language>>> = {
+export const LatinScript: ScriptMeta = {
     name: 'Latin',
     label: 'Latin',
     dir: 'ltr',
@@ -17,11 +13,7 @@ export const LatinScript: ScriptMeta<Partial<Record<LanguageName, Language>>> = 
     firstThree: 'abc'
 };
 
-<<<<<<< HEAD
 export const HebrewScript: ScriptMeta = {
-=======
-export const HebrewScript: ScriptMeta<Partial<Record<LanguageName, Language>>> = {
->>>>>>> 48c418ea53521f84376e8637586d20f7f59aeb36
     name: 'Hebrew',
     label: 'Hebrew',
     dir: 'rtl',

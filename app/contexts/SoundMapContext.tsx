@@ -22,7 +22,7 @@ export const LANGUAGE_TO_SCRIPT: Partial<Record<LanguageName, ScriptName>> = {
 //* ============================================================
 
 export interface SoundMapState {
-    selectedLanguage: LanguageName;
+    selectedLanguage: string;
     selectedScript: ScriptName; // derived from language by default, but user‑overridable
     selectedLetter: Letter | null; // null = none
     direction: Dir; // defaults from script, but user‑overridable
@@ -106,7 +106,7 @@ function reducer(state: SoundMapState, action: SoundMapAction): SoundMapState {
             const nextDir = deriveDirFromScript(nextScript);
 
             //! only when selecting a cross reference
-            const nextLanguage: LanguageName = SCRIPTS[nextScript].defaultLanguage;
+            const nextLanguage: string = SCRIPTS[nextScript].defaultLanguage;
             const nextAbbr = deriveAbbrFromLanguage(nextLanguage);
 
             return {
