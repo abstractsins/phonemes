@@ -1,18 +1,18 @@
 import { Language, Letter } from '@/app/types/types';
-
 import { heIL } from '../dialects/dialects';
-
-
-//*====================================/
-//*======== INDIVIDUAL LETTERS ========/
-//*====================================/
 
 //***************
 //****** א ******
 //***************
-export const HE_ALEF: Letter = {
+export const MH_ALEF: Letter = {
     order: 1,
-    names: ['Alef'],
+    names: [
+        {
+            char: 'Alef',
+            spellings: ['Alef', 'Aleph'],
+            phonetics: { dictionary: 'ä-lef', ipa: 'ˈʔalef' }
+        }
+    ],
     category: 'matres',
     glyphs: { script: 'Hebrew', forms: { standard: 'א' } },
     codepoints: [
@@ -31,9 +31,20 @@ export const HE_ALEF: Letter = {
 //***************
 //****** ב ******
 //***************
-export const HE_BET: Letter = {
+export const MH_BET: Letter = {
     order: 2,
-    names: ['Bet'],
+    names: [
+        {
+            char: 'Bet',
+            spellings: ['Bet'],
+            phonetics: { dictionary: 'bet', ipa: 'bet' }
+        },
+        {
+            char: 'Vet',
+            spellings: ['Vet'],
+            phonetics: { dictionary: 'vet', ipa: 'vet' }
+        }
+    ],
     category: 'consonant',
     glyphs: { script: 'Hebrew', forms: { standard: 'ב', dagesh: true } },
     codepoints: [
@@ -53,9 +64,15 @@ export const HE_BET: Letter = {
 //***************
 //****** ג ******
 //***************
-export const HE_GIMEL: Letter = {
+export const MH_GIMEL: Letter = {
     order: 3,
-    names: ['Gimel'],
+    names: [
+        {
+            char: 'Gimel',
+            spellings: ['Gimel'],
+            phonetics: { dictionary: 'gē-mel', ipa: 'ˈɡimel' }
+        }
+    ],
     category: 'consonant',
     glyphs: { script: 'Hebrew', forms: { standard: 'ג', dagesh: true } },
     codepoints: [
@@ -74,9 +91,15 @@ export const HE_GIMEL: Letter = {
 //***************
 //****** ד ******
 //***************
-export const HE_DALET: Letter = {
+export const MH_DALET: Letter = {
     order: 4,
-    names: ['Dalet'],
+    names: [
+        {
+            char: 'Dalet',
+            spellings: ['Dalet'],
+            phonetics: { dictionary: 'dä-let', ipa: 'ˈdalet' }
+        }
+    ],
     category: 'consonant',
     glyphs: { script: 'Hebrew', forms: { standard: 'ד', dagesh: true } },
     codepoints: [
@@ -95,9 +118,15 @@ export const HE_DALET: Letter = {
 //***************
 //****** ה ******
 //***************
-export const HE_HE: Letter = {
+export const MH_HE: Letter = {
     order: 5,
-    names: ['He'],
+    names: [
+        {
+            char: 'He',
+            spellings: ['Hey'],
+            phonetics: { dictionary: 'hā', ipa: 'he' }
+        }
+    ],
     category: 'matres',
     glyphs: { script: 'Hebrew', forms: { standard: 'ה' } },
     codepoints: [
@@ -117,9 +146,15 @@ export const HE_HE: Letter = {
 //***************
 //****** ו ******
 //***************
-export const HE_VAV: Letter = {
+export const MH_VAV: Letter = {
     order: 6,
-    names: ['Vav'],
+    names: [
+        {
+            char: 'Vav',
+            spellings: ['Vav'],
+            phonetics: { dictionary: 'väv', ipa: 'vav' }
+        }
+    ],
     category: 'matres',
     glyphs: { script: 'Hebrew', forms: { standard: 'ו' } },
     codepoints: [
@@ -140,9 +175,15 @@ export const HE_VAV: Letter = {
 //***************
 //****** ז ******
 //***************
-export const HE_ZAYIN: Letter = {
+export const MH_ZAYIN: Letter = {
     order: 7,
-    names: ['Zayin'],
+    names: [
+        {
+            char: 'Zayin',
+            spellings: ['Zayin'],
+            phonetics: { dictionary: 'zä-yin', ipa: 'ˈzajin' }
+        }
+    ],
     category: 'consonant',
     glyphs: { script: 'Hebrew', forms: { standard: 'ז' } },
     codepoints: [
@@ -161,9 +202,15 @@ export const HE_ZAYIN: Letter = {
 //***************
 //****** ח ******
 //***************
-export const HE_HET: Letter = {
+export const MH_HET: Letter = {
     order: 8,
-    names: ['Het'],
+    names: [
+        {
+            char: 'Het',
+            spellings: ['Het', 'Khet'],
+            phonetics: { dictionary: 'khet', ipa: 'χet' }
+        }
+    ],
     category: 'consonant',
     glyphs: { script: 'Hebrew', forms: { standard: 'ח' } },
     codepoints: [
@@ -173,8 +220,7 @@ export const HE_HET: Letter = {
         {
             dialect: heIL,
             phonemes: [
-                { ipa: 'χ', example: { word: 'לחם', gloss: 'bread' }, envNote: 'standard Israeli' },
-                // { ipa: 'x', example: { word: '', gloss: '' }, envNote: 'velar realization' }
+                { ipa: 'χ', example: { word: 'לחם', gloss: 'bread' }, envNote: 'standard Israeli' }
             ],
         },
     ],
@@ -183,9 +229,15 @@ export const HE_HET: Letter = {
 //***************
 //****** ט ******
 //***************
-export const HE_TET: Letter = {
+export const MH_TET: Letter = {
     order: 9,
-    names: ['Tet'],
+    names: [
+        {
+            char: 'Tet',
+            spellings: ['Tet'],
+            phonetics: { dictionary: 'tet', ipa: 'tet' }
+        }
+    ],
     category: 'consonant',
     glyphs: { script: 'Hebrew', forms: { standard: 'ט' } },
     codepoints: [
@@ -204,9 +256,15 @@ export const HE_TET: Letter = {
 //***************
 //****** י ******
 //***************
-export const HE_YOD: Letter = {
+export const MH_YOD: Letter = {
     order: 10,
-    names: ['Yod'],
+    names: [
+        {
+            char: 'Yod',
+            spellings: ['Yod', 'Yud'],
+            phonetics: { dictionary: 'yōd', ipa: 'jod' }
+        }
+    ],
     category: 'matres',
     glyphs: { script: 'Hebrew', forms: { standard: 'י' } },
     codepoints: [
@@ -226,9 +284,20 @@ export const HE_YOD: Letter = {
 //***************
 //****** כ ******
 //***************
-export const HE_KAF: Letter = {
+export const MH_KAF: Letter = {
     order: 11,
-    names: ['Kaf'],
+    names: [
+        {
+            char: 'Kaf',
+            spellings: ['Kaf'],
+            phonetics: { dictionary: 'kaf', ipa: 'kaf' }
+        },
+        {
+            char: 'Khaf',
+            spellings: ['Khaf', 'Chaf'],
+            phonetics: { dictionary: 'khaf', ipa: 'χaf' }
+        }
+    ],
     category: 'consonant',
     glyphs: { script: 'Hebrew', forms: { standard: 'כ', final: 'ך', dagesh: true } },
     codepoints: [
@@ -249,9 +318,15 @@ export const HE_KAF: Letter = {
 //***************
 //****** ל ******
 //***************
-export const HE_LAMED: Letter = {
+export const MH_LAMED: Letter = {
     order: 12,
-    names: ['Lamed'],
+    names: [
+        {
+            char: 'Lamed',
+            spellings: ['Lamed'],
+            phonetics: { dictionary: 'lä-med', ipa: 'ˈlamed' }
+        }
+    ],
     category: 'consonant',
     glyphs: { script: 'Hebrew', forms: { standard: 'ל' } },
     codepoints: [
@@ -270,9 +345,15 @@ export const HE_LAMED: Letter = {
 //***************
 //****** מ ******
 //***************
-export const HE_MEM: Letter = {
+export const MH_MEM: Letter = {
     order: 13,
-    names: ['Mem'],
+    names: [
+        {
+            char: 'Mem',
+            spellings: ['Mem'],
+            phonetics: { dictionary: 'mem', ipa: 'mem' }
+        }
+    ],
     category: 'consonant',
     glyphs: { script: 'Hebrew', forms: { standard: 'מ', final: 'ם' } },
     codepoints: [
@@ -292,9 +373,15 @@ export const HE_MEM: Letter = {
 //***************
 //****** נ ******
 //***************
-export const HE_NUN: Letter = {
+export const MH_NUN: Letter = {
     order: 14,
-    names: ['Nun'],
+    names: [
+        {
+            char: 'Nun',
+            spellings: ['Nun'],
+            phonetics: { dictionary: 'nūn', ipa: 'nun' }
+        }
+    ],
     category: 'consonant',
     glyphs: { script: 'Hebrew', forms: { standard: 'נ', final: 'ן' } },
     codepoints: [
@@ -314,9 +401,15 @@ export const HE_NUN: Letter = {
 //***************
 //****** ס ******
 //***************
-export const HE_SAMEKH: Letter = {
+export const MH_SAMEKH: Letter = {
     order: 15,
-    names: ['Samekh'],
+    names: [
+        {
+            char: 'Samekh',
+            spellings: ['Samekh', 'Samech'],
+            phonetics: { dictionary: 'sä-mekh', ipa: 'ˈsameχ' }
+        }
+    ],
     category: 'consonant',
     glyphs: { script: 'Hebrew', forms: { standard: 'ס' } },
     codepoints: [
@@ -335,9 +428,15 @@ export const HE_SAMEKH: Letter = {
 //***************
 //****** ע ******
 //***************
-export const HE_AYIN: Letter = {
+export const MH_AYIN: Letter = {
     order: 16,
-    names: ['Ayin'],
+    names: [
+        {
+            char: 'Ayin',
+            spellings: ['Ayin'],
+            phonetics: { dictionary: 'ī-yin / ah-yin', ipa: 'ˈajin' }
+        }
+    ],
     category: 'consonant',
     glyphs: { script: 'Hebrew', forms: { standard: 'ע' } },
     codepoints: [
@@ -356,9 +455,20 @@ export const HE_AYIN: Letter = {
 //***************
 //****** פ ******
 //***************
-export const HE_PE: Letter = {
+export const MH_PE: Letter = {
     order: 17,
-    names: ['Pe'],
+    names: [
+        {
+            char: 'Pe',
+            spellings: ['Peh', 'Pay'],
+            phonetics: { dictionary: 'pā', ipa: 'pe' }
+        },
+        {
+            char: 'Fe',
+            spellings: ['Feh', 'Fay'],
+            phonetics: { dictionary: 'fe', ipa: 'fe' }
+        }
+    ],
     category: 'consonant',
     glyphs: { script: 'Hebrew', forms: { standard: 'פ', final: 'ף', dagesh: true } },
     codepoints: [
@@ -379,9 +489,15 @@ export const HE_PE: Letter = {
 //***************
 //****** צ ******
 //***************
-export const HE_TSADI: Letter = {
+export const MH_TSADI: Letter = {
     order: 18,
-    names: ['Tsadi'],
+    names: [
+        {
+            char: 'Tsadi',
+            spellings: ['Tsadi', 'Tzadi'],
+            phonetics: { dictionary: 'tsä-dē', ipa: 'ˈtsadi' }
+        }
+    ],
     category: 'consonant',
     glyphs: { script: 'Hebrew', forms: { standard: 'צ', final: 'ץ' } },
     codepoints: [
@@ -401,9 +517,15 @@ export const HE_TSADI: Letter = {
 //***************
 //****** ק ******
 //***************
-export const HE_QOF: Letter = {
+export const MH_QOF: Letter = {
     order: 19,
-    names: ['Qof'],
+    names: [
+        {
+            char: 'Qof',
+            spellings: ['Qof', 'Kof'],
+            phonetics: { dictionary: 'kof', ipa: 'kof' }
+        }
+    ],
     category: 'consonant',
     glyphs: { script: 'Hebrew', forms: { standard: 'ק' } },
     codepoints: [
@@ -422,9 +544,15 @@ export const HE_QOF: Letter = {
 //***************
 //****** ר ******
 //***************
-export const HE_RESH: Letter = {
+export const MH_RESH: Letter = {
     order: 20,
-    names: ['Resh'],
+    names: [
+        {
+            char: 'Resh',
+            spellings: ['Resh'],
+            phonetics: { dictionary: 'resh', ipa: 'reʃ' }
+        }
+    ],
     category: 'consonant',
     glyphs: { script: 'Hebrew', forms: { standard: 'ר' } },
     codepoints: [
@@ -444,9 +572,20 @@ export const HE_RESH: Letter = {
 //***************
 //****** ש ******
 //***************
-export const HE_SHIN: Letter = {
+export const MH_SHIN: Letter = {
     order: 21,
-    names: ['Shin/Sin'],
+    names: [
+        {
+            char: 'Shin',
+            spellings: ['Shin'],
+            phonetics: { dictionary: 'shēn', ipa: 'ʃin' }
+        },
+        {
+            char: 'Sin',
+            spellings: ['Sin'],
+            phonetics: { dictionary: 'sēn', ipa: 'sin' }
+        }
+    ],
     category: 'consonant',
     glyphs: { script: 'Hebrew', forms: { standard: 'ש' } },
     codepoints: [
@@ -466,9 +605,15 @@ export const HE_SHIN: Letter = {
 //***************
 //****** ת ******
 //***************
-export const HE_TAV: Letter = {
+export const MH_TAV: Letter = {
     order: 22,
-    names: ['Tav'],
+    names: [
+        {
+            char: 'Tav',
+            spellings: ['Tav'],
+            phonetics: { dictionary: 'täv', ipa: 'tav' }
+        }
+    ],
     category: 'consonant',
     glyphs: { script: 'Hebrew', forms: { standard: 'ת', dagesh: true } },
     codepoints: [
@@ -484,32 +629,27 @@ export const HE_TAV: Letter = {
     ],
 };
 
-
 //*====================================/
 //*======== ASSEMBLED ALPHABET ========/
 //*====================================/
-
-const hebrewAlphabet: Letter[] = [
-    HE_ALEF, HE_BET,
-    HE_GIMEL, HE_DALET, HE_HE,
-    HE_VAV, HE_ZAYIN, HE_HET, HE_TET,
-    HE_YOD, HE_KAF,
-    HE_LAMED, HE_MEM, HE_NUN,
-    HE_SAMEKH, HE_AYIN, HE_PE,
-    HE_TSADI, HE_QOF, HE_RESH,
-    HE_SHIN, HE_TAV
+export const hebrewAlphabet: Letter[] = [
+    MH_ALEF, MH_BET,
+    MH_GIMEL, MH_DALET, MH_HE,
+    MH_VAV, MH_ZAYIN, MH_HET, MH_TET,
+    MH_YOD, MH_KAF,
+    MH_LAMED, MH_MEM, MH_NUN,
+    MH_SAMEKH, MH_AYIN, MH_PE,
+    MH_TSADI, MH_QOF, MH_RESH,
+    MH_SHIN, MH_TAV
 ];
-
 
 //*====================================/
 //*======== ASSEMBLED LANGUAGE ========/
 //*====================================/
-
 export const ModernHebrew: Language = {
     name: "Modern Hebrew",
     nick: "Hebrew",
     abbr: "MH",
     alphabet: hebrewAlphabet,
     script: 'Hebrew',
-}
-
+};

@@ -1,4 +1,4 @@
-import { ScriptMeta, Language } from '../types/types'
+import { ScriptMeta } from '../types/types'
 
 import { LANGUAGES } from './languages'
 
@@ -13,19 +13,30 @@ export const LatinScript: ScriptMeta = {
     firstThree: 'abc'
 };
 
-export const HebrewScript: ScriptMeta<{ "Modern Hebrew": Language}> = {
+export const HebrewScript: ScriptMeta = {
     name: 'Hebrew',
     label: 'Hebrew',
     dir: 'rtl',
     upperCase: false,
     languages: { 'Modern Hebrew': LANGUAGES['Modern Hebrew'] },
-    defaultLanguage:'Modern Hebrew',
+    defaultLanguage: 'Modern Hebrew',
     firstThree: 'אבג'
 };
 
+export const ArabicScript: ScriptMeta = {
+    name: 'Arabic',
+    label: 'Arabic',
+    dir: 'rtl',
+    upperCase: false,
+    languages: { 'Modern Arabic': LANGUAGES['Modern Arabic'] },
+    defaultLanguage: 'Modern Arabic',
+    firstThree: 'ابت'
+};
+
 export const SCRIPTS = {
-    'Latin': LatinScript,
-    'Hebrew': HebrewScript
+    'Arabic': ArabicScript,
+    'Hebrew': HebrewScript,
+    'Latin': LatinScript
 };
 
 export const ScriptKeys = Object.keys(SCRIPTS);

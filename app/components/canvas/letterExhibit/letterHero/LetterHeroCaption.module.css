@@ -12,5 +12,14 @@
     justify-content: center;
     align-items: center;
     border-radius: var(--master-border-radius);
-    width: 100%;    
+    width: 100%;
+    min-width: fit-content;
+    padding: 0 1vw;
+}
+
+.order,
+.name {
+    font-family: var(--font-roboto-slab);
+    font-size: clamp(14pt, 1vw, 36pt);
+    font-weight: bold;
 }

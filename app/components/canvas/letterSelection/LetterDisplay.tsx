@@ -36,7 +36,7 @@ export default function LetterDisplay() {
                 >
                     {letters.map((letter, i) => (
                         <motion.button
-                            key={letter.names?.[0] ?? i}
+                            key={letter.names?.[0].char ?? i}
                             className={styles.tileWrapper}
                             whileHover={{ scale: 1.06 }}
                             whileTap={{ scale: 0.97 }}

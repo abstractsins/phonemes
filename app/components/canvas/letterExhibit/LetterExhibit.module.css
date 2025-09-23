@@ -4,7 +4,6 @@
     position: absolute;
     border-radius: var(--master-border-radius);
     align-items: center;
-    /* width: 95%; */
     width: 95vw;
     padding: 5vh 0;
     transform: scale(1);
@@ -15,14 +14,14 @@
 }
 
 .body.Latin {
-    background-color: lightgreen;
+    background-color: rgb(235, 199, 0);
 }
-
 .body.Hebrew {
     background-color: rgb(220, 144, 255);
 }
-
-.body.Arabic {}
+.body.Arabic {
+    background-color: rgb(197, 197, 53);
+}
 
 .body.Greek {}
 

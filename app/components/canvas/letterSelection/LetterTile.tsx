@@ -7,12 +7,12 @@ interface Props {
     size?: string;
 }
 
-export default function LetterTile({ letter, title, size = 'medium'}: Props) {
+export default function LetterTile({ letter, title, size = 'medium' }: Props) {
 
     const script = letter.glyphs.script;
 
     return (
-        <div className={`${styles.body} ${styles[size]}`}>
+        <div className={`${styles.body} ${styles[size]} ${title ? styles[title] : ''}`}>
 
             {title && <span className={styles.title}>{title}</span>}
 
@@ -24,6 +24,10 @@ export default function LetterTile({ letter, title, size = 'medium'}: Props) {
                 {
                     script === "Hebrew" &&
                     (`${letter.glyphs.forms.standard} ${letter.glyphs.forms.final || ''}`)
+                }
+                {
+                    script === "Arabic" &&
+                    (`${letter.glyphs.forms.isolated}`)
                 }
             </span>
         </div>

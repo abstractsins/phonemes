@@ -1,18 +1,18 @@
 import { Language, Letter } from '@/app/types/types';
-
 import { enGA } from '../dialects/dialects';
-
-
-//*====================================/
-//*======== INDIVIDUAL LETTERS ========/
-//*====================================/
 
 //***************
 //****** A ******
 //***************
 export const EN_A: Letter = {
     order: 1,
-    names: ['A'],
+    names: [
+        {
+            char: 'A',
+            spellings: ['Ay'],
+            phonetics: { dictionary: 'ā', ipa: 'eɪ' }
+        }
+    ],
     category: 'vowel',
     glyphs: { script: 'Latin', forms: { upper: 'A', lower: 'a' } },
     codepoints: [
@@ -32,13 +32,18 @@ export const EN_A: Letter = {
     ],
 };
 
-
 //***************
 //****** B ******
 //***************
 export const EN_B: Letter = {
     order: 2,
-    names: ['B'],
+    names: [
+        {
+            char: 'B',
+            spellings: ['Bee'],
+            phonetics: { dictionary: 'bē', ipa: 'biː' }
+        }
+    ],
     category: 'consonant',
     glyphs: { script: 'Latin', forms: { upper: 'B', lower: 'b' } },
     codepoints: [
@@ -48,20 +53,23 @@ export const EN_B: Letter = {
     phonology: [
         {
             dialect: enGA,
-            phonemes: [
-                { ipa: 'b', example: { word: 'baseball' } }
-            ],
+            phonemes: [{ ipa: 'b', example: { word: 'baseball' } }],
         }
     ],
 };
-
 
 //***************
 //****** C ******
 //***************
 export const EN_C: Letter = {
     order: 3,
-    names: ['C'],
+    names: [
+        {
+            char: 'C',
+            spellings: ['Cee'],
+            phonetics: { dictionary: 'sē', ipa: 'siː' }
+        }
+    ],
     category: 'consonant',
     glyphs: { script: 'Latin', forms: { upper: 'C', lower: 'c' } },
     codepoints: [
@@ -80,13 +88,18 @@ export const EN_C: Letter = {
     ],
 };
 
-
 //***************
 //****** D ******
 //***************
 export const EN_D: Letter = {
     order: 4,
-    names: ['D'],
+    names: [
+        {
+            char: 'D',
+            spellings: ['Dee'],
+            phonetics: { dictionary: 'dē', ipa: 'diː' }
+        }
+    ],
     category: 'consonant',
     glyphs: { script: 'Latin', forms: { upper: 'D', lower: 'd' } },
     codepoints: [
@@ -96,20 +109,23 @@ export const EN_D: Letter = {
     phonology: [
         {
             dialect: enGA,
-            phonemes: [
-                { ipa: 'd', example: { word: 'delivered' } }
-            ],
+            phonemes: [{ ipa: 'd', example: { word: 'delivered' } }],
         }
     ],
 };
-
 
 //***************
 //****** E ******
 //***************
 export const EN_E: Letter = {
     order: 5,
-    names: ['E'],
+    names: [
+        {
+            char: 'E',
+            spellings: ['Ee'],
+            phonetics: { dictionary: 'ē', ipa: 'iː' }
+        }
+    ],
     category: 'vowel',
     glyphs: { script: 'Latin', forms: { upper: 'E', lower: 'e' } },
     codepoints: [
@@ -128,13 +144,18 @@ export const EN_E: Letter = {
     ],
 };
 
-
 //***************
 //****** F ******
 //***************
 export const EN_F: Letter = {
     order: 6,
-    names: ['F'],
+    names: [
+        {
+            char: 'F',
+            spellings: ['Ef'],
+            phonetics: { dictionary: 'ĕf', ipa: 'ɛf' }
+        }
+    ],
     category: 'consonant',
     glyphs: { script: 'Latin', forms: { upper: 'F', lower: 'f' } },
     codepoints: [
@@ -144,20 +165,23 @@ export const EN_F: Letter = {
     phonology: [
         {
             dialect: enGA,
-            phonemes: [
-                { ipa: 'f', example: { word: 'fanfare' } }
-            ],
+            phonemes: [{ ipa: 'f', example: { word: 'fanfare' } }],
         }
     ],
 };
-
 
 //***************
 //****** G ******
 //***************
 export const EN_G: Letter = {
     order: 7,
-    names: ['G'],
+    names: [
+        {
+            char: 'G',
+            spellings: ['Gee'],
+            phonetics: { dictionary: 'jē', ipa: 'dʒiː' }
+        }
+    ],
     category: 'consonant',
     glyphs: { script: 'Latin', forms: { upper: 'G', lower: 'g' } },
     codepoints: [
@@ -176,13 +200,18 @@ export const EN_G: Letter = {
     ],
 };
 
-
 //***************
 //****** H ******
 //***************
 export const EN_H: Letter = {
     order: 8,
-    names: ['H'],
+    names: [
+        {
+            char: 'H',
+            spellings: ['Aitch'],
+            phonetics: { dictionary: 'āch', ipa: 'eɪtʃ' }
+        }
+    ],
     category: 'consonant',
     glyphs: { script: 'Latin', forms: { upper: 'H', lower: 'h' } },
     codepoints: [
@@ -192,20 +221,23 @@ export const EN_H: Letter = {
     phonology: [
         {
             dialect: enGA,
-            phonemes: [
-                { ipa: 'h', example: { word: 'hat' } }
-            ],
+            phonemes: [{ ipa: 'h', example: { word: 'hat' } }],
         }
     ],
 };
-
 
 //***************
 //****** I ******
 //***************
 export const EN_I: Letter = {
     order: 9,
-    names: ['I'],
+    names: [
+        {
+            char: 'I',
+            spellings: ['Eye'],
+            phonetics: { dictionary: 'ī', ipa: 'aɪ' }
+        }
+    ],
     category: 'vowel',
     glyphs: { script: 'Latin', forms: { upper: 'I', lower: 'i' } },
     codepoints: [
@@ -224,13 +256,18 @@ export const EN_I: Letter = {
     ],
 };
 
-
 //***************
 //****** J ******
 //***************
 export const EN_J: Letter = {
     order: 10,
-    names: ['J'],
+    names: [
+        {
+            char: 'J',
+            spellings: ['Jay'],
+            phonetics: { dictionary: 'jā', ipa: 'dʒeɪ' }
+        }
+    ],
     category: 'consonant',
     glyphs: { script: 'Latin', forms: { upper: 'J', lower: 'j' } },
     codepoints: [
@@ -240,20 +277,23 @@ export const EN_J: Letter = {
     phonology: [
         {
             dialect: enGA,
-            phonemes: [
-                { ipa: 'dʒ', example: { word: 'jam' } }
-            ],
+            phonemes: [{ ipa: 'dʒ', example: { word: 'jam' } }],
         }
     ],
 };
-
 
 //***************
 //****** K ******
 //***************
 export const EN_K: Letter = {
     order: 11,
-    names: ['K'],
+    names: [
+        {
+            char: 'K',
+            spellings: ['Kay'],
+            phonetics: { dictionary: 'kā', ipa: 'keɪ' }
+        }
+    ],
     category: 'consonant',
     glyphs: { script: 'Latin', forms: { upper: 'K', lower: 'k' } },
     codepoints: [
@@ -263,20 +303,23 @@ export const EN_K: Letter = {
     phonology: [
         {
             dialect: enGA,
-            phonemes: [
-                { ipa: 'k', example: { word: 'kettle' } }
-            ],
+            phonemes: [{ ipa: 'k', example: { word: 'kettle' } }],
         }
     ],
 };
-
 
 //***************
 //****** L ******
 //***************
 export const EN_L: Letter = {
     order: 12,
-    names: ['L'],
+    names: [
+        {
+            char: 'L',
+            spellings: ['El'],
+            phonetics: { dictionary: 'ĕl', ipa: 'ɛl' }
+        }
+    ],
     category: 'consonant',
     glyphs: { script: 'Latin', forms: { upper: 'L', lower: 'l' } },
     codepoints: [
@@ -294,13 +337,18 @@ export const EN_L: Letter = {
     ],
 };
 
-
 //***************
 //****** M ******
 //***************
 export const EN_M: Letter = {
     order: 13,
-    names: ['M'],
+    names: [
+        {
+            char: 'M',
+            spellings: ['Em'],
+            phonetics: { dictionary: 'ĕm', ipa: 'ɛm' }
+        }
+    ],
     category: 'consonant',
     glyphs: { script: 'Latin', forms: { upper: 'M', lower: 'm' } },
     codepoints: [
@@ -310,20 +358,23 @@ export const EN_M: Letter = {
     phonology: [
         {
             dialect: enGA,
-            phonemes: [
-                { ipa: 'm', example: { word: 'momentum' } }
-            ],
+            phonemes: [{ ipa: 'm', example: { word: 'momentum' } }],
         }
     ],
 };
-
 
 //***************
 //****** N ******
 //***************
 export const EN_N: Letter = {
     order: 14,
-    names: ['N'],
+    names: [
+        {
+            char: 'N',
+            spellings: ['En'],
+            phonetics: { dictionary: 'ĕn', ipa: 'ɛn' }
+        }
+    ],
     category: 'consonant',
     glyphs: { script: 'Latin', forms: { upper: 'N', lower: 'n' } },
     codepoints: [
@@ -333,20 +384,23 @@ export const EN_N: Letter = {
     phonology: [
         {
             dialect: enGA,
-            phonemes: [
-                { ipa: 'n', example: { word: 'nonsense' } }
-            ],
+            phonemes: [{ ipa: 'n', example: { word: 'nonsense' } }],
         }
     ],
 };
-
 
 //***************
 //****** O ******
 //***************
 export const EN_O: Letter = {
     order: 15,
-    names: ['O'],
+    names: [
+        {
+            char: 'O',
+            spellings: ['Oh'],
+            phonetics: { dictionary: 'ō', ipa: 'oʊ' }
+        }
+    ],
     category: 'vowel',
     glyphs: { script: 'Latin', forms: { upper: 'O', lower: 'o' } },
     codepoints: [
@@ -366,13 +420,18 @@ export const EN_O: Letter = {
     ],
 };
 
-
 //***************
 //****** P ******
 //***************
 export const EN_P: Letter = {
     order: 16,
-    names: ['P'],
+    names: [
+        {
+            char: 'P',
+            spellings: ['Pee'],
+            phonetics: { dictionary: 'pē', ipa: 'piː' }
+        }
+    ],
     category: 'consonant',
     glyphs: { script: 'Latin', forms: { upper: 'P', lower: 'p' } },
     codepoints: [
@@ -382,20 +441,23 @@ export const EN_P: Letter = {
     phonology: [
         {
             dialect: enGA,
-            phonemes: [
-                { ipa: 'p', example: { word: 'pen' } }
-            ],
+            phonemes: [{ ipa: 'p', example: { word: 'pen' } }],
         }
     ],
 };
-
 
 //***************
 //****** Q ******
 //***************
 export const EN_Q: Letter = {
     order: 17,
-    names: ['Q'],
+    names: [
+        {
+            char: 'Q',
+            spellings: ['Cue'],
+            phonetics: { dictionary: 'kyü', ipa: 'kjuː' }
+        }
+    ],
     category: 'consonant',
     glyphs: { script: 'Latin', forms: { upper: 'Q', lower: 'q' } },
     codepoints: [
@@ -413,13 +475,18 @@ export const EN_Q: Letter = {
     ],
 };
 
-
 //***************
 //****** R ******
 //***************
 export const EN_R: Letter = {
     order: 18,
-    names: ['R'],
+    names: [
+        {
+            char: 'R',
+            spellings: ['Ar'],
+            phonetics: { dictionary: 'är', ipa: 'ɑɹ' }
+        }
+    ],
     category: 'consonant',
     glyphs: { script: 'Latin', forms: { upper: 'R', lower: 'r' } },
     codepoints: [
@@ -429,20 +496,23 @@ export const EN_R: Letter = {
     phonology: [
         {
             dialect: enGA,
-            phonemes: [
-                { ipa: 'ɹ', example: { word: 'run' } }
-            ],
+            phonemes: [{ ipa: 'ɹ', example: { word: 'run' } }],
         }
     ],
 };
-
 
 //***************
 //****** S ******
 //***************
 export const EN_S: Letter = {
     order: 19,
-    names: ['S'],
+    names: [
+        {
+            char: 'S',
+            spellings: ['Es'],
+            phonetics: { dictionary: 'ĕs', ipa: 'ɛs' }
+        }
+    ],
     category: 'consonant',
     glyphs: { script: 'Latin', forms: { upper: 'S', lower: 's' } },
     codepoints: [
@@ -462,13 +532,18 @@ export const EN_S: Letter = {
     ],
 };
 
-
 //***************
 //****** T ******
 //***************
 export const EN_T: Letter = {
     order: 20,
-    names: ['T'],
+    names: [
+        {
+            char: 'T',
+            spellings: ['Tee'],
+            phonetics: { dictionary: 'tē', ipa: 'tiː' }
+        }
+    ],
     category: 'consonant',
     glyphs: { script: 'Latin', forms: { upper: 'T', lower: 't' } },
     codepoints: [
@@ -487,13 +562,18 @@ export const EN_T: Letter = {
     ],
 };
 
-
 //***************
 //****** U ******
 //***************
 export const EN_U: Letter = {
     order: 21,
-    names: ['U'],
+    names: [
+        {
+            char: 'U',
+            spellings: ['You'],
+            phonetics: { dictionary: 'yü', ipa: 'juː' }
+        }
+    ],
     category: 'vowel',
     glyphs: { script: 'Latin', forms: { upper: 'U', lower: 'u' } },
     codepoints: [
@@ -513,13 +593,18 @@ export const EN_U: Letter = {
     ],
 };
 
-
 //***************
 //****** V ******
 //***************
 export const EN_V: Letter = {
     order: 22,
-    names: ['V'],
+    names: [
+        {
+            char: 'V',
+            spellings: ['Vee'],
+            phonetics: { dictionary: 'vē', ipa: 'viː' }
+        }
+    ],
     category: 'consonant',
     glyphs: { script: 'Latin', forms: { upper: 'V', lower: 'v' } },
     codepoints: [
@@ -529,20 +614,25 @@ export const EN_V: Letter = {
     phonology: [
         {
             dialect: enGA,
-            phonemes: [
-                { ipa: 'v', example: { word: 'van' } }
-            ],
+            phonemes: [{ ipa: 'v', example: { word: 'van' } }],
         }
     ],
 };
-
 
 //***************
 //****** W ******
 //***************
 export const EN_W: Letter = {
     order: 23,
-    names: ['W'],
+    names: [
+        {
+            char: 'W',
+            spellings: ['Double-U'],
+            phonetics:
+                { dictionary: 'dŭb-əl-yü', ipa: 'ˈdʌbəl-juː' }
+
+        }
+    ],
     category: 'consonant',
     glyphs: { script: 'Latin', forms: { upper: 'W', lower: 'w' } },
     codepoints: [
@@ -552,20 +642,23 @@ export const EN_W: Letter = {
     phonology: [
         {
             dialect: enGA,
-            phonemes: [
-                { ipa: 'w', example: { word: 'wastewater' } }
-            ],
+            phonemes: [{ ipa: 'w', example: { word: 'wastewater' } }],
         }
     ],
 };
-
 
 //***************
 //****** X ******
 //***************
 export const EN_X: Letter = {
     order: 24,
-    names: ['X'],
+    names: [
+        {
+            char: 'X',
+            spellings: ['Ex'],
+            phonetics: { dictionary: 'ĕks', ipa: 'ɛks' }
+        }
+    ],
     category: 'consonant',
     glyphs: { script: 'Latin', forms: { upper: 'X', lower: 'x' } },
     codepoints: [
@@ -584,13 +677,18 @@ export const EN_X: Letter = {
     ],
 };
 
-
 //***************
 //****** Y ******
 //***************
 export const EN_Y: Letter = {
     order: 25,
-    names: ['Y'],
+    names: [
+        {
+            char: 'Y',
+            spellings: ['Wye'],
+            phonetics: { dictionary: 'wī', ipa: 'waɪ' }
+        }
+    ],
     category: 'other',
     glyphs: { script: 'Latin', forms: { upper: 'Y', lower: 'y' } },
     codepoints: [
@@ -610,13 +708,19 @@ export const EN_Y: Letter = {
     ],
 };
 
-
 //***************
 //****** Z ******
 //***************
 export const EN_Z: Letter = {
     order: 26,
-    names: ['Z'],
+    names: [
+        {
+            char: 'Z',
+            spellings: ['Zee'],
+            phonetics:
+                { dictionary: 'zē', ipa: 'ziː' }   // US/GA
+        }
+    ],
     category: 'consonant',
     glyphs: { script: 'Latin', forms: { upper: 'Z', lower: 'z' } },
     codepoints: [
@@ -626,13 +730,10 @@ export const EN_Z: Letter = {
     phonology: [
         {
             dialect: enGA,
-            phonemes: [
-                { ipa: 'z', example: { word: 'zoo' } }
-            ],
+            phonemes: [{ ipa: 'z', example: { word: 'zoo' } }],
         }
     ],
 };
-
 
 //*====================================/
 //*======== ASSEMBLED ALPHABET ========/
@@ -645,8 +746,7 @@ export const englishAlphabet: Letter[] = [
     EN_T, EN_U, EN_V,
     EN_W, EN_X,
     EN_Y, EN_Z
-]
-
+];
 
 //*====================================/
 //*======== ASSEMBLED LANGUAGE ========/
@@ -657,4 +757,4 @@ export const English: Language = {
     abbr: 'EN',
     alphabet: englishAlphabet,
     script: 'Latin',
-}
+};

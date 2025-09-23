@@ -12,10 +12,13 @@
 }
 
 .body.Latin {
-    background-color: lightblue;
+    background-color: lightgreen;
 }
 .body.Hebrew {
     background-color: lightpink;
+}
+.body.Arabic {
+    background-color: lightskyblue;
 }
 
 .body.hide {

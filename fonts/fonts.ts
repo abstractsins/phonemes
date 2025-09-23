@@ -52,7 +52,7 @@ export const playpen = Playpen_Sans_Hebrew({
 
 export const rubikDoodleShadow = Rubik_Doodle_Shadow({
     variable: '--font-rubik-doodle-shadow',
-    subsets: ['hebrew', 'latin'],
+    subsets: ['hebrew', 'latin', 'cyrillic'],
     weight: ['400']
 });
 

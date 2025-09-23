@@ -4,16 +4,17 @@ import {
     type LanguageName,
     type Letter,
     isGlyphs
-} from "@types";
+} from '@types';
 
-import { LANGUAGES } from "@data/languages";
-import { SCRIPTS } from "@data/scripts";
+import { LANGUAGES } from '@data/languages';
+import { SCRIPTS } from '@data/scripts';
 
-import { createContext, useContext, useEffect, useMemo, useReducer } from "react";
+import { createContext, useContext, useEffect, useMemo, useReducer } from 'react';
 
 export const LANGUAGE_TO_SCRIPT: Partial<Record<LanguageName, ScriptName>> = {
-    "English": "Latin",
-    "Modern Hebrew": "Hebrew",
+    'English': 'Latin',
+    'Modern Hebrew': 'Hebrew',
+    'Modern Arabic': 'Arabic'
 };
 
 //* ============================================================
@@ -30,31 +31,31 @@ export interface SoundMapState {
 }
 
 export type SoundMapAction =
-    | { type: "SET_LANGUAGE"; language: LanguageName }
-    | { type: "SET_SCRIPT"; script: ScriptName }
-    | { type: "SET_LETTER"; letter: Letter | null; script?: ScriptName } // ← script override
-    | { type: "SET_DIRECTION"; direction: Dir }
-    | { type: "SET_CANVAS"; canvasVisible: boolean }
-    | { type: "CLEAR_SELECTION" };
+    | { type: 'SET_LANGUAGE'; language: LanguageName }
+    | { type: 'SET_SCRIPT'; script: ScriptName }
+    | { type: 'SET_LETTER'; letter: Letter | null; script?: ScriptName } // ← script override
+    | { type: 'SET_DIRECTION'; direction: Dir }
+    | { type: 'SET_CANVAS'; canvasVisible: boolean }
+    | { type: 'CLEAR_SELECTION' };
 
 
 
-function deriveScriptFromLanguage(lang: LanguageName, fallback: ScriptName = "Latin"): ScriptName {
+function deriveScriptFromLanguage(lang: LanguageName, fallback: ScriptName = 'Latin'): ScriptName {
     return LANGUAGE_TO_SCRIPT[lang] ?? fallback;
 }
 
 function deriveDirFromScript(script: ScriptName): Dir {
-    return SCRIPTS[script]?.dir ?? "ltr";
+    return SCRIPTS[script]?.dir ?? 'ltr';
 }
 
-function deriveAbbrFromLanguage(lang: LanguageName, fallback: string = "EN"): string {
+function deriveAbbrFromLanguage(lang: LanguageName, fallback: string = 'EN'): string {
     return LANGUAGES[lang]?.abbr ?? fallback;
 }
 
 
 export function createInitialState(partial?: Partial<SoundMapState>): SoundMapState {
-    const language = partial?.selectedLanguage ?? ("English" as LanguageName);
-    const script = partial?.selectedScript ?? deriveScriptFromLanguage(language, "Latin");
+    const language = partial?.selectedLanguage ?? ('English' as LanguageName);
+    const script = partial?.selectedScript ?? deriveScriptFromLanguage(language, 'Latin');
     const abbr = partial?.selectedLanguageAbbr ?? deriveAbbrFromLanguage(language);
     const direction = partial?.direction ?? deriveDirFromScript(script);
 
@@ -72,7 +73,7 @@ export function createInitialState(partial?: Partial<SoundMapState>): SoundMapSt
 
 function reducer(state: SoundMapState, action: SoundMapAction): SoundMapState {
     switch (action.type) {
-        case "SET_LANGUAGE": {
+        case 'SET_LANGUAGE': {
             const nextScript = deriveScriptFromLanguage(action.language, state.selectedScript);
             const nextDir = deriveDirFromScript(nextScript);
             const nextAbbr = deriveAbbrFromLanguage(action.language);
@@ -87,7 +88,7 @@ function reducer(state: SoundMapState, action: SoundMapAction): SoundMapState {
                 selectedLetter: null
             };
         }
-        case "SET_SCRIPT": {
+        case 'SET_SCRIPT': {
             const dir = deriveDirFromScript(action.script);
             return {
                 ...state,
@@ -95,7 +96,7 @@ function reducer(state: SoundMapState, action: SoundMapAction): SoundMapState {
                 direction: dir
             };
         }
-        case "SET_LETTER": {
+        case 'SET_LETTER': {
             if (!action.letter) return { ...state, selectedLetter: null, canvasVisible: false };
 
             // prefer explicit script passed in; else take it from the letter; else keep current
@@ -118,17 +119,17 @@ function reducer(state: SoundMapState, action: SoundMapAction): SoundMapState {
                 canvasVisible: true
             };
         }
-        case "SET_DIRECTION":
+        case 'SET_DIRECTION':
             return {
                 ...state,
                 direction: action.direction
             };
-        case "SET_CANVAS":
+        case 'SET_CANVAS':
             return {
                 ...state,
                 canvasVisible: action.canvasVisible
             };
-        case "CLEAR_SELECTION":
+        case 'CLEAR_SELECTION':
             return {
                 ...state,
                 selectedLetter: null,
@@ -158,14 +159,14 @@ export interface SoundMapProviderProps {
     children: React.ReactNode;
     initial?: Partial<SoundMapState>;
     persist?: boolean; // persist in localStorage
-    storageKey?: string; // default: "soundmap:ctx"
+    storageKey?: string; // default: 'soundmap:ctx'
 }
 
 
-export function SoundMapProvider({ children, initial, persist = true, storageKey = "soundmap:ctx" }: SoundMapProviderProps) {
+export function SoundMapProvider({ children, initial, persist = true, storageKey = 'soundmap:ctx' }: SoundMapProviderProps) {
     // Load from localStorage (if enabled) only once on mount
     const hydratedInitial = useMemo(() => {
-        if (typeof window === "undefined") return createInitialState(initial);
+        if (typeof window === 'undefined') return createInitialState(initial);
         if (!persist) return createInitialState(initial);
         try {
             const raw = window.localStorage.getItem(storageKey);
@@ -183,7 +184,7 @@ export function SoundMapProvider({ children, initial, persist = true, storageKey
 
     // Persist on change
     useEffect(() => {
-        if (!persist || typeof window === "undefined") return;
+        if (!persist || typeof window === 'undefined') return;
         try {
             window.localStorage.setItem(storageKey, JSON.stringify(state));
         } catch (err) {
@@ -193,12 +194,12 @@ export function SoundMapProvider({ children, initial, persist = true, storageKey
 
     const value: CtxValue = useMemo(() => ({
         ...state,
-        setLanguage: (language) => dispatch({ type: "SET_LANGUAGE", language }),
-        setScript: (script) => dispatch({ type: "SET_SCRIPT", script }),
-        setLetter: (letter, script) => dispatch({ type: "SET_LETTER", letter, script }),
-        setDirection: (direction) => dispatch({ type: "SET_DIRECTION", direction }),
-        setCanvas: (canvasVisible) => dispatch({ type: "SET_CANVAS", canvasVisible }),
-        clearSelection: () => dispatch({ type: "CLEAR_SELECTION" }),
+        setLanguage: (language) => dispatch({ type: 'SET_LANGUAGE', language }),
+        setScript: (script) => dispatch({ type: 'SET_SCRIPT', script }),
+        setLetter: (letter, script) => dispatch({ type: 'SET_LETTER', letter, script }),
+        setDirection: (direction) => dispatch({ type: 'SET_DIRECTION', direction }),
+        setCanvas: (canvasVisible) => dispatch({ type: 'SET_CANVAS', canvasVisible }),
+        clearSelection: () => dispatch({ type: 'CLEAR_SELECTION' }),
     }), [state]);
 
     return (
@@ -211,7 +212,7 @@ export function SoundMapProvider({ children, initial, persist = true, storageKey
 
 export function useSoundMap(): CtxValue {
     const ctx = useContext(SoundMapContext);
-    if (!ctx) throw new Error("useSoundMap must be used within <SoundMapProvider>");
+    if (!ctx) throw new Error('useSoundMap must be used within <SoundMapProvider>');
     return ctx;
 }
 

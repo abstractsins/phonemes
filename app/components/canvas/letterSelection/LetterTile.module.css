@@ -11,6 +11,16 @@
     min-width: clamp(50px, 4vw, 300px);
 }
 
+.body.Latin {
+    background-color: rgb(235, 205, 205);
+}
+.body.Hebrew {
+    background-color: lightblue;
+}
+.body.Arabic {
+    background-color: rgb(182, 209, 207);
+}
+
 .letter {
     display: flex;
 }
@@ -30,8 +40,8 @@
 .body.small {
     padding: .5vh .5vw;
     border-radius: 7px;
-    margin: .5vh .125vw;
     min-width: clamp(25px, 2vw, 150px);
+    height: 70px;
     /* max-width: clamp(35px, 4vw, 200px); */
 }
 

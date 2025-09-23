@@ -10,10 +10,10 @@ export default function LetterHeroCaption() {
         <div className={styles.wrapper}>
 
             <div className={styles.body}>
-                <span>{selectedLetter?.names}</span>
+                <span className={styles.name}>{selectedLetter?.names[0].spellings.join('/')}</span>
             </div>
             <div className={styles.body}>
-                <span>{selectedLetter?.order}</span>
+                <span className={styles.name}>/{selectedLetter?.names[0].phonetics.dictionary}/</span>
             </div>
 
         </div>

@@ -1,10 +1,10 @@
 import { IPA } from './ipa'
 
-export type ScriptName = 'Hebrew' | 'Latin';
+export type ScriptName = 'Arabic' | 'Hebrew' | 'Latin';
 
-export type LanguageName = 'English' | 'Modern Hebrew';
+export type LanguageName = 'English' | 'Modern Hebrew' | 'Modern Arabic';
 
-export type DialectName = 'General American' | 'Received Pronunciation' | 'Canadian' | 'Australian' | 'Israeli Hebrew';
+export type DialectName = 'General American' | 'Received Pronunciation' | 'Canadian' | 'Australian' | 'Israeli Hebrew' | 'Modern Standard Arabic';
 
 export type DialectId = 'en-GA' | 'en-RP' | 'he-IL' | 'ar-MSA';
 
@@ -17,13 +17,13 @@ export type IpaToLetterMatch = [Letter, ScriptName];
 //* --------------------------------------------------//
 //* -------------------- Metadata --------------------//
 //* --------------------------------------------------//
-export interface ScriptMeta<L extends Record<LanguageName, Language> = Record<LanguageName, Language>> {
+export interface ScriptMeta {
     name: ScriptName;
     label: string;
     dir: Dir;
     upperCase: boolean;
-    languages: L;
-    defaultLanguage: keyof L;
+    languages: Record<string, Language>;
+    defaultLanguage: string;
     firstThree: string;
 }
 
@@ -37,34 +37,12 @@ export type phonemeExample = { word: string; gloss?: string };
 export interface Phoneme {
     ipa: IPA;                   // e.g., 'b', 's', 'ʃ'
     envNote?: string;           // context note: 'before front vowels', etc.
-    example?: phonemeExample | phonemeExample[];
+    example?: phonemeExample;
 }
 
 export type Dialect = {
     id: DialectId;
     name: DialectName;
-}
-
-export interface DialectPhonology {
-    dialect: Dialect;
-    phonemes: Phoneme[];
-    note?: string;
-}
-
-export interface DialectInfo {
-    name: DialectName;   // 'General American'
-    abbr: string;        // 'GA'
-    note?: string;       // shown in tooltip
-}
-
-export interface Codepoint {
-    char: string;               // the literal character
-    unicode: string;            // 'U+05DB'
-    ascii: number;              // '63'
-    oct: string;                // '040'
-    hex: string;                // '2E'
-    bin: string;                // '00100111'
-    name?: string;              // 'HEBREW LETTER KAF'
 }
 
 
@@ -96,22 +74,34 @@ export type ArabicGlyphs = {
     script: 'Arabic';
     joining: ArabicJoining;      // e.g., 'dual' for most letters, 'right' for د/ذ/ر/ز/و, 'none' for standalone marks
     forms: {
-        isolated: string;          // 'ب'
-        initial?: string;          // 'بـ'
-        medial?: string;           // 'ـبـ'
-        final?: string;            // 'ـب'
+        isolated: string;        // 'ب',  base codepoint (U+0628) — rely on font shaping
+        initial?: string;        // 'ب'
+        medial?: string;         // 'ب'
+        final?: string;          // 'ب'
     };
+    presentation: {                 
+        isolated: string;       // 'ﺏ',    U+FE8F
+        initial?: string;       // 'ﺐ',    U+FE90
+        medial?: string;        // 'ﺑ',    U+FE91
+        final?: string;         // 'ﺒ',    U+FE92
+    }
 };
 
-export type Glyphs = LatinGlyphs | HebrewGlyphs;
+export type Glyphs = ArabicGlyphs | LatinGlyphs | HebrewGlyphs;
 
 //* --------------------------------------------------//
 //* ---------- Script-specific glyph forms -----------//
 //* --------------------------------------------------//
 
+export interface LetterName {
+    char: string; // 'M'
+    spellings: string[]; // ['Em']
+    phonetics: { dictionary: string; ipa: string };
+}
+
 export interface Letter {
     order: number;              // alphabetical order inside the language
-    names: string[];            // 'A', 'Alef', 'Bet', 'Bā’'
+    names: LetterName[];
     codepoints: Codepoint[];    // list if multiple forms matter
     glyphs: Glyphs;             // script-aware forms above
     phonology: DialectPhonology[];        // one letter may be multiple phonemes contextually
@@ -126,6 +116,28 @@ export interface Language {
     abbr: string;
     alphabet: Letter[];
     script: ScriptName;
+}
+
+export interface DialectPhonology {
+    dialect: Dialect;
+    phonemes: Phoneme[];
+    note?: string;
+}
+
+export interface DialectInfo {
+    name: DialectName;   // 'General American'
+    abbr: string;        // 'GA'
+    note?: string;       // shown in tooltip
+}
+
+export interface Codepoint {
+    char: string;               // the literal character
+    unicode: string;            // 'U+05DB'
+    ascii: number;              // '63'
+    oct: string;                // '040'
+    hex: string;                // '2E'
+    bin: string;                // '00100111'
+    name?: string;              // 'HEBREW LETTER KAF'
 }
 
 
@@ -152,10 +164,10 @@ export function pickForm(letter: Letter, ctx: DisplayContext): string {
     if (g.script === 'Hebrew' && ctx.script === 'Hebrew') {
         return (ctx.position === 'final' && g.forms.final) ? g.forms.final : g.forms.standard;
     }
-    // if (g.script === 'Arabic' && ctx.script === 'Arabic') {
-    //     return g.forms[ctx.position] ?? g.forms.isolated;
-    // }
-    // fallback
+    if (g.script === 'Arabic' && ctx.script === 'Arabic') {
+        return g.forms[ctx.position] ?? g.forms.isolated;
+    }
+    fallback
     return 'error, bad input';
 }
 

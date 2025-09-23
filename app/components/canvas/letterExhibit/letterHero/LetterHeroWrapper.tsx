@@ -27,6 +27,11 @@ export default function LetterHeroWrapper() {
                     selectedLetter &&
                     isGlyphs(selectedLetter.glyphs, 'Hebrew') &&
                     selectedLetter.glyphs.forms.standard}
+
+                {selectedScript === 'Arabic' &&
+                    selectedLetter &&
+                    isGlyphs(selectedLetter.glyphs, 'Arabic') &&
+                    selectedLetter.glyphs.forms.isolated}
             </div>
 
             <LetterHeroCaption />

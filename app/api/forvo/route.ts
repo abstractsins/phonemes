@@ -3,7 +3,8 @@ import { NextRequest, NextResponse } from 'next/server';
 const lookupLangAbbr = (language: string): string => {
     const langObj: Record<string, string> = {
         english: 'en',
-        'modern hebrew': 'he'
+        'modern hebrew': 'he',
+        'modern arabic': 'ar'
     };
     return langObj[language.toLowerCase()] || '';
 };
@@ -25,7 +26,7 @@ export async function GET(req: NextRequest) {
         const API_KEY = process.env.FORVO_KEY || 'fake-key';
         const apiUrl = 'https://apifree.forvo.com';
         const url = `${apiUrl}/key/${API_KEY}/format/json/action/word-pronunciations/word/${word}/language/${lang}`;
-        
+
         console.log('fetching word: ' + word);
         console.log('in language: ' + lang);
 
