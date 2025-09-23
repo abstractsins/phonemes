@@ -9,7 +9,7 @@ import LetterHeroWrapper from './letterHero/LetterHeroWrapper';
 import DialectCard from './dialect/DialectCard';
 
 
-export default function LetterExhibit({ letter }: Props) {
+export default function LetterExhibit() {
 
     const {
         setLetter,

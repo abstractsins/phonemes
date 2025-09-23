@@ -3,7 +3,9 @@
 import {SCRIPTS, ScriptKeys} from '@data/scripts';
 import { LanguageKeys, LANGUAGES } from '@/app/data/languages';
 
-import { IPA, IpaToLetterMatch, Language, LanguageName, Letter, ScriptMeta } from "@/app/types/types";
+import { IpaToLetterMatch, Language, LanguageName, Letter, ScriptMeta } from "@/app/types/types";
+import {IPA} from '@/app/types/ipa';
+
 import { IPA_MAP, IpaInfo } from "@data/ipaCatalog";
 
 // known multi-char symbols you support (longest-first for greedy matching)

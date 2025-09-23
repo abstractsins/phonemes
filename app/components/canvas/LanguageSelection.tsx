@@ -8,7 +8,7 @@ export default function LanguageSelection() {
 
     return (
         <div className={styles.body}>
-            {Object.values(SCRIPTS).map(( script : ScriptMeta) =>
+            {Object.values(SCRIPTS).map((script) =>
                 <LanguageSelectionModule
                     key={script.name}
                     data={script}
