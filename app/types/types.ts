@@ -17,11 +17,7 @@ export type IpaToLetterMatch = [Letter, ScriptName];
 //* --------------------------------------------------//
 //* -------------------- Metadata --------------------//
 //* --------------------------------------------------//
-<<<<<<< HEAD
 export interface ScriptMeta {
-=======
-export interface ScriptMeta<L extends Partial<Record<LanguageName, Language>>> {
->>>>>>> 48c418ea53521f84376e8637586d20f7f59aeb36
     name: ScriptName;
     label: string;
     dir: Dir;
