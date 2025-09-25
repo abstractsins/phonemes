@@ -31,7 +31,7 @@ export interface SoundMapState {
 }
 
 export type SoundMapAction =
-    | { type: 'SET_LANGUAGE'; language: LanguageName }
+    { type: 'SET_LANGUAGE'; language: LanguageName }
     | { type: 'SET_SCRIPT'; script: ScriptName }
     | { type: 'SET_LETTER'; letter: Letter | null; script?: ScriptName } // ← script override
     | { type: 'SET_DIRECTION'; direction: Dir }
