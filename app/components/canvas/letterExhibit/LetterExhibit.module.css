@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     position: absolute;
-    border-radius: var(--master-border-radius);
+    border-radius: var(--border-radius-main);
     align-items: center;
     width: 95vw;
     padding: 5vh 0;
@@ -35,17 +35,17 @@
 
 .letterHero {
     background-color: whitesmoke;
-    user-select: none;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: var(--master-border-radius);
+    border-radius: var(--border-radius-main);
     font-size: clamp(36pt, 10vw + 5rem, 400pt);
     margin: 0vh 0vw;
     padding: 0vh 2vw;
-    min-width: 15%;
-    height: 80%;
-    filter: drop-shadow(2px 4px 6px black);
+    min-width: 100%;
+    /* height: 100%; */
+    user-select: none;
+    filter: var(--drop-shadow-basic);
 }
 
 .letterCanvas {
@@ -64,6 +64,11 @@
 .letterHero.MH {
     color: limegreen;
     font-family: var(--font-rubik-doodle-shadow);
+}
+
+.letterHero.AR {
+    color: cornflowerblue;
+    font-family: var(--font-noto-naskh);
 }
 
 .letterHeroColumn {

@@ -1,5 +1,6 @@
 :root {
-    --master-border-radius: 25px;
+    --border-radius-main: 1.25rem;
+    --drop-shadow-basic: drop-shadow(2px 4px 6px black);
 }
 
 html,
