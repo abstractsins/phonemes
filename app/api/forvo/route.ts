@@ -6,14 +6,21 @@ const lookupLangAbbr = (language: string): string => {
         'modern hebrew': 'he',
         'modern arabic': 'ar'
     };
-    return langObj[language.toLowerCase()] || '';
+    return langObj[language] || '';
 };
+
+const cleanInputLanguage = (language: string): string => {
+    language = language.toLowerCase();
+    language = language.replaceAll('%20', ' ');
+    return language;
+}
 
 export async function GET(req: NextRequest) {
     try {
         const { searchParams } = new URL(req.url);
         const word = searchParams.get('word');
-        const language = searchParams.get('language');
+        let language = searchParams.get('language');
+        language = cleanInputLanguage(language);
         const lang = lookupLangAbbr(language || '');
 
         if (!word || !lang) {

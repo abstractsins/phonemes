@@ -9,6 +9,7 @@
     border-radius: var(--border-radius-main);
     width: fit-content;
     min-width: 275px;
+    min-width: fit-content;
     max-width: 380px;
     padding: 2vh 1vw;
     padding: 1vh .5vw;
@@ -102,13 +103,13 @@
 }
 
 .tilesWrapper {
-    flex-wrap: wrap;
-    width: 100%;
     display: flex;
-    justify-content: space-between;
+    flex-wrap: wrap;
+    justify-content: center;
     /* background-color: rgba(222, 184, 135, 0.65); */
     background-color: var(--color-letter-match-bg);
     border-radius: var(--border-radius-main);
+    width: 100%;
     height: 100%;
     padding: .75vh .5vw;
     /* margin: 1vh 0.5vw; */
