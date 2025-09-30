@@ -1,4 +1,4 @@
-# The Aleph Bet
+# Aleph Bets
 
 ## Joining common phonemes and graphemes between alphabets
 
