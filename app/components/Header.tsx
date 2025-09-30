@@ -5,6 +5,7 @@ import Feedback from "./header/Feedback";
 import styles from "./Header.module.css";
 import { useState } from "react";
 import CloseButton from "./ui/CloseButton";
+import Link from "next/link";
 
 
 export default function Header() {
@@ -68,6 +69,14 @@ export default function Header() {
                     <div className={styles.headerLink} onClick={showFeedbackHandler}>
                         <span className={`${isFeedbackFormShowing ? styles.active : ''} ${styles.headerLink}`}>Feedback</span>
                     </div>
+
+                    {/* SOURCE */}
+                    <div className={styles.headerLink}>
+                        <Link href={'https://github.com/abstractsins/phonemes'} target="new">
+                            <span className={`${styles.headerLink}`}>Source</span>
+                        </Link>
+                    </div>
+
                 </div>
 
             </div>
