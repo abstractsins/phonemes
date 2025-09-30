@@ -20,7 +20,7 @@ export async function GET(req: NextRequest) {
         const { searchParams } = new URL(req.url);
         const word = searchParams.get('word');
         let language = searchParams.get('language');
-        language = cleanInputLanguage(language);
+        language = cleanInputLanguage(language || '');
         const lang = lookupLangAbbr(language || '');
 
         if (!word || !lang) {

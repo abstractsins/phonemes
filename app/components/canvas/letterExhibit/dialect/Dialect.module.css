@@ -27,7 +27,8 @@
 
 .body {
     display: flex;
+    justify-content: center;
     width: 100%;
     height: 100%;
-    padding: .5vh .125vw;
+    padding: 0vh .125vw;
 }

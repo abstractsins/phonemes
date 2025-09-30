@@ -8,7 +8,7 @@ interface CloseButtonProps {
 
 export default function CloseButton({ onClick, className = "" }: CloseButtonProps) {
   return (
-    <div className={`${styles['close-btn']}`} onClick={onClick} title="close">
+    <div className={`${styles[className]} ${styles['close-btn']}`} onClick={onClick} title="close">
       <RiCloseFill />
     </div>
   );

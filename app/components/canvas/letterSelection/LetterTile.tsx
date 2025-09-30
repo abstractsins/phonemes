@@ -4,10 +4,11 @@ import styles from './LetterTile.module.css';
 interface Props {
     letter: Letter;
     title?: string;
+    footer?: string;
     size?: string;
 }
 
-export default function LetterTile({ letter, title, size = 'medium' }: Props) {
+export default function LetterTile({ letter, title, footer, size = 'medium' }: Props) {
 
     const script = letter.glyphs.script;
 
@@ -30,6 +31,9 @@ export default function LetterTile({ letter, title, size = 'medium' }: Props) {
                     (`${letter.glyphs.forms.isolated}`)
                 }
             </span>
+
+            {footer && <span className={styles.footer}>{footer}</span>}
+
         </div>
     );
 }

@@ -24,6 +24,7 @@
 <!-- CANVAS UI -->
 - language selection more slick?
 - hovering letters get display meta
+- letter tile color by type (vowel, etc)
 
 <!-- LINGUISTICS -->
 - dark L vs light L necessary?

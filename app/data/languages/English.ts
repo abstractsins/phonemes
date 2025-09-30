@@ -496,7 +496,7 @@ export const EN_R: Letter = {
     phonology: [
         {
             dialect: enGA,
-            phonemes: [{ ipa: 'ɹ', example: { word: 'run' } }],
+            phonemes: [{ ipa: 'ɹ', example: { word: 'razor' } }],
         }
     ],
 };

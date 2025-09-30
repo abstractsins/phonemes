@@ -98,7 +98,7 @@ export default function IpaCard({ data, dialect }: Props) {
                     // onHoverStart={() => setHoverLetter(letter)}
                     // onHoverEnd={() => setHoverLetter(null)}
                     >
-                        <LetterTile key={i} letter={letter[0]} title={letter[1]} size='small' />
+                        <LetterTile key={i} letter={letter[0]} title={letter[1]} footer={letter[1] === 'Latin' ? 'English' : ''} size='small' />
                     </motion.button>
                 )}
 

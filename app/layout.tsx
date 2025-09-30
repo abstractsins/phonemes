@@ -7,6 +7,7 @@ import type { Metadata } from "next";
 import {
     // * ------------- ARABIC ------------- //
     notoNaskh,
+    marhey,
     // * ------------- HEBREW ------------- //
     notoSans, notoSerif,
     playpen,
@@ -29,6 +30,7 @@ import "./css/globals.css";
 let fontString = '';
 // * ------------- ARABIC ------------- //
 fontString += `${notoNaskh.variable} `;
+fontString += `${marhey.variable} `;
 // * ------------- HEBREW ------------- //
 fontString += `${notoSans.variable} `;
 fontString += `${notoSerif.variable} `;

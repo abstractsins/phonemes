@@ -4,6 +4,7 @@ import About from "./header/About";
 import Feedback from "./header/Feedback";
 import styles from "./Header.module.css";
 import { useState } from "react";
+import CloseButton from "./ui/CloseButton";
 
 
 export default function Header() {
@@ -40,6 +41,12 @@ export default function Header() {
         }
     };
 
+    const closeHeaderHandler = () => {
+        setHeaderExpanded(false);
+        setAboutShowing(false);
+        setFeedbackFormShowing(false);
+    };
+
 
     return (
         <header className={`${styles.header} ${isHeaderExpanded && styles.expand}`}>
@@ -54,12 +61,12 @@ export default function Header() {
                 <div className={styles.headerLinksWrapper}>
                     {/* ABOUT */}
                     <div className={styles.headerLink} onClick={showAboutHandler}>
-                        <span className={styles.headerLink}>About</span>
+                        <span className={`${isAboutShowing ? styles.active : ''} ${styles.headerLink}`}>About</span>
                     </div>
 
                     {/* FEEDBACK */}
                     <div className={styles.headerLink} onClick={showFeedbackHandler}>
-                        <span className={styles.headerLink}>Feedback</span>
+                        <span className={`${isFeedbackFormShowing ? styles.active : ''} ${styles.headerLink}`}>Feedback</span>
                     </div>
                 </div>
 
@@ -67,10 +74,13 @@ export default function Header() {
 
             {/* EXPANDED HEADER SECTION */}
             {isHeaderExpanded &&
-                <div className={styles.expandedWrapper}>
-                    <About show={isAboutShowing} />
-                    <Feedback show={isFeedbackFormShowing} />
-                </div>
+                <>
+                    <div className={styles.expandedWrapper}>
+                        <CloseButton className='header' onClick={closeHeaderHandler} />
+                        <About show={isAboutShowing} />
+                        <Feedback show={isFeedbackFormShowing} />
+                    </div>
+                </>
             }
 
         </header>

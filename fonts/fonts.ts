@@ -4,6 +4,7 @@
 
 import {
     // ----- ARABIC ----- //
+    Marhey,
     Noto_Naskh_Arabic,
 
     // ----- HEBREW ----- //
@@ -26,6 +27,11 @@ import {
 //************************************************* */
 
 // * ------------- ARABIC ------------- //
+
+export const marhey = Marhey({
+    variable: '--font-marhey',
+    subsets: ['arabic']
+});
 
 export const notoNaskh = Noto_Naskh_Arabic({
     variable: '--font-noto-naskh',

@@ -46,6 +46,10 @@
     font-weight: 600;
 }
 
+.headerLink.active {
+    color: var(--color-hover-link);
+}
+
 .headerLink:hover {
     cursor: pointer;
     text-decoration: overline;

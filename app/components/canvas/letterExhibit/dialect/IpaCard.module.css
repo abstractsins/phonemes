@@ -8,8 +8,7 @@
     background-color: whitesmoke;
     border-radius: var(--border-radius-main);
     width: fit-content;
-    min-width: 275px;
-    min-width: fit-content;
+    min-width: 225px;
     max-width: 380px;
     padding: 2vh 1vw;
     padding: 1vh .5vw;
