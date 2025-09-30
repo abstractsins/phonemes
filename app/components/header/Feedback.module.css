@@ -1,0 +1,16 @@
+.body {
+    display: flex;
+    justify-content: center;
+    gap: 7.5vw;
+    opacity: 0;
+    transition: all 750ms;
+    width: 100%;
+}
+
+.body.invisible {
+    opacity: 0;
+}
+
+.body.visible {
+    opacity: 1;
+}

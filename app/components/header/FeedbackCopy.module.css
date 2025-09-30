@@ -1,0 +1,20 @@
+.body {
+    padding: 2vh 1vw;
+    display: flex;
+    flex-direction: column;
+    max-width: 25%;
+    flex-wrap: wrap;
+    font-family: var(--font-sansista);
+}
+
+.body li {
+    margin: 1vh 0;
+    font-size: clamp(12pt, 1vw, 20pt);
+    list-style: none;
+    font-style: italic;
+}
+
+.body span {
+    margin-top: 2vw;
+    font-size: clamp(12pt, 1vw, 20pt);   
+}

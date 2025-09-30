@@ -1,0 +1,73 @@
+.body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.body.medium {
+    padding: 1vh 1vw;
+    border-radius: 10px;
+    margin: 1.5vh .5vw;
+    min-width: clamp(50px, 4vw, 300px);
+}
+
+.body.Latin {
+    background-color: rgb(235, 205, 205);
+}
+.body.Hebrew {
+    background-color: lightblue;
+}
+.body.Arabic {
+    background-color: rgb(177, 248, 177);
+}
+
+.letter {
+    display: flex;
+    line-height: 1; 
+}
+
+.letter.medium {
+    font-size: clamp(18pt, 2.5vw, 80pt);
+}
+
+.letter.Latin {
+    font-family: var(--font-roboto-slab);
+}
+.letter.Hebrew {
+    font-family: var(--font-noto-sans-hebrew);
+
+}
+.letter.Arabic {
+    font-family: var(--font-noto-naskh);
+}
+
+.body.small {
+    padding: .5vh .5vw;
+    border-radius: 7px;
+    min-width: clamp(30px, 5vw, 165px);
+    height: 90px;
+}
+
+.letter.small {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    font-size: clamp(9pt, 1.25vw, 40pt);
+}
+
+.letter.small.Arabic {
+    font-size: clamp(12pt, 1.5vw, 46pt);
+}
+.letter.small.Hebrew {
+    font-size: clamp(12pt, 1.5vw, 46pt);
+}
+
+
+.footer {
+    margin-top: 5px;
+}
+
+.title {
+    margin-bottom: 5px;
+    text-transform: uppercase;
+}

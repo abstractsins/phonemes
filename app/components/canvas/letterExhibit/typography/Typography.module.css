@@ -1,0 +1,64 @@
+.mainWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0;
+    width: 7vw;
+    margin: 0vh 0vw;
+    gap: 2vh;
+    height: 100%;
+}
+
+.moduleBody {
+    display: flex;
+    flex-direction: column;
+    background-color: whitesmoke;
+    border-radius: var(--border-radius-main);
+    /* width: 100%; */
+    width: clamp(100px, 8vw, 300px);
+    height: clamp(120px, 16vh, 200px);
+}
+
+.moduleHeader {
+    font-family: var(--font-roboto-slab);
+    display: flex;
+    justify-content: center;
+    font-size: clamp(10pt, .75vw + .25rem, 36pt);
+    padding: 1vh 0vw;
+}
+
+.letterWrapper {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+span.letter {
+    font-size: clamp(16pt, 2.25vw, 72pt);
+}
+
+
+/** FONTS PER LANGUAGE */
+.EN.Sans {
+    font-family: var(--font-roboto-sans);
+}
+.EN.Serif {
+    font-family: var(--font-roboto-serif);
+}
+.EN.Cursive {
+    font-family: var(--font-playwrite);
+    font-size: clamp(16pt, 2vw, 72pt);
+}
+
+.MH.Sans {
+    font-family: var(--font-geist-sans);
+}
+.MH.Serif {
+    font-family: var(--font-noto-serif-hebrew);
+}
+.MH.Cursive {
+    font-family: var(--font-playpen);
+}

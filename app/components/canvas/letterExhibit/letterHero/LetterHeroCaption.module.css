@@ -1,0 +1,28 @@
+.wrapper {
+    display: flex;
+    align-items: flex-end;
+    /* height: 100%; */
+    /* margin: 5vh 0 0 0; */
+    width: 100%;
+    gap: 1vw;
+}
+
+.body {
+    background-color: whitesmoke;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: var(--border-radius-main);
+    width: 100%;
+    min-width: fit-content;
+    height: 4rem;
+    padding: 0 1vw;
+    filter: var(--drop-shadow-basic);
+}
+
+.order,
+.name {
+    font-family: var(--font-roboto-slab);
+    font-size: clamp(14pt, 1vw, 36pt);
+    font-weight: bold;
+}

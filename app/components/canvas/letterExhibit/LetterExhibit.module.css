@@ -1,0 +1,82 @@
+.body {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    border-radius: var(--border-radius-main);
+    align-items: center;
+    width: 95vw;
+    padding: 5vh 0;
+    transform: scale(1);
+    opacity: 1;
+    z-index: 0;
+    transition: all 250ms;
+    min-height: 65vh;
+}
+
+.body.Latin {
+    background-color: rgb(235, 199, 0);
+}
+.body.Hebrew {
+    background-color: rgb(220, 144, 255);
+}
+.body.Arabic {
+    background-color: rgb(197, 197, 53);
+}
+
+.body.Greek {}
+
+.body.Cyrillic {}
+
+.body.hide {
+    opacity: 0;
+    z-index: -1;
+    transform: scale(1.5);
+}
+
+.letterHero {
+    background-color: whitesmoke;
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    border-radius: var(--border-radius-main);
+    font-size: clamp(36pt, 10vw + 5rem, 400pt);
+    /* margin: 0vh 0vw; */
+    padding: 0vh 2vw;
+    min-width: 100%;
+    /* height: 100%; */
+    user-select: none;
+    filter: var(--drop-shadow-basic);
+    line-height: 1.5; 
+}
+
+.letterCanvas {
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+.letterHero.EN {
+    color: maroon;
+    font-family: var(--font-rubik-doodle-shadow);
+
+}
+
+.letterHero.MH {
+    color: limegreen;
+    font-family: var(--font-rubik-doodle-shadow);
+}
+
+.letterHero.AR {
+    color: cornflowerblue;
+    font-family: var(--font-marhey);
+}
+
+.letterHeroColumn {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 0 2vw;
+    justify-content: space-between;
+    /* align-items: center; */
+    gap: 4vh;
+}

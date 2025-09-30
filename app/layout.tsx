@@ -1,44 +1,50 @@
+//************************************************* */
+//*------------------- IMPORTS -------------------- */
+//************************************************* */
+
 import type { Metadata } from "next";
+
 import {
-    Geist,
-    Geist_Mono,
-    Noto_Serif_Hebrew,
-    Noto_Sans_Hebrew,
-    Rubik_Doodle_Shadow,
-    Noto_Naskh_Arabic,
-} from "next/font/google";
+    // * ------------- ARABIC ------------- //
+    notoNaskh,
+    marhey,
+    // * ------------- HEBREW ------------- //
+    notoSans, notoSerif,
+    playpen,
+    rubikDoodleShadow,
+    // * ------------- LATIN ------------- //
+    geistSans, geistMono,
+    kellySlab,
+    playwrite,
+    roboto, robotoSerif, robotoSlab,
+    sansista,
+} from "@/fonts/fonts";
+
 import "./css/globals.css";
 
-const geistSans = Geist({
-    variable: "--font-geist-sans",
-    subsets: ["latin"],
-});
 
-const geistMono = Geist_Mono({
-    variable: "--font-geist-mono",
-    subsets: ["latin"],
-});
+//************************************************* */
+//*------------------- EXPORTS -------------------- */
+//************************************************* */
 
-const notoSerif = Noto_Serif_Hebrew({
-    variable: "--font-noto-serif",
-    subsets: ["hebrew"]
-});
-
-const rubikDoodleShadow = Rubik_Doodle_Shadow({
-    variable: "--font-rubik-doodle-shadow",
-    subsets: ["hebrew"],
-    weight: ["400"]
-});
-
-const notoSans = Noto_Sans_Hebrew({
-    variable: "--font-noto-sans",
-    subsets: ["hebrew"]
-});
-
-const notoNaskh = Noto_Naskh_Arabic({
-    variable: "--font-noto-naskh",
-    subsets: ["arabic"]
-});
+let fontString = '';
+// * ------------- ARABIC ------------- //
+fontString += `${notoNaskh.variable} `;
+fontString += `${marhey.variable} `;
+// * ------------- HEBREW ------------- //
+fontString += `${notoSans.variable} `;
+fontString += `${notoSerif.variable} `;
+fontString += `${playpen.variable} `;
+fontString += `${rubikDoodleShadow.variable} `;
+// * ------------- LATIN ------------- //
+fontString += `${geistMono.variable} `;
+fontString += `${geistSans.variable} `;
+fontString += `${kellySlab.variable} `;
+fontString += `${playwrite.variable} `;
+fontString += `${roboto.variable} `;
+fontString += `${robotoSerif.variable} `;
+fontString += `${robotoSlab.variable} `;
+fontString += `${sansista.variable} `;
 
 export const metadata: Metadata = {
     title: "Aleph Bets",
@@ -52,7 +58,7 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
-            <body className={`${rubikDoodleShadow.variable} ${geistSans.variable} ${geistMono.variable} ${notoSerif.variable} ${notoSans.variable} ${notoNaskh.variable}`}>
+            <body className={fontString}>
                 {children}
             </body>
         </html>

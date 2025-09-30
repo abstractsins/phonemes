@@ -1,0 +1,44 @@
+.body {
+    border-radius: var(--border-radius-main);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 95%;
+    padding: 5vh 0;
+    transform: scale(1);
+    opacity: 1;
+    z-index: 0;
+    transition: all 250ms;
+}
+
+.body.Latin {
+    background-color: lightgreen;
+}
+.body.Hebrew {
+    background-color: lightpink;
+}
+.body.Arabic {
+    background-color: lightskyblue;
+}
+
+.body.hide {
+    opacity: 0;
+    z-index: -1;
+    transform: scale(1.5);
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    padding: 2vh 1vw;
+    align-items: center;
+}
+
+.direction {
+    font-family: var(--font-geist-mono);
+}
+
+.main {
+    display: flex;
+    justify-content: center;
+}
