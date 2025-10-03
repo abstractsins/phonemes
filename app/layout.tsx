@@ -21,6 +21,7 @@ import {
 } from "@/fonts/fonts";
 
 import "./css/globals.css";
+import "./css/languageColors.css";
 
 
 //************************************************* */

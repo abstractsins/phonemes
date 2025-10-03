@@ -135,7 +135,7 @@ export default function ContactForm() {
 
 
     return (
-        <div>
+        <div className={styles.wrapper}>
             {isSubmitWaiting &&
                 <>
                     <Loader msg="sending" />
@@ -149,124 +149,122 @@ export default function ContactForm() {
 
             <div id='contact-wrapper' className={`${styles['form-wrapper']}`}>
 
-                <div className={`${styles['face']} ${styles['wrapper-front']}`}>
 
-                    <form ref={formRef} id={'contactForm'} className={styles['form']} onSubmit={handleSubmit}>
+                <form ref={formRef} id={'contactForm'} className={styles['form']} onSubmit={handleSubmit}>
 
-                        <input type="hidden" name="contact_number" />
-                        <div className={styles.leftHalf}>
+                    <input type="hidden" name="contact_number" />
+                    <div className={styles.leftHalf}>
 
-                            {/* //* --------------------NAME-------------------- // */}
-                            <div className={styles['form-row']}>
-                                <div className='flex'>
-                                    <label className={`${styles['form-label']}`}>Name</label>
-                                    {formError && formError.field === 'name' &&
-                                        <div className={styles['error-wrapper']}>
-                                            <span className={styles['error-text']}>{formError.msg}</span>
-                                        </div>
-                                    }
-                                </div>
-                                <input
-                                    name='name'
-                                    required
-                                    type='text'
-                                    maxLength={100}
-                                    value={formState.name}
-                                    className={styles['contact-field']}
-                                    onChange={(e) => setFormState(prev => ({ ...prev, name: e.target.value }))}
-                                />
+                        {/* //* --------------------NAME-------------------- // */}
+                        <div className={styles['form-row']}>
+                            <div className='flex'>
+                                <label className={`${styles['form-label']}`}>Name</label>
+                                {formError && formError.field === 'name' &&
+                                    <div className={styles['error-wrapper']}>
+                                        <span className={styles['error-text']}>{formError.msg}</span>
+                                    </div>
+                                }
                             </div>
-
-                            {/* //* --------------------EMAIL-------------------- // */}
-                            <div className={styles['form-row']}>
-                                <div className='flex'>
-                                    <label className={`${styles['form-label']}`}>Email</label>
-                                    {formError && formError.field === 'email' &&
-                                        <div className={styles['error-wrapper']}>
-                                            <span className={styles['error-text']}>{formError.msg}</span>
-                                        </div>
-                                    }
-                                </div>
-                                <input
-                                    name='email'
-                                    required
-                                    type='text'
-                                    maxLength={100}
-                                    value={formState.email}
-                                    className={styles['contact-field']}
-                                    onChange={(e) => setFormState(prev => ({ ...prev, email: e.target.value.trim() }))}
-                                />
-                            </div>
-
-                            {/* //* --------------------SUBJECT-------------------- // */}
-                            <div className={styles['form-row']}>
-                                <div className='flex'>
-                                    <label className={`${styles['form-label']}`}>Subject</label>
-                                    {formError && formError.field === 'subject' &&
-                                        <div className={styles['error-wrapper']}>
-                                            <span className={styles['error-text']}>{formError.msg}</span>
-                                        </div>
-                                    }
-                                </div>
-                                <input
-                                    name='subject'
-                                    type='text'
-                                    maxLength={100}
-                                    value={formState.subject}
-                                    placeholder='Optional'
-                                    className={styles['contact-field']}
-                                    onChange={(e) => setFormState(prev => ({ ...prev, subject: e.target.value }))}
-                                />
-                            </div>
-
-
-                            <div className={`${styles['form-row']} ${styles['input-row']}`}>
-                                <input
-                                    type='submit'
-                                    value={'Submit'}
-                                    disabled={isSubmitWaiting}
-                                    className={`${styles['submit']} ${isFormAwake && !isSubmitWaiting ? styles['valid'] : styles['invalid']}`}
-                                />
-
-                                <input
-                                    type='button'
-                                    value={'Clear'}
-                                    onClick={clearHandler}
-                                    className={`${styles['clear']} ${isFormAwake && !isSubmitWaiting ? styles['valid'] : styles['invalid']}`}
-                                />
-                            </div>
+                            <input
+                                name='name'
+                                required
+                                type='text'
+                                maxLength={100}
+                                value={formState.name}
+                                className={styles['contact-field']}
+                                onChange={(e) => setFormState(prev => ({ ...prev, name: e.target.value }))}
+                            />
                         </div>
 
-                        <div className={styles.rightHalf}>
-                            {/* //* --------------------MESSAGE-------------------- // */}
-
-                            <div className={styles['form-row']}>
-                                <div className='flex'>
-                                    <label className={`${styles['form-label']}`}>Message</label>
-                                    {formError && formError.field === 'message' &&
-                                        <div className={styles['error-wrapper']}>
-                                            <span className={styles['error-text']}>{formError.msg}</span>
-                                        </div>
-                                    }
-                                </div>
-                                <textarea
-                                    required
-                                    name='message'
-                                    value={formState.message}
-                                    maxLength={300}
-                                    className={`${styles['contact-field']} ${styles['message']}`}
-                                    placeholder='300 character limit'
-                                    onChange={(e) => setFormState(prev => ({ ...prev, message: e.target.value }))}
-                                />
+                        {/* //* --------------------EMAIL-------------------- // */}
+                        <div className={styles['form-row']}>
+                            <div className='flex'>
+                                <label className={`${styles['form-label']}`}>Email</label>
+                                {formError && formError.field === 'email' &&
+                                    <div className={styles['error-wrapper']}>
+                                        <span className={styles['error-text']}>{formError.msg}</span>
+                                    </div>
+                                }
                             </div>
-
+                            <input
+                                name='email'
+                                required
+                                type='text'
+                                maxLength={100}
+                                value={formState.email}
+                                className={styles['contact-field']}
+                                onChange={(e) => setFormState(prev => ({ ...prev, email: e.target.value.trim() }))}
+                            />
                         </div>
 
-                    </form>
-                </div>
+                        {/* //* --------------------SUBJECT-------------------- // */}
+                        <div className={styles['form-row']}>
+                            <div className='flex'>
+                                <label className={`${styles['form-label']}`}>Subject</label>
+                                {formError && formError.field === 'subject' &&
+                                    <div className={styles['error-wrapper']}>
+                                        <span className={styles['error-text']}>{formError.msg}</span>
+                                    </div>
+                                }
+                            </div>
+                            <input
+                                name='subject'
+                                type='text'
+                                maxLength={100}
+                                value={formState.subject}
+                                placeholder='Optional'
+                                className={styles['contact-field']}
+                                onChange={(e) => setFormState(prev => ({ ...prev, subject: e.target.value }))}
+                            />
+                        </div>
+
+
+                        <div className={`${styles['form-row']} ${styles['input-row']}`}>
+                            <input
+                                type='submit'
+                                value={'Submit'}
+                                disabled={isSubmitWaiting}
+                                className={`${styles['submit']} ${isFormAwake && !isSubmitWaiting ? styles['valid'] : styles['invalid']}`}
+                            />
+
+                            <input
+                                type='button'
+                                value={'Clear'}
+                                onClick={clearHandler}
+                                className={`${styles['clear']} ${isFormAwake && !isSubmitWaiting ? styles['valid'] : styles['invalid']}`}
+                            />
+                        </div>
+                    </div>
+
+                    <div className={styles.rightHalf}>
+                        {/* //* --------------------MESSAGE-------------------- // */}
+
+                        <div className={styles['form-row']}>
+                            <div className='flex'>
+                                <label className={`${styles['form-label']}`}>Message</label>
+                                {formError && formError.field === 'message' &&
+                                    <div className={styles['error-wrapper']}>
+                                        <span className={styles['error-text']}>{formError.msg}</span>
+                                    </div>
+                                }
+                            </div>
+                            <textarea
+                                required
+                                name='message'
+                                value={formState.message}
+                                maxLength={300}
+                                className={`${styles['contact-field']} ${styles['message']}`}
+                                placeholder='300 character limit'
+                                onChange={(e) => setFormState(prev => ({ ...prev, message: e.target.value }))}
+                            />
+                        </div>
+
+                    </div>
+
+                </form>
 
             </div>
-            <aside id='emailjs'>Powered by EmailJS</aside>
+            <aside className={styles.aside} id='emailjs'>Powered by EmailJS</aside>
         </div>
 
     );

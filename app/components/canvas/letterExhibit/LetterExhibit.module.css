@@ -14,13 +14,13 @@
 }
 
 .body.Latin {
-    background-color: rgb(235, 199, 0);
+    background-color: var(--color-exhibit-latin);
 }
 .body.Hebrew {
-    background-color: rgb(220, 144, 255);
+    background-color: var(--color-exhibit-hebrew);
 }
 .body.Arabic {
-    background-color: rgb(197, 197, 53);
+    background-color: var(--color-exhibit-arabic);
 }
 
 .body.Greek {}
@@ -56,18 +56,17 @@
 }
 
 .letterHero.EN {
-    color: maroon;
     font-family: var(--font-rubik-doodle-shadow);
-
+    color: var(--color-latin-berry);
 }
 
 .letterHero.MH {
-    color: limegreen;
     font-family: var(--font-rubik-doodle-shadow);
+    color: var(--color-hebrew-green);
 }
 
 .letterHero.AR {
-    color: cornflowerblue;
+    color: var(--color-hero-arabic);
     font-family: var(--font-marhey);
 }
 

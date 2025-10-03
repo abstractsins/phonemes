@@ -1,15 +1,21 @@
+.wrapper {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 .form-wrapper {
     background-color: transparent;
     display: flex;
     justify-content: center;
-    justify-self: center;
     position: relative;
 }
 
 .form {
     display: flex;
     gap: 2vw;
-    height: 300px;
+    height: 100%;
 }
 
 .contact-field {
@@ -114,9 +120,16 @@
     height: 100%;
     display: flex;
     flex-direction: column;
-    align-items: space-between;
+    justify-content: center;
 }
 
 .rightHalf {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     height: 100%;
+}
+
+.aside {
+    /* position: absolute; */
 }

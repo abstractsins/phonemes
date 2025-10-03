@@ -31,3 +31,4 @@
 - arabic kaf (/q/) doesnt match hebrew kaf or kof (/k/) or english K
 - spanish jota as /x/ not /h/?
 - document close-to letters like hebrew resh and english r?
+- document vowel- and consonant-pairs

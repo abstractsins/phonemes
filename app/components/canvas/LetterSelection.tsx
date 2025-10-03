@@ -18,7 +18,7 @@ export default function LetterSelection() {
             {/* HEADER */}
             {selectedLanguage &&
                 <>
-                    <div className={styles.header}>
+                    <div className={`${styles.header} ${styles[selectedScript]}`}>
                         <h1>{selectedLanguage}</h1>
                         <span className={styles.direction}>
                             {`Direction: ${direction === 'ltr' ? 'Left to Right ->' : '<- Right to Left'}`}

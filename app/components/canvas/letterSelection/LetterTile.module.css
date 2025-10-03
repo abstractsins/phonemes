@@ -11,19 +11,21 @@
     min-width: clamp(50px, 4vw, 300px);
 }
 
-.body.Latin {
-    background-color: rgb(235, 205, 205);
-}
-.body.Hebrew {
-    background-color: lightblue;
-}
 .body.Arabic {
-    background-color: rgb(177, 248, 177);
+    background-color: var(--color-tile-arabic);
+}
+
+.body.Hebrew {
+    background-color: var(--color-tile-hebrew);
+}
+
+.body.Latin {
+    background-color: var(--color-tile-latin);
 }
 
 .letter {
     display: flex;
-    line-height: 1; 
+    line-height: 1;
 }
 
 .letter.medium {
@@ -33,10 +35,12 @@
 .letter.Latin {
     font-family: var(--font-roboto-slab);
 }
+
 .letter.Hebrew {
     font-family: var(--font-noto-sans-hebrew);
 
 }
+
 .letter.Arabic {
     font-family: var(--font-noto-naskh);
 }
@@ -58,6 +62,7 @@
 .letter.small.Arabic {
     font-size: clamp(12pt, 1.5vw, 46pt);
 }
+
 .letter.small.Hebrew {
     font-size: clamp(12pt, 1.5vw, 46pt);
 }

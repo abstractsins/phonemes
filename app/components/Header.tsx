@@ -7,8 +7,12 @@ import { useState } from "react";
 import CloseButton from "./ui/CloseButton";
 import Link from "next/link";
 
+interface Props {
+    expandToggle: (isExpanded: boolean) => void;
+}
 
-export default function Header() {
+
+export default function Header({ expandToggle }: Props) {
 
 
     const [isFeedbackFormShowing, setFeedbackFormShowing] = useState(false);
@@ -20,12 +24,14 @@ export default function Header() {
         if (isFeedbackFormShowing && isHeaderExpanded) {
             setFeedbackFormShowing(false);
             setHeaderExpanded(false);
+            expandToggle(false);
         } else if (isAboutShowing && isHeaderExpanded) {
             setAboutShowing(false);
             setFeedbackFormShowing(true);
         } else if (!isHeaderExpanded) {
             setTimeout(() => setFeedbackFormShowing(true), 500);
             setHeaderExpanded(true);
+            expandToggle(true);
         }
     };
 
@@ -36,9 +42,11 @@ export default function Header() {
         } else if (isAboutShowing && isHeaderExpanded) {
             setAboutShowing(false);
             setHeaderExpanded(false);
+            expandToggle(false);
         } else if (!isHeaderExpanded) {
             setTimeout(() => setAboutShowing(true), 500);
             setHeaderExpanded(true);
+            expandToggle(true);
         }
     };
 
@@ -46,6 +54,7 @@ export default function Header() {
         setHeaderExpanded(false);
         setAboutShowing(false);
         setFeedbackFormShowing(false);
+        expandToggle(false);
     };
 
 

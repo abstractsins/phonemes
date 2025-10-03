@@ -1,0 +1,48 @@
+:root {
+    /** ARABIC COLORS */
+    --color-arabic-slate: #003049;
+    --color-arabic-red: #d62828;
+    --color-arabic-orange: #f77f00;
+    --color-arabic-yellow: #fcbf49;
+    --color-arabic-kakhi: #eae2b7;
+    --color-arabic-purple: #9D6DCF;
+    --color-arabic-teal: #06d6a0;
+
+    /** HEBREW COLORS */
+    --color-hebrew-pink: #ef476f;
+    --color-hebrew-yellow: #ffd166;
+    --color-hebrew-green: #06d6a0;
+    --color-hebrew-blue: #118ab2;
+    --color-hebrew-slate: #073b4c;
+    --color-hebrew-cream: #f6f2e7;
+
+    /** LATIN COLORS */
+    --color-latin-cream: #FAFAC6;
+    --color-latin-blue-light: #98c1d9;
+    --color-latin-berry: #C64191;
+    --color-latin-orange: #ee6c4d;
+    --color-latin-slate: #293241;
+    --color-latin-sage: #7CA982;
+    --color-latin-ochre: #d4a373;
+
+
+    /* SELECTION CANVAS */
+    --color-canvas-arabic: var(--color-arabic-orange);
+    --color-canvas-hebrew: var(--color-hebrew-green);
+    --color-canvas-latin: var(--color-latin-berry);
+
+    /* LETTER EXHIBIT */
+    --color-exhibit-arabic: var(--color-arabic-purple);
+    --color-exhibit-hebrew: var(--color-hebrew-pink);
+    --color-exhibit-latin: var(--color-latin-ochre);
+
+    /* LETTER HERO */
+    --color-hero-arabic: var(--color-arabic-teal);
+    --color-hero-hebrew: var(--color-hebrew-blue);
+    --color-hero-latin: var(--color-latin-orange);
+
+    /* LETTER TILES CROSS SCRIPT */
+    --color-tile-arabic: var(--color-arabic-kakhi);
+    --color-tile-hebrew: var(--color-hebrew-cream);
+    --color-tile-latin: var(--color-latin-cream);
+}

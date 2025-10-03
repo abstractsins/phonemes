@@ -3,6 +3,12 @@
     flex-direction: column;
     align-items: center;
     height: 100vh;
+    position: relative;
+    transition: all 500ms;
+}
+
+.body.blur {
+    filter: blur(10px);
 }
 
 .canvasExhibitSpace {

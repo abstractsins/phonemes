@@ -11,14 +11,14 @@
     transition: all 250ms;
 }
 
-.body.Latin {
-    background-color: lightgreen;
+.body.Arabic {
+    background-image: linear-gradient(var(--color-arabic-orange), var(--color-arabic-yellow));
 }
 .body.Hebrew {
-    background-color: lightpink;
+    background-image: linear-gradient(var(--color-hebrew-green), var(--color-hebrew-blue));
 }
-.body.Arabic {
-    background-color: lightskyblue;
+.body.Latin {
+    background-image: linear-gradient(var(--color-latin-berry), var(--color-latin-orange));
 }
 
 .body.hide {
@@ -32,6 +32,17 @@
     flex-direction: column;
     padding: 2vh 1vw;
     align-items: center;
+    color: whitesmoke;
+}
+
+.header.Arabic{
+    color: var(--color-arabic-slate);
+}
+.header.Hebrew {
+    color: var(--color-hebrew-slate);
+}
+.header.Latin {
+    color: var(--color-latin-slate);
 }
 
 .direction {

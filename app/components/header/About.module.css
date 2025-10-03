@@ -1,15 +1,17 @@
 .body {
     display: flex;
     flex-direction: column;
+    align-items: center;
     opacity: 0;
     transition: all 750ms;
     position: absolute;
-    left: 10%;
-    top: 10%;
 }
 
 .body p {
-    /* font-family: var(--font-geist); */
+    /* border: 1px solid black; */
+    background-color: rgba(255, 255, 255, 0.653);
+    margin: 12px 0;
+    border-radius: 25px;
     font-size: clamp(12pt, 1vw, 26pt);
     padding: 2vh 1vw;
     max-width: 80%;
@@ -21,4 +23,9 @@
 
 .body.visible {
     opacity: 1;
+}
+
+.oomph {
+    font-weight: 600;
+    color: rgb(75, 14, 14);
 }
